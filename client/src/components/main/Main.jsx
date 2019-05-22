@@ -1,5 +1,5 @@
-import React, { Component } from './node_modules/react';
-import QuestContainer from '../questContainer/QuestContainer';
+import React, { Component } from 'react';
+import QuestContainer from '../QuestContainer/QuestContainer';
 import QuestForm from '../QuestForm/QuestForm';
 
 export class Main extends Component {

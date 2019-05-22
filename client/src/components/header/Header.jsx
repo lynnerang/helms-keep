@@ -1,6 +1,6 @@
-import React, { Component } from './node_modules/react';
+import React, { Component } from 'react';
 import Banner from '../Banner/Banner';
-import Nav from '../nav/Nav';
+import Nav from '../Nav/Nav';
 
 export class Header extends Component {
 	render() {

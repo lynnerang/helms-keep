@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { mockNote } from '../../api/utilities';
 import Quest from '../Quest/Quest';
 import { connect } from 'react-redux';
 

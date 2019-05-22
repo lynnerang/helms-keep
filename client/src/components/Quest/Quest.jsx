@@ -27,7 +27,7 @@ export class Quest extends Component {
           <h2 className="card-title" contentEditable="true">{title}</h2>
         </div>
         <div className="card-body">
-          <ul>{challenges}</ul>
+          {/* <ul>{challenges}</ul> */}
           {/* <ul>{uncompletedTaskItems}</ul>
           <p className="showCompleted" onClick={this.toggleShowCompleted}>
             Show {completedTaskItems.length} completed challenges

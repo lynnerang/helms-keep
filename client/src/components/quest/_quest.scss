@@ -1,0 +1,56 @@
+.Quest {
+  background: #E1EBDE;
+  margin: 0 30px 30px 0;
+  border: 1px solid #8CAC81;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.639);
+  height: 315px;
+  width: 245px;
+  position: relative;
+
+  &:hover {
+    box-shadow: 0 0 8px rgba(199, 255, 86, 0.509);
+  }
+}
+
+.card-header {
+  background: #8CAC81;
+  padding: 10px 15px;
+  border-radius: 8px 8px 0 0;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.challenge-txt {
+  margin-bottom: 10px;
+  list-style: none;
+}
+
+.delete-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  opacity: .5;
+
+  &:hover {
+    color: darkred;
+    opacity: .7;
+  }
+}
+
+.card-body,
+.card-title,
+.delete-btn {
+  cursor: pointer;
+}

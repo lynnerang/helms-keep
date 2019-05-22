@@ -1,0 +1,30 @@
+.Banner {
+  background-color: $secondaryHeaderColor;
+  height: 110px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.29);
+  @include flex(null, null, center, null);
+  & div {
+    @include flex(null, center, center, null);
+    width: 60%;
+    height: 75%;
+    & section {
+      @include flex(center, center, center, null);
+      margin-left: 15px;
+      width: 80px;
+      height: 80px;
+      border: 3px solid rgb(85, 114, 100);
+      background: linear-gradient(to bottom, #578060 55%, #45674c 35%);
+      & figure {
+        background-image: url("https://i.imgur.com/MzzH8Wn.png");
+        height: 55px;
+        width: 55px;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+    & .rc-progress-line {
+    //   height: 20px;
+    //   width: 50px;
+    }
+  }
+}

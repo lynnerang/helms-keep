@@ -15,10 +15,16 @@ export class Quest extends Component {
 	render() {
     const { title, challenges } = this.props.data;
 		const completedTaskItems = [];
-		const uncompletedTaskItems = [];
-
-    const challengeList = challenges.map((chal, i) => {
-      return <li className="challenge-txt" key={i} contentEditable="true">{chal.message}</li>
+    const uncompletedTaskItems = [];
+    
+    challenges.forEach(({ id, message, isCompleted }) => {
+      let card = (
+        <li className="challenge-txt" key={id} contentEditable="true" suppressContentEditableWarning={true}>
+          {message}
+        </li>);
+      isCompleted
+        ? completedTaskItems.push(card)
+        : uncompletedTaskItems.push(card);
     })
 
 		return (
@@ -27,7 +33,6 @@ export class Quest extends Component {
           <h2 className="card-title" contentEditable="true" suppressContentEditableWarning={true}>{title}</h2>
         </div>
         <div className="card-body">
-          <ul>{challengeList}</ul>
           <ul>{uncompletedTaskItems}</ul>
           <p className="showCompleted" onClick={this.toggleShowCompleted}>
             Show {completedTaskItems.length} completed challenges

@@ -1,4 +1,4 @@
-export const host = 'http://localhost:3000/';
+export const host = 'http://localhost:5000/';
 
 export const mockTask = {
   id: 1234,

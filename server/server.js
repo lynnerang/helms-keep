@@ -34,7 +34,7 @@ server.post('/api/quests', (request, response) => {
   if (newQuestKeys.includes('id' && 'title' && 'challenges')) {
     let { quests } = server.locals;
     server.locals.quests = [...quests, newQuest];
-    return response.status(201).send({ id: newQuest.id});
+    return response.status(201).send(newQuest);
   } else {
     return response.status(422).json({
       error: 'Please ensure your quest has a title and at least one challenge.'

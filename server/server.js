@@ -5,7 +5,7 @@ const cors = require("cors");
 const mockQuest = {
   id: 1,
   title: "My First Quest",
-  tasks: [{
+  challenges: [{
     id: 1,
     isCompleted: false, 
     message: 'Clean the kitchen'
@@ -31,7 +31,7 @@ server.post('/api/quests', (request, response) => {
   const newQuest = { id: Date.now(), ...request.body }
   const newQuestKeys = Object.keys(newQuest);
 
-  if (newQuestKeys.includes('id' && 'title' && 'tasks')) {
+  if (newQuestKeys.includes('id' && 'title' && 'challenges')) {
     let { quests } = server.locals;
     server.locals.quests = [...quests, newQuest];
     return response.status(201).send({ id: newQuest.id});
@@ -49,12 +49,12 @@ server.put('/quests/:id', (request, response) => {
   const editedQuest = {...request.body}
   const editedQuestKeys = Object.keys(editedQuest);
 
-  if (targetQuestId >= 0 && editedQuestKeys.includes('id' && 'title' && 'tasks')) {
+  if (targetQuestId >= 0 && editedQuestKeys.includes('id' && 'title' && 'challenges')) {
     quests.splice(targetQuestId, 1, editedQuest);
     return response.status(200).json(editedQuest);
   } else if (targetQuestId === -1) {
     return response.status(404).json({ error: `No quest found with an id of ${id}.`})
-  } else if (!editedQuestKeys.includes('id' && 'title' && 'tasks')) {
+  } else if (!editedQuestKeys.includes('id' && 'title' && 'challenges')) {
     return response.status(422).json({
       error: 'Please ensure your quest has a title and at least one challenge.'
     });

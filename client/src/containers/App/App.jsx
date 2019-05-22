@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Header } from '../../components/header/Header';
-import Main from '../../components/main/Main';
+import { Header } from '../../components/Header/Header';
+import Main from '../../components/Main/Main';
 import { connect } from 'react-redux';
 import { storeQuests } from '../../actions';
 

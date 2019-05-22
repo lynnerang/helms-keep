@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { mockNote } from '../../api/utilities';
-import Quest from '../quest/Quest';
+import Quest from '../Quest/Quest';
 import { connect } from 'react-redux';
 
 const mockQuestList = [ mockNote, mockNote, mockNote ];

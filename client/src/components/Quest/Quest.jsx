@@ -14,15 +14,10 @@ export class Quest extends Component {
 	toggleShowCompleted = () => {
 		this.setState({ showCompleted: !this.state.showCompleted });
   };
-
-  handleDelete = () => {
-    const { id } = this.props.data;
-    fetchDeleteNote(id);
-    this.props.deleteQuest(id);
-  }
   
   handleTrashClick = () => {
-    this.props.showPopup(true);
+    const { id } = this.props.data;
+    this.props.showPopup(true, id, 'delete');
   }
 
   handleUpdate = (e) => {
@@ -110,7 +105,7 @@ export class Quest extends Component {
 
 export const mapDispatchToProps = dispatch => ({
   updateQuest: quest => dispatch(editQuest(quest)),
-  showPopup: bool => dispatch(showPopup(bool))
+  showPopup: (bool, id, type) => dispatch(showPopup(bool, id, type))
 })
 
 export default connect(null, mapDispatchToProps)(Quest);

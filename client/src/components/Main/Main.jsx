@@ -5,7 +5,7 @@ import Dialog from '../Dialog/Dialog';
 import { connect } from 'react-redux';
 
 const Main = props => {
-  const popup = props.popup ? <Dialog /> : null;
+  const popup = props.popup.bool ? <Dialog /> : null;
 
   return (
     <main className="Main">

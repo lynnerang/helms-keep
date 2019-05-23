@@ -1,9 +1,9 @@
 import { host } from '../utilities';
 
 export const fetchEditNote = (note) => {
-  const url = `${host}/notes/${note.id}`;
+  const url = `${host}quests/${note.id}`;
   const options = {
-    method: 'POST',
+    method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(note)
   }

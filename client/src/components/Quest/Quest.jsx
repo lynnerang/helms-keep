@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { fetchEditNote } from '../../api/fetch/fetchEditNote';
+import { connect } from "react-redux";
+import { editQuest } from '../../actions';
+
 
 export class Quest extends Component {
 	constructor(props) {
@@ -10,7 +14,15 @@ export class Quest extends Component {
 
 	toggleShowCompleted = () => {
 		this.setState({ showCompleted: !this.state.showCompleted });
-	};
+  };
+  
+  markComplete = (e) => {
+    const localNote = { ...this.props.data};
+    const targetChallenge = localNote.challenges.find(chal => chal.id === +e.target.id);
+    targetChallenge.isCompleted = true;
+    this.props.updateQuest(localNote);
+    fetchEditNote(localNote);
+  }
 
   render() {
     const { title, challenges } = this.props.data;
@@ -47,4 +59,8 @@ export class Quest extends Component {
 	}
 }
 
-export default Quest;
+const mapDispatchToProps = dispatch => ({
+  updateQuest: quest => dispatch(editQuest(quest))
+})
+
+export default connect(null, mapDispatchToProps)(Quest);

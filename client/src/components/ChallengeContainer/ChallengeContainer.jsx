@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import shortid from "short-id";
+import shortid from "shortid";
 
 export class ChallengeContainer extends Component {
   state = {

@@ -28,15 +28,16 @@ class QuestForm extends Component {
 			},
 			body: JSON.stringify({ title, challenges })
 		})
-			.then(response => response.json())
-			.then(quest => this.props.addQuest(quest));
+      .then(response => response.json())
+      .then(quest => {
+        console.log(quest)
+        this.props.addQuest(quest)
+      });
 
 		this.props.closeForm();
 	};
 
   render() {
-
-    console.log(this.state)
 
 		return (
 			<div className="QuestForm">

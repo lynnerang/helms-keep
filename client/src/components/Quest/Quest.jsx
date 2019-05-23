@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { fetchEditNote } from '../../api/fetch/fetchEditNote';
+import { connect } from "react-redux";
+import { editQuest } from '../../actions';
+
 
 export class Quest extends Component {
 	constructor(props) {
@@ -10,7 +14,16 @@ export class Quest extends Component {
 
 	toggleShowCompleted = () => {
 		this.setState({ showCompleted: !this.state.showCompleted });
-	};
+  };
+  
+  markComplete = (e) => {
+    const localNote = { ...this.props.data};
+    const targetChallenge = localNote.challenges.find(chal => chal.id === +e.target.id);
+    targetChallenge.isCompleted = true;
+    this.props.updateQuest(localNote);
+    this.forceUpdate();
+    fetchEditNote(localNote);
+  }
 
 	render() {
     const { title, challenges } = this.props.data;
@@ -18,18 +31,17 @@ export class Quest extends Component {
     const uncompletedTaskItems = [];
     
     challenges.forEach(({ id, message, isCompleted }) => {
+      let boxClass = isCompleted ? "fa-check-square" : "fa-square";
       let card = (
-        <li className="challenge-txt" key={id} contentEditable="true">
-          {message}
-        </li>);
+        <li className="challenge-txt" key={id}>
+          <i class={`far ${boxClass}`} id={id} onClick={this.markComplete}/>
+          <span contentEditable="true">{message}</span>
+        </li>
+      );
       isCompleted
         ? completedTaskItems.push(card)
         : uncompletedTaskItems.push(card);
     })
-
-    // const challengeList = challenges.map((chal, i) => {
-    //   return <li className="challenge-txt" key={i} contentEditable="true">{chal}</li>
-    // })
 
 		return (
       <article className="Quest">
@@ -51,4 +63,8 @@ export class Quest extends Component {
 	}
 }
 
-export default Quest;
+const mapDispatchToProps = dispatch => ({
+  updateQuest: quest => dispatch(editQuest(quest))
+})
+
+export default connect(null, mapDispatchToProps)(Quest);

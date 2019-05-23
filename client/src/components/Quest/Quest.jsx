@@ -24,6 +24,18 @@ export class Quest extends Component {
     fetchEditNote(localNote);
   }
 
+  editChallenge= (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const localNote = { ...this.props.data};
+      const targetChallenge = localNote.challenges.find(chal => chal.id === +e.target.id);
+      targetChallenge.message = e.target.innerText;
+      this.props.updateQuest(localNote);
+      e.target.blur();
+      fetchEditNote(localNote);
+    }
+  }
+
   render() {
     const { title, challenges } = this.props.data;
 		const completedTaskItems = [];
@@ -32,10 +44,22 @@ export class Quest extends Component {
     challenges.forEach(({ id, message, isCompleted }) => {
       let boxClass = isCompleted ? "fa-check-square" : "fa-square";
       let card = (
-        <li className="challenge-txt" key={id} contentEditable="true" suppressContentEditableWarning={true}>
-          <i class={`far ${boxClass}`} id={id} onClick={this.markComplete}/>
-          {message}
-        </li>);
+        <li className="challenge-txt" key={id}>
+          <i
+            className={`far ${boxClass}`}
+            id={id}
+            onClick={this.markComplete}
+          />
+          <span
+            contentEditable="true"
+            id={id}
+            suppressContentEditableWarning={true}
+            onKeyDown={this.editChallenge}
+          >
+            {message}
+          </span>
+        </li>
+      );
       isCompleted
         ? completedTaskItems.push(card)
         : uncompletedTaskItems.push(card);

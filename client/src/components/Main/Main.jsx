@@ -2,11 +2,14 @@ import React from 'react';
 import QuestContainer from '../QuestContainer/QuestContainer';
 import { NavLink } from 'react-router-dom';
 import Dialog from '../Dialog/Dialog';
+import { connect } from 'react-redux';
 
-const Main = () => {
+const Main = props => {
+  const popup = props.popup ? <Dialog /> : null;
+
   return (
     <main className="Main">
-      <Dialog />
+      {popup}
       <div className="main-header">
         <h1 className="page-title">My Quests</h1>
         <div className="controls">
@@ -25,4 +28,8 @@ const Main = () => {
   );
 }
 
-export default Main;
+export const mapStateToProps = state => ({
+  popup: state.popup
+})
+
+export default connect(mapStateToProps)(Main);

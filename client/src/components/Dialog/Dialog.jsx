@@ -1,25 +1,42 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Component } from 'react';
+import { showPopup } from '../../actions';
+import { connect } from 'react-redux';
+// import { mapStateToProps } from '../Main/Main';
+// import { mapDispatchToProps } from '../QuestForm/QuestForm';
 
-const Dialog = () => {
-  return (
-    <div className="dialog-overlay">
-      <div className="popup">
-        <p>
-          Are you sure you want to delete this card?
-        </p>
-        <NavLink className="dialog-btns" exact to="/">
-          <button className="dialog-btn" type="button" >
+
+export class Dialog extends Component {
+  constructor(props) {
+    super(props);
+
+  }
+
+  handleClick = e => {
+    if (!e.target.classList.contains('delete-quest-btn')) {
+      this.props.showPopup(false);
+    }
+  }
+
+  render() {
+    return (
+      <div className="dialog-overlay">
+        <div className="popup">
+          <p>Are you sure you want to delete this card?</p>
+          <button className="dialog-btn" type="button" onClick={this.handleClick}>
             Cancel
           </button>
           {/* can add delete method to button below */}
-          <button className="dialog-btn delete-quest-btn" type="button" >
+          <button className="dialog-btn delete-quest-btn" type="button" onClick={this.handleClick}>
             Delete
           </button>
-        </NavLink>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default Dialog;
+export const mapDispatchToProps = dispatch => ({
+  showPopup: bool => dispatch(showPopup(bool))
+})
+
+export default connect(null, mapDispatchToProps)(Dialog);

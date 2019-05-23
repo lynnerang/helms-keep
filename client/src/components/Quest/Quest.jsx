@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { fetchEditNote } from '../../api/fetch/fetchEditNote';
 import { connect } from "react-redux";
-import { editQuest } from '../../actions';
-import Dialog from '../Dialog/Dialog';
+import { editQuest, showPopup } from '../../actions';
 
 
 export class Quest extends Component {
@@ -17,8 +16,12 @@ export class Quest extends Component {
 		this.setState({ showCompleted: !this.state.showCompleted });
   };
 
+  handleTrashClick = () => {
+    this.props.showPopup(true);
+  }
+
   handleUpdate = (e) => {
-    const localNote = { ...this.props.data};
+    const localNote = {...this.props.data};
     const targetChallenge = localNote.challenges.find(chal => chal.id === e.target.id);
     if (e.target.classList[1] === "fa-square") {
       targetChallenge.isCompleted = true;
@@ -93,15 +96,16 @@ export class Quest extends Component {
           <ul>{this.state.showCompleted && completedTaskItems}</ul>
         </div>
         <button className="delete-btn" type="button">
-          <i className="fas fa-trash" />
+          <i className="fas fa-trash" onClick={this.handleTrashClick}/>
         </button>
       </article>
     );
 	}
 }
 
-const mapDispatchToProps = dispatch => ({
-  updateQuest: quest => dispatch(editQuest(quest))
+export const mapDispatchToProps = dispatch => ({
+  updateQuest: quest => dispatch(editQuest(quest)),
+  showPopup: bool => dispatch(showPopup(bool))
 })
 
 export default connect(null, mapDispatchToProps)(Quest);

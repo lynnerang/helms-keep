@@ -1,12 +1,12 @@
 .Quest {
-  background: #E1EBDE;
   margin: 0 35px 35px 0;
   border: 1px solid #8CAC81;
-  border-radius: 4px;
+  border-radius: 6px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.639);
   height: 375px;
   width: 310px;
   position: relative;
+  background: white;
 
   &:hover {
     box-shadow: 0 0 8px rgba(199, 255, 86, 0.509);
@@ -30,7 +30,7 @@
   height: 290px;
   overflow-y: scroll;
   border-bottom: 1px solid #a5bfaa;
-  border-top: 1px solid #6c9674;
+  border-top: 1px solid #688f6f9c;
 }
 
 .challenge-txt {
@@ -38,8 +38,8 @@
   align-items: center;
   justify-content: space-between;
   background: white;
-  border: 1px solid rgb(218, 233, 213);
-  border-bottom-color: rgb(197, 216, 191);
+  border: 1px solid rgba(218, 233, 213, 0.351);
+  border-bottom-color: rgba(197, 216, 191, 0.351);
   list-style: none;
   color: #222;
   cursor: text;
@@ -51,25 +51,32 @@
   }
 
   .far,
-  .fas {
+  .close-icon {
+    color: $btnColor;
     margin: 0 10px;
     font-size: 22px;
     cursor: pointer;
     opacity: .8;
   }
 
-  .fa-square,
-  .fa-check-square {
-    color: $btnColor;
+  .far:hover {
+    color: $btnHoverColor;
+  }
+
+  .close-icon {
+    font-family: 'Jura', sans-serif;
+    font-size: 28px;
+    margin-right: 20px;
+    margin-top: -8px;
 
     &:hover {
-      color: $btnHoverColor;
+      color: rgb(215, 89, 89);
     }
   }
 
   .fa-times {
-    color: darkred;
-    opacity: .7;
+    color: $btnColor;
+    margin-right: 10px;
 
     &:hover {
       color: rgb(198, 59, 59);
@@ -89,10 +96,9 @@
   }
 }
 
-.uncompleted-ul {
-  min-height: 290px;
-  background: white;
-}
+// .uncompleted-ul {
+//   background: white;
+// }
 
 .complete-ul {
   span,
@@ -108,7 +114,8 @@
 }
 
 .card-footer {
-  height: 35px;
+  background: #E1EBDE;
+  height: 38px;
   display: flex;
   justify-content: space-between;
   align-items: center;

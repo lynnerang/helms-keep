@@ -73,7 +73,7 @@ export class Quest extends Component {
           >
             {message}
           </span>
-          <i className="fas fa-times"/>
+          <p className="close-icon">x</p>
         </li>
       );
       isCompleted
@@ -106,7 +106,7 @@ export class Quest extends Component {
           <ul className="complete-ul">{this.state.showCompleted && completedTaskItems}</ul>
         </div>
         <div className="card-footer">
-          {link}
+          <div>{link}</div>
           <button className="delete-btn" type="button">
             <i className="fas fa-trash" onClick={this.handleTrashClick}/>
           </button>

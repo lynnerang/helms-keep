@@ -15,6 +15,9 @@ export const questsReducer = (state = [], action) => {
         action.payload.quest
       );
       return workingQuests;
+    case 'DELETE_QUEST':
+      const newList = state.filter(quest => quest.id !== action.payload.id);
+      return newList;
     default:
       return state;
   }

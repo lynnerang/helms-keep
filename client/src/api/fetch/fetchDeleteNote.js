@@ -1,7 +1,7 @@
 import { host } from '../utilities';
 
 export const fetchDeleteNote = (id) => {
-  const url = `${host}/notes/${id}`;
+  const url = `${host}quests/${id}`;
   const init = {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
@@ -11,7 +11,7 @@ export const fetchDeleteNote = (id) => {
       if (!response.ok) {
         throw Error('Failed to delete note')
       } else {
-        return response.json();
+        return response;
       }
     })
 }

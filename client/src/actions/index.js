@@ -21,6 +21,15 @@ export const editQuest = quest => {
   };
 }
 
+export const deleteQuest = id => {
+  return {
+    type: "DELETE_QUEST",
+    payload: {
+      id
+    }
+  };
+}
+
 export const showPopup = bool => {
   return {
     type: "SHOW_POPUP",
@@ -29,3 +38,4 @@ export const showPopup = bool => {
     }
   }
 }
+

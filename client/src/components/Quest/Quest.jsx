@@ -3,7 +3,6 @@ import { fetchEditNote } from '../../api/fetch/fetchEditNote';
 import { connect } from "react-redux";
 import { editQuest, showPopup } from '../../actions';
 
-
 export class Quest extends Component {
 	constructor(props) {
 		super(props);
@@ -16,6 +15,12 @@ export class Quest extends Component {
 		this.setState({ showCompleted: !this.state.showCompleted });
   };
 
+  handleDelete = () => {
+    const { id } = this.props.data;
+    fetchDeleteNote(id);
+    this.props.deleteQuest(id);
+  }
+  
   handleTrashClick = () => {
     this.props.showPopup(true);
   }

@@ -3,62 +3,114 @@ import "@babel/polyfill";
 import app from "./app";
 
 describe("API", () => {
+  let mockQuests;
+  beforeEach(() => {
+    mockQuests = [
+      {
+        id: 1,
+        title: "My First Quest",
+        challenges: [
+          {
+            id: 1,
+            isCompleted: true,
+            message: "Clean the kitchen"
+          },
+          {
+            id: 2,
+            isCompleted: false,
+            message: "Cook dinner"
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "My Second Quest",
+        challenges: [
+          {
+            id: 1,
+            isCompleted: false,
+            message: "Learn SASS"
+          },
+          {
+            id: 2,
+            isCompleted: true,
+            message: "Become a NODE wizard"
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "My Third Quest",
+        challenges: [
+          {
+            id: 1,
+            isCompleted: true,
+            message: "Charge phone"
+          },
+          {
+            id: 2,
+            isCompleted: false,
+            message: "Dance until the sun comes up"
+          }
+        ]
+      }
+    ];
+    app.locals.quests = mockQuests;
+  });
+  afterEach(() => {
+    mockQuests = [
+      {
+        id: 1,
+        title: "My First Quest",
+        challenges: [
+          {
+            id: 1,
+            isCompleted: true,
+            message: "Clean the kitchen"
+          },
+          {
+            id: 2,
+            isCompleted: false,
+            message: "Cook dinner"
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "My Second Quest",
+        challenges: [
+          {
+            id: 1,
+            isCompleted: false,
+            message: "Learn SASS"
+          },
+          {
+            id: 2,
+            isCompleted: true,
+            message: "Become a NODE wizard"
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "My Third Quest",
+        challenges: [
+          {
+            id: 1,
+            isCompleted: true,
+            message: "Charge phone"
+          },
+          {
+            id: 2,
+            isCompleted: false,
+            message: "Dance until the sun comes up"
+          }
+        ]
+      }
+    ];
+    app.locals.quests = mockQuests;
+  });
   describe("GET/api/quests", () => {
-    let mockQuests;
-    beforeEach(() => {
-      mockQuests = [
-        {
-          id: 1,
-          title: "My First Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: true,
-              message: "Clean the kitchen"
-            },
-            {
-              id: 2,
-              isCompleted: false,
-              message: "Cook dinner"
-            }
-          ]
-        },
-        {
-          id: 2,
-          title: "My Second Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: false,
-              message: "Learn SASS"
-            },
-            {
-              id: 2,
-              isCompleted: true,
-              message: "Become a NODE wizard"
-            }
-          ]
-        },
-        {
-          id: 3,
-          title: "My Third Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: true,
-              message: "Charge phone"
-            },
-            {
-              id: 2,
-              isCompleted: false,
-              message: "Dance until the sun comes up"
-            }
-          ]
-        }
-      ];
-      app.locals.quests = mockQuests;
-    });
-
     it("Should have a Status Code of 200 on successful GET", async () => {
       const response = await request(app).get("/api/quests");
       expect(response.statusCode).toBe(200);
@@ -106,113 +158,6 @@ describe("API", () => {
     });
   });
   describe("POST/api/quests", () => {
-    let mockQuests;
-    beforeEach(() => {
-      mockQuests = [
-        {
-          id: 1,
-          title: "My First Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: true,
-              message: "Clean the kitchen"
-            },
-            {
-              id: 2,
-              isCompleted: false,
-              message: "Cook dinner"
-            }
-          ]
-        },
-        {
-          id: 2,
-          title: "My Second Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: false,
-              message: "Learn SASS"
-            },
-            {
-              id: 2,
-              isCompleted: true,
-              message: "Become a NODE wizard"
-            }
-          ]
-        },
-        {
-          id: 3,
-          title: "My Third Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: true,
-              message: "Charge phone"
-            },
-            {
-              id: 2,
-              isCompleted: false,
-              message: "Dance until the sun comes up"
-            }
-          ]
-        }
-      ];
-      app.locals.quests = mockQuests;
-    });
-    afterEach(() => {
-      mockQuests = [
-        {
-          id: 1,
-          title: "My First Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: true,
-              message: "Clean the kitchen"
-            },
-            {
-              id: 2,
-              isCompleted: false,
-              message: "Cook dinner"
-            }
-          ]
-        },
-        {
-          id: 2,
-          title: "My Second Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: false,
-              message: "Learn SASS"
-            },
-            {
-              id: 2,
-              isCompleted: true,
-              message: "Become a NODE wizard"
-            }
-          ]
-        },
-        {
-          id: 3,
-          title: "My Third Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: true,
-              message: "Charge phone"
-            },
-            {
-              id: 2,
-              isCompleted: false,
-              message: "Dance until the sun comes up"
-            }
-          ]
-        }
-      ];
-      app.locals.quests = mockQuests;
-    });
     it("Should have a Status Code of 201 on successful creation of a new Quest", async () => {
       const response = await request(app)
         .post("/api/quests")
@@ -251,113 +196,6 @@ describe("API", () => {
     });
   });
   describe("DELETE/api/quests", () => {
-    let mockQuests;
-    beforeEach(() => {
-      mockQuests = [
-        {
-          id: 1,
-          title: "My First Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: true,
-              message: "Clean the kitchen"
-            },
-            {
-              id: 2,
-              isCompleted: false,
-              message: "Cook dinner"
-            }
-          ]
-        },
-        {
-          id: 2,
-          title: "My Second Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: false,
-              message: "Learn SASS"
-            },
-            {
-              id: 2,
-              isCompleted: true,
-              message: "Become a NODE wizard"
-            }
-          ]
-        },
-        {
-          id: 3,
-          title: "My Third Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: true,
-              message: "Charge phone"
-            },
-            {
-              id: 2,
-              isCompleted: false,
-              message: "Dance until the sun comes up"
-            }
-          ]
-        }
-      ];
-      app.locals.quests = mockQuests;
-    });
-    afterEach(() => {
-      mockQuests = [
-        {
-          id: 1,
-          title: "My First Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: true,
-              message: "Clean the kitchen"
-            },
-            {
-              id: 2,
-              isCompleted: false,
-              message: "Cook dinner"
-            }
-          ]
-        },
-        {
-          id: 2,
-          title: "My Second Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: false,
-              message: "Learn SASS"
-            },
-            {
-              id: 2,
-              isCompleted: true,
-              message: "Become a NODE wizard"
-            }
-          ]
-        },
-        {
-          id: 3,
-          title: "My Third Quest",
-          challenges: [
-            {
-              id: 1,
-              isCompleted: true,
-              message: "Charge phone"
-            },
-            {
-              id: 2,
-              isCompleted: false,
-              message: "Dance until the sun comes up"
-            }
-          ]
-        }
-      ];
-      app.locals.quests = mockQuests;
-    });
     it("Should have a Status Code of 200 on successful deletion of a Quest", async () => {
       const response = await request(app).delete("/quests/1");
       expect(response.statusCode).toBe(200);

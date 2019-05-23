@@ -6,6 +6,14 @@ export class ChallengeContainer extends Component {
     challenge: ""
   };
 
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    this.el.scrollIntoView({ behavior: 'smooth' });
+  }
+
   handleChange = e => this.setState({ challenge: e.target.value });
 
   handleSubmit = e => {
@@ -29,7 +37,10 @@ export class ChallengeContainer extends Component {
 
     return (
       <article className="ChallengeContainer">
-        <ul>{challenges}</ul>
+        <ul>
+          {challenges}
+          <div ref={el => { this.el = el; }}/>
+        </ul>
         <div className="form-row">
           <input
             className="new-challenge-input"

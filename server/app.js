@@ -55,6 +55,7 @@ const mockQuests = [
   }
 ];
 
+
 app.locals.title = "HelmsKeep";
 app.locals.quests = mockQuests;
 

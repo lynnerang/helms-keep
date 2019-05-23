@@ -1,6 +1,7 @@
 import request from "supertest";
 import "@babel/polyfill";
 import app from "./app";
+import { notDeepEqual } from "assert";
 
 describe("API", () => {
   let mockQuests;
@@ -248,7 +249,6 @@ describe("API", () => {
         .send({ ...mockQuest });
       expect(response.body.shift()).toEqual(mockQuest);
     });
-
     it("Should have an Status Code of 422 on unsuccessful edit of a Quest'", async () => {
       const response = await request(app)
         .put("/api/quests/5")

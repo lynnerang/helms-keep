@@ -80,6 +80,9 @@ export class Quest extends Component {
         : uncompletedTaskItems.push(card);
     })
 
+    const verb = this.state.showCompleted ? 'Hide' : 'Show';
+    const divider = this.state.showCompleted ? <hr className="divider" /> : null;
+
 		return (
       <article className="Quest">
         <div className="card-header">
@@ -95,8 +98,9 @@ export class Quest extends Component {
         </div>
         <div className="card-body">
           <ul>{uncompletedTaskItems}</ul>
+          {divider}
           <p className="show-completed" onClick={this.toggleShowCompleted}>
-            Show completed ({completedTaskItems.length})
+            {verb} completed ({completedTaskItems.length})
           </p>
           <ul>{this.state.showCompleted && completedTaskItems}</ul>
         </div>

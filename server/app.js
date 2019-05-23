@@ -120,10 +120,11 @@ app.get("/quests/:id", (request, response) => {
   }
 });
 
-app.delete("/quests/:id", (request, response) => {
+app.delete("/api/quests/:id", (request, response) => {
   const { quests } = app.locals;
   const { id } = request.params;
   const targetQuestId = quests.findIndex(quest => quest.id === +id);
+  console.log(targetQuestId);
   if (targetQuestId === -1) {
     return response
       .status(404)

@@ -20,3 +20,14 @@ export const editQuest = quest => {
     }
   };
 }
+
+export const deleteQuest = id => {
+  return {
+    type: "DELETE_QUEST",
+    payload: {
+      id
+    }
+  };
+}
+
+

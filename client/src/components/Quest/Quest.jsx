@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { fetchEditNote } from '../../api/fetch/fetchEditNote';
 import { connect } from "react-redux";
-import { editQuest } from '../../actions';
+import { editQuest, deleteQuest } from '../../actions';
+import { fetchDeleteNote } from '../../api/fetch/fetchDeleteNote';
 
 
 export class Quest extends Component {
@@ -15,6 +16,12 @@ export class Quest extends Component {
 	toggleShowCompleted = () => {
 		this.setState({ showCompleted: !this.state.showCompleted });
   };
+
+  handleDelete = () => {
+    const { id } = this.props.data;
+    fetchDeleteNote(id);
+    this.props.deleteQuest(id);
+  }
 
   handleUpdate = (e) => {
     const localNote = { ...this.props.data};
@@ -91,7 +98,7 @@ export class Quest extends Component {
           </p>
           <ul>{this.state.showCompleted && completedTaskItems}</ul>
         </div>
-        <button className="delete-btn" type="button">
+        <button className="delete-btn" type="button" onClick={this.handleDelete}>
           <i className="fas fa-trash" />
         </button>
       </article>
@@ -100,7 +107,8 @@ export class Quest extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateQuest: quest => dispatch(editQuest(quest))
+  updateQuest: quest => dispatch(editQuest(quest)),
+  deleteQuest: id => dispatch(deleteQuest(id))
 })
 
 export default connect(null, mapDispatchToProps)(Quest);

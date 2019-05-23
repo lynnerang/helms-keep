@@ -101,14 +101,16 @@ export class Quest extends Component {
           </h2>
         </div>
         <div className="card-body">
-          <ul>{uncompletedTaskItems}</ul>
+          <ul className="uncompleted-ul">{uncompletedTaskItems}</ul>
           {divider}
-          {link}
           <ul className="complete-ul">{this.state.showCompleted && completedTaskItems}</ul>
         </div>
-        <button className="delete-btn" type="button">
-          <i className="fas fa-trash" onClick={this.handleTrashClick}/>
-        </button>
+        <div className="card-footer">
+          {link}
+          <button className="delete-btn" type="button">
+            <i className="fas fa-trash" onClick={this.handleTrashClick}/>
+          </button>
+        </div>
       </article>
     );
 	}

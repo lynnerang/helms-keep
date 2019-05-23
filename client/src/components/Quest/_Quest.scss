@@ -1,11 +1,11 @@
 .Quest {
   background: #E1EBDE;
-  margin: 0 30px 30px 0;
+  margin: 0 35px 35px 0;
   border: 1px solid #8CAC81;
   border-radius: 4px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.639);
-  height: 350px;
-  width: 275px;
+  height: 375px;
+  width: 310px;
   position: relative;
 
   &:hover {
@@ -14,27 +14,26 @@
 }
 
 .card-header {
-  background: #8CAC81;
-  border-bottom: $btnColor;
-  padding: 10px 15px;
+  background: rgb(119, 148, 109);
+  padding: 12px 15px;
   border-radius: 4px 4px 0 0;
 }
 
 .card-title {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
   color: white;
   cursor: text;
 }
 
 .card-body {
-  // padding: 15px;
-  height: 230px;
+  height: 290px;
   overflow-y: scroll;
+  border-bottom: 1px solid #a5bfaa;
+  border-top: 1px solid #6c9674;
 }
 
 .challenge-txt {
-  // margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -53,28 +52,32 @@
 
   .far,
   .fas {
-    color: $btnColor;
     margin: 0 10px;
     font-size: 22px;
     cursor: pointer;
+    opacity: .8;
+  }
+
+  .fa-square,
+  .fa-check-square {
+    color: $btnColor;
+
     &:hover {
-      color: $btnHoverColor!important;
+      color: $btnHoverColor;
     }
   }
 
-  .fa-times:hover {
-    color: darkred!important;
+  .fa-times {
+    color: darkred;
     opacity: .7;
-  }
-  .fa-check-square {
-    color: rgba(131, 131, 131, 0.728);
+
+    &:hover {
+      color: rgb(198, 59, 59);
+    }
   }
 }
 
 .delete-btn {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
   background: none!important;
   border: none;
   font-size: 18px;
@@ -84,6 +87,11 @@
     color: darkred!important;
     opacity: .7;
   }
+}
+
+.uncompleted-ul {
+  min-height: 290px;
+  background: white;
 }
 
 .complete-ul {
@@ -99,10 +107,14 @@
   }
 }
 
+.card-footer {
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .show-completed {
-  margin-left: 10px;
-  position: absolute;
-  bottom: 15px;
   font-size: 14px;
   color: $btnColor;
 
@@ -114,6 +126,7 @@
 .delete-btn,
 .show-completed {
   cursor: pointer;
+  margin: 0 15px;
 }
 
 .divider {

@@ -19,7 +19,6 @@
 	margin: 0;
 	padding: 0;
 	outline-color: darkgreen;
-	// border: 0.3px solid pink;
 }
 
 html,
@@ -37,25 +36,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body::-webkit-scrollbar {
+    width: 4px;
+}
+
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-// ::-webkit-scrollbar-track {
-//   border-radius: 5px;
-//   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-//   border: 1px solid rgb(50, 91, 50);
-// 	/* background-color: rgb(29, 29, 29); */
-// }
 
-// ::-webkit-scrollbar {
-//   border-radius: 5px;
-//   height: 8px;
-//   width: 8px;
-// }
-
-// ::-webkit-scrollbar-thumb {
-//   border-radius: 5px;
-// 	background-color: #484F51;
-// 	border: 1px solid #484F51;
-// }

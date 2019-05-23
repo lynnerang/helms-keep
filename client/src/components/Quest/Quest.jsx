@@ -14,11 +14,16 @@ export class Quest extends Component {
 	toggleShowCompleted = () => {
 		this.setState({ showCompleted: !this.state.showCompleted });
   };
+
   
-  handleTrashClick = () => {
+  handleQuestDelete = () => {
     const { id } = this.props.data;
     this.props.showPopup(true, id, 'delete');
   }
+
+  // handleChallengeDelete = e => {
+  //   const 
+  // }
 
   handleUpdate = (e) => {
     const localNote = {...this.props.data};
@@ -68,12 +73,19 @@ export class Quest extends Component {
           >
             {message}
           </span>
+          <p role="button" name={id} className="close-icon" onClick={this.handleChallengeDelete}>x</p>
         </li>
       );
       isCompleted
         ? completedTaskItems.push(card)
         : uncompletedTaskItems.push(card);
     })
+
+    const verb = !this.state.showCompleted ? '+ Show' : '- Hide';
+    const divider = this.state.showCompleted && completedTaskItems.length ? <h4 className="divider">Completed</h4> : null;
+    const link = completedTaskItems.length ?
+      <p role="button" className="show-completed" onClick={this.toggleShowCompleted}>{verb} {completedTaskItems.length} completed</p>
+      : null;
 
 		return (
       <article className="Quest">
@@ -89,15 +101,16 @@ export class Quest extends Component {
           </h2>
         </div>
         <div className="card-body">
-          <ul>{uncompletedTaskItems}</ul>
-          <p className="showCompleted" onClick={this.toggleShowCompleted}>
-            Show {completedTaskItems.length} completed challenges
-          </p>
-          <ul>{this.state.showCompleted && completedTaskItems}</ul>
+          <ul className="uncompleted-ul">{uncompletedTaskItems}</ul>
+          {divider}
+          <ul className="complete-ul">{this.state.showCompleted && completedTaskItems}</ul>
         </div>
-        <button className="delete-btn" type="button">
-          <i className="fas fa-trash" onClick={this.handleTrashClick}/>
-        </button>
+        <div className="card-footer">
+          <div>{link}</div>
+          <button className="delete-btn" type="button">
+            <i className="fas fa-trash" onClick={this.handleQuestDelete}/>
+          </button>
+        </div>
       </article>
     );
 	}

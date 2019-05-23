@@ -220,8 +220,26 @@ describe("API", () => {
     });
   });
   describe("PUT/api/quests", () => {
-    it("Should have a Status Code of 200 on successful edit of a Quest", async () => {
-      const response = await request(app).put("/quests/1");
+    const mockQuest = {
+      id: 1,
+      title: "My First Quest",
+      challenges: [
+        {
+          id: 1,
+          isCompleted: true,
+          message: "Clean the kitchen"
+        },
+        {
+          id: 2,
+          isCompleted: false,
+          message: "Cook dinner"
+        }
+      ]
+    };
+    it.skip("Should have a Status Code of 200 on successful edit of a Quest", async () => {
+      const response = await request(app)
+        .put("/quests/1")
+        .send({ mockQuest });
       expect(response.statusCode).toBe(200);
     });
   });

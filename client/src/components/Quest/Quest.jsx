@@ -24,19 +24,16 @@ export class Quest extends Component {
     fetchEditNote(localNote);
   }
 
-	render() {
+  render() {
     const { title, challenges } = this.props.data;
 		const completedTaskItems = [];
     const uncompletedTaskItems = [];
     
     challenges.forEach(({ id, message, isCompleted }) => {
-      let boxClass = isCompleted ? "fa-check-square" : "fa-square";
       let card = (
-        <li className="challenge-txt" key={id}>
-          <i class={`far ${boxClass}`} id={id} onClick={this.markComplete}/>
-          <span contentEditable="true">{message}</span>
-        </li>
-      );
+        <li className="challenge-txt" key={id} contentEditable="true" suppressContentEditableWarning={true}>
+          {message}
+        </li>);
       isCompleted
         ? completedTaskItems.push(card)
         : uncompletedTaskItems.push(card);
@@ -45,7 +42,7 @@ export class Quest extends Component {
 		return (
       <article className="Quest">
         <div className="card-header">
-          <h2 className="card-title" contentEditable="true">{title}</h2>
+          <h2 className="card-title" contentEditable="true" suppressContentEditableWarning={true}>{title}</h2>
         </div>
         <div className="card-body">
           <ul>{uncompletedTaskItems}</ul>

@@ -68,13 +68,13 @@
   width: 60px;
   border-radius: 100%;
   background: white;
-  color: green;
+  color: $btnHoverColor;
   font-size: 30px;
   box-shadow: 3px 3px 6px #000;
 
   &:hover {
     color: white;
-    background: green;
+    background: $btnColor;
     cursor: pointer;
   }
 }

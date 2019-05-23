@@ -80,8 +80,11 @@ export class Quest extends Component {
         : uncompletedTaskItems.push(card);
     })
 
-    const verb = this.state.showCompleted ? 'Hide' : 'Show';
-    const divider = this.state.showCompleted ? <hr className="divider" /> : null;
+    const verb = !this.state.showCompleted ? '+ Show' : '- Hide';
+    const divider = this.state.showCompleted && completedTaskItems.length ? <hr className="divider" /> : null;
+    const link = completedTaskItems.length ?
+      <p role="button" className="show-completed" onClick={this.toggleShowCompleted}>{verb} completed ({completedTaskItems.length})</p>
+      : null;
 
 		return (
       <article className="Quest">
@@ -99,9 +102,7 @@ export class Quest extends Component {
         <div className="card-body">
           <ul>{uncompletedTaskItems}</ul>
           {divider}
-          <p className="show-completed" onClick={this.toggleShowCompleted}>
-            {verb} completed ({completedTaskItems.length})
-          </p>
+          {link}
           <ul>{this.state.showCompleted && completedTaskItems}</ul>
         </div>
         <button className="delete-btn" type="button">

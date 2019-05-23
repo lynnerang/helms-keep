@@ -30,4 +30,12 @@ export const deleteQuest = id => {
   };
 }
 
+export const showPopup = bool => {
+  return {
+    type: "SHOW_POPUP",
+    payload: {
+      bool
+    }
+  }
+}
 

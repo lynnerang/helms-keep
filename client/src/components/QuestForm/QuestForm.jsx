@@ -35,7 +35,7 @@ class QuestForm extends Component {
 
 	render() {
 		return (
-			<div className="QuestForm">
+			<div className="dialog-overlay">
 				<NavLink exact to="/">
 					<i className="fas fa-times close-btn" />
 				</NavLink>

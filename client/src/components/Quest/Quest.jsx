@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { fetchEditNote } from '../../api/fetch/fetchEditNote';
 import { connect } from "react-redux";
-import { editQuest, deleteQuest } from '../../actions';
-import { fetchDeleteNote } from '../../api/fetch/fetchDeleteNote';
-
+import { editQuest, showPopup } from '../../actions';
 
 export class Quest extends Component {
 	constructor(props) {
@@ -22,9 +20,13 @@ export class Quest extends Component {
     fetchDeleteNote(id);
     this.props.deleteQuest(id);
   }
+  
+  handleTrashClick = () => {
+    this.props.showPopup(true);
+  }
 
   handleUpdate = (e) => {
-    const localNote = { ...this.props.data};
+    const localNote = {...this.props.data};
     const targetChallenge = localNote.challenges.find(chal => chal.id === e.target.id);
     if (e.target.classList[1] === "fa-square") {
       targetChallenge.isCompleted = true;
@@ -98,17 +100,17 @@ export class Quest extends Component {
           </p>
           <ul>{this.state.showCompleted && completedTaskItems}</ul>
         </div>
-        <button className="delete-btn" type="button" onClick={this.handleDelete}>
-          <i className="fas fa-trash" />
+        <button className="delete-btn" type="button">
+          <i className="fas fa-trash" onClick={this.handleTrashClick}/>
         </button>
       </article>
     );
 	}
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   updateQuest: quest => dispatch(editQuest(quest)),
-  deleteQuest: id => dispatch(deleteQuest(id))
+  showPopup: bool => dispatch(showPopup(bool))
 })
 
 export default connect(null, mapDispatchToProps)(Quest);

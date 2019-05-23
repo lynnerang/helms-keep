@@ -10,12 +10,12 @@ const mockQuests = [
     title: "My First Quest",
     challenges: [
       {
-        id: 'ABC',
+        id: "ABC",
         isCompleted: true,
         message: "Clean the kitchen"
       },
       {
-        id: 'DEF',
+        id: "DEF",
         isCompleted: false,
         message: "Cook dinner"
       }
@@ -26,12 +26,12 @@ const mockQuests = [
     title: "My Second Quest",
     challenges: [
       {
-        id: 'GHI',
+        id: "GHI",
         isCompleted: false,
         message: "Learn SASS"
       },
       {
-        id: 'JKL',
+        id: "JKL",
         isCompleted: true,
         message: "Become a NODE wizard"
       }
@@ -42,18 +42,19 @@ const mockQuests = [
     title: "My Third Quest",
     challenges: [
       {
-        id: 'MNO',
+        id: "MNO",
         isCompleted: true,
         message: "Charge phone"
       },
       {
-        id: 'PQR',
+        id: "PQR",
         isCompleted: false,
         message: "Dance until the sun comes up"
       }
     ]
   }
 ];
+
 
 app.locals.title = "HelmsKeep";
 app.locals.quests = mockQuests;
@@ -65,7 +66,6 @@ app.get("/api/quests", (request, response) => {
 app.post("/api/quests", (request, response) => {
   const newQuest = { id: Date.now(), ...request.body };
   const newQuestKeys = Object.keys(newQuest);
-
   if (newQuestKeys.includes("id" && "title" && "challenges")) {
     let { quests } = app.locals;
     app.locals.quests = [...quests, newQuest];
@@ -80,37 +80,27 @@ app.post("/api/quests", (request, response) => {
 app.put("/api/quests/:id", (request, response) => {
   const { quests } = app.locals;
   const { id } = request.params;
-  const targetQuestId = quests.findIndex(quest => quest.id === +id);
-  const editedQuest = { ...request.body };
-  const editedQuestKeys = Object.keys(editedQuest);
-
-  if (
-    targetQuestId >= 0 &&
-    editedQuestKeys.includes("id" && "title" && "challenges")
-  ) {
-    quests.splice(targetQuestId, 1, editedQuest);
-    return response.status(200).json(editedQuest);
-  } else if (targetQuestId === -1) {
-    return response
-      .status(404)
-      .json({ error: `No quest found with an id of ${id}.` });
-  } else if (!editedQuestKeys.includes("id" && "title" && "challenges")) {
-    return response.status(422).json({
-      error: "Please ensure your quest has a title and at least one challenge."
-    });
-  } else {
-    return response.status(400).json({
-      error: "Unkown error, please try again."
-    });
-  }
+  let found = false;
+  const mappedQuests = quests.map(quest => {
+    if (quest.id === +id) {
+      found = true;
+      quest = { ...request.body };
+      return quest;
+    } else {
+      return quest;
+    }
+  });
+  return found
+    ? response.status(200).json(mappedQuests)
+    : response
+        .status(422)
+        .json({ error: `No quest found with an id of ${id}.` });
 });
 
-
-app.get("/quests/:id", (request, response) => {
+app.get("/api/quests/:id", (request, response) => {
   const { quests } = app.locals;
   const { id } = request.params;
   const targetQuest = quests.find(quest => quest.id == id);
-
   if (!targetQuest) {
     return response
       .status(404)
@@ -123,14 +113,12 @@ app.get("/quests/:id", (request, response) => {
 app.delete("/api/quests/:id", (request, response) => {
   const { quests } = app.locals;
   const { id } = request.params;
-  const targetQuestId = quests.findIndex(quest => quest.id === +id);
-  console.log(targetQuestId);
-  if (targetQuestId === -1) {
+  const filteredQuests = quests.filter(quest => quest.id !== +id);
+  if (filteredQuests.length === quests.length) {
     return response
       .status(404)
       .json({ error: `No quest found with an id of ${id}.` });
   } else {
-    const filteredQuests = quests.filter(quest => quest.id !== +id);
     app.locals.quests = filteredQuests;
     return response.status(200).send("Quest successfully deleted");
   }

@@ -1,7 +1,7 @@
 .ChallengeContainer {
-  padding: 20px;
+  padding: 20px 25px 0 25px;
   overflow: scroll;
-  height: 260px;
+  height: 280px;
 } 
 
 .form-row {
@@ -12,6 +12,7 @@
 
 .new-challenge-input {
   border-radius: 5px 0 0 5px!important;
+  margin: 0;
 }
 
 .add-challenge-btn {

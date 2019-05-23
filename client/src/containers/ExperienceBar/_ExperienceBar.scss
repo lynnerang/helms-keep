@@ -1,6 +1,28 @@
 .progress-bar {
     width: 200px;
+    height: 10px;
 }
 .rc-progress-line-trail {
-    stroke-width:4;
+    stroke-width:5;
+}
+
+.progress-text {
+    color: white;
+    font-size: 10px;
+
+}
+.rc-progress-line-path {
+    stroke-linecap: square;
+}
+
+.rc-progress-line {
+height: 12px;
+border-radius: 5px;
+border: black solid 1.2px;
+}
+.bar-container {
+    @include flex(flex-start, null, null, column);
+ & div {
+     width: 100%;
+ }
 }

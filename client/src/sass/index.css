@@ -309,10 +309,43 @@ button:hover {
 
 .progress-bar {
   width: 200px;
+  height: 10px;
 }
 
 .rc-progress-line-trail {
-  stroke-width: 4;
+  stroke-width: 5;
+}
+
+.progress-text {
+  color: white;
+  font-size: 10px;
+}
+
+.rc-progress-line-path {
+  stroke-linecap: square;
+}
+
+.rc-progress-line {
+  height: 12px;
+  border-radius: 5px;
+  border: black solid 1.2px;
+}
+
+.bar-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.bar-container div {
+  width: 100%;
 }
 
 .QuestForm {

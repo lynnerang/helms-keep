@@ -358,6 +358,27 @@ describe("API", () => {
       ];
       app.locals.quests = mockQuests;
     });
-    it('')
-  })
+    it("Should have a Status Code of 200 on successful deletion of a Quest", async () => {
+      const response = await request(app).delete("/quests/1");
+      expect(response.statusCode).toBe(200);
+    });
+    it("Should have a Status Code of 404 on unsuccessful deletion of a Quest", async () => {
+      const response = await request(app).delete("/quests/5");
+      expect(response.statusCode).toBe(404);
+    });
+    it("Should have a an error on unsuccessful deletion of a Quest", async () => {
+      const response = await request(app).delete("/quests/5");
+      expect(response.body.error).toEqual(`No quest found with an id of 5.`);
+    });
+    it("Should delete a specific Quest based on the ID", async () => {
+      expect(app.locals.quests).toHaveLength(3);
+      const response = await request(app).delete("/quests/1");
+      expect(response.statusCode).toBe(200);
+      expect(app.locals.quests).toHaveLength(2);
+    });
+    it("Should have a message on successful deletion of a Quest", async () => {
+      const response = await request(app).delete("/quests/1");
+      expect(response.text).toEqual("Quest successfully deleted");
+    });
+  });
 });

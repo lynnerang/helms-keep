@@ -89,14 +89,15 @@ app.get("/quests/:id", (request, response) => {
 app.delete("/quests/:id", (request, response) => {
   const { quests } = app.locals;
   const { id } = request.params;
-  const questIds = quests.map(quest => quest.id);
-  const targetQuestId = questIds.indexOf(parseInt(id));
+  const targetQuestId = quests.findIndex(quest => quest.id === +id)
   if (targetQuestId === -1) {
     return response
       .status(404)
       .json({ error: `No quest found with an id of ${id}.` });
   } else {
-    quests.splice(targetQuestId, 0);
+    const filteredQuests = quests.filter(quest => quest.id !== +id)
+    app.locals.quests = filteredQuests;
+
     return response.status(200).send("Quest successfully deleted");
   }
 });

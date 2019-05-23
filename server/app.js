@@ -84,14 +84,16 @@ app.put("/api/quests/:id", (request, response) => {
     if (quest.id === +id) {
       found = true;
       quest = { ...request.body };
+      return quest;
     } else {
       return quest;
     }
-  
   });
-    return found
-      ? response.status(200).json(mappedQuests)
-      : response.status(422).json({error: `No quest found with an id of ${id}.`});
+  return found
+    ? response.status(200).json(mappedQuests)
+    : response
+        .status(422)
+        .json({ error: `No quest found with an id of ${id}.` });
 });
 
 app.get("/api/quests/:id", (request, response) => {

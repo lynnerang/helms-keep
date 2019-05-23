@@ -227,7 +227,7 @@ describe("API", () => {
         {
           id: 1,
           isCompleted: true,
-          message: "Clean the kitchen"
+          message: "Dance in the moonlight"
         },
         {
           id: 2,
@@ -242,20 +242,24 @@ describe("API", () => {
         .send({ ...mockQuest });
       expect(response.statusCode).toBe(200);
     });
-     it("Should have an Status Code of 422 on unsuccessful edit of a Quest'", async () => {
+    it("Should edit quests", async () => {
+      const response = await request(app)
+        .put("/api/quests/1")
+        .send({ ...mockQuest });
+      expect(response.body.shift()).toEqual(mockQuest);
+    });
+
+    it("Should have an Status Code of 422 on unsuccessful edit of a Quest'", async () => {
       const response = await request(app)
         .put("/api/quests/5")
         .send({ ...mockQuest });
-        expect(response.statusCode).toBe(422);
-
+      expect(response.statusCode).toBe(422);
     });
-     it("Should have an error response of 'No quest found with an id of 5.'", async () => {
+    it("Should have an error response of 'No quest found with an id of 5.'", async () => {
       const response = await request(app)
         .put("/api/quests/5")
         .send({ ...mockQuest });
-        expect(response.body.error).toEqual('No quest found with an id of 5.');
-
+      expect(response.body.error).toEqual("No quest found with an id of 5.");
     });
-     
   });
 });

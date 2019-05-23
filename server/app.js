@@ -51,7 +51,6 @@ app.put("/quests/:id", (request, response) => {
   const targetQuestId = quests.indexOf(quest => quest.id === id);
   const editedQuest = { ...request.body };
   const editedQuestKeys = Object.keys(editedQuest);
-
   if (
     targetQuestId >= 0 &&
     editedQuestKeys.includes("id" && "title" && "challenges")
@@ -92,14 +91,13 @@ app.delete("/quests/:id", (request, response) => {
   const { id } = request.params;
   const questIds = quests.map(quest => quest.id);
   const targetQuestId = questIds.indexOf(parseInt(id));
-
   if (targetQuestId === -1) {
     return response
       .status(404)
       .json({ error: `No quest found with an id of ${id}.` });
   } else {
     quests.splice(targetQuestId, 0);
-    return response.status(200).send("Quest successfuly deleted");
+    return response.status(200).send("Quest successfully deleted");
   }
 });
 

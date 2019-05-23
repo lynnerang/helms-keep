@@ -23,13 +23,13 @@ export class Quest extends Component {
   handleUpdate = (e) => {
     const localNote = {...this.props.data};
     const targetChallenge = localNote.challenges.find(chal => chal.id === e.target.id);
-    if (e.target.classList[1] === "fa-square") {
+    if (e.target.classList.contains("fa-square")) {
       targetChallenge.isCompleted = true;
     } else if (e.target.className === "card-title" && e.key === "Enter") {
       e.preventDefault();
       localNote.title = e.target.innerText;
       e.target.blur();
-    } else if (e.target.classList[1] === "fa-check-square") {
+    } else if (e.target.classList.contains("fa-check-square")) {
       targetChallenge.isCompleted = false;
     } else if (e.key === "Enter") {
       e.preventDefault();

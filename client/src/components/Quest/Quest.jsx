@@ -21,6 +21,10 @@ export class Quest extends Component {
     const targetChallenge = localNote.challenges.find(chal => chal.id === +e.target.id);
     if (e.target.classList[1] === 'fa-square') {
       targetChallenge.isCompleted = true;
+    } else if (e.target.className === "card-title" && e.key === "Enter") {
+      e.preventDefault();
+      localNote.title = e.target.innerText;
+      e.target.blur();
     } else if (e.target.classList[1] === 'fa-check-square') {
       targetChallenge.isCompleted = false;
     } else if (e.key === "Enter") {
@@ -64,7 +68,14 @@ export class Quest extends Component {
 		return (
       <article className="Quest">
         <div className="card-header">
-          <h2 className="card-title" contentEditable="true" suppressContentEditableWarning={true}>{title}</h2>
+          <h2
+            className="card-title"
+            contentEditable="true"
+            suppressContentEditableWarning={true}
+            onKeyDown={this.handleUpdate}
+          >
+            {title}
+          </h2>
         </div>
         <div className="card-body">
           <ul>{uncompletedTaskItems}</ul>
@@ -73,11 +84,11 @@ export class Quest extends Component {
           </p>
           <ul>{this.state.showCompleted && completedTaskItems}</ul>
           <button className="delete-btn" type="button">
-            <i className="fas fa-trash"></i>
+            <i className="fas fa-trash" />
           </button>
         </div>
-			</article>
-		);
+      </article>
+    );
 	}
 }
 

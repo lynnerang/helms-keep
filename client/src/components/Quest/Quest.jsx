@@ -73,6 +73,7 @@ export class Quest extends Component {
           >
             {message}
           </span>
+          <i className="fas fa-times"/>
         </li>
       );
       isCompleted
@@ -81,7 +82,7 @@ export class Quest extends Component {
     })
 
     const verb = !this.state.showCompleted ? '+ Show' : '- Hide';
-    const divider = this.state.showCompleted && completedTaskItems.length ? <hr className="divider" /> : null;
+    const divider = this.state.showCompleted && completedTaskItems.length ? <h4 className="divider">Completed</h4> : null;
     const link = completedTaskItems.length ?
       <p role="button" className="show-completed" onClick={this.toggleShowCompleted}>{verb} {completedTaskItems.length} completed</p>
       : null;

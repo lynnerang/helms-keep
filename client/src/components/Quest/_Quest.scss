@@ -2,10 +2,10 @@
   background: #E1EBDE;
   margin: 0 30px 30px 0;
   border: 1px solid #8CAC81;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.639);
-  height: 315px;
-  width: 245px;
+  height: 350px;
+  width: 275px;
   position: relative;
 
   &:hover {
@@ -15,8 +15,9 @@
 
 .card-header {
   background: #8CAC81;
+  border-bottom: $btnColor;
   padding: 10px 15px;
-  border-radius: 8px 8px 0 0;
+  border-radius: 4px 4px 0 0;
 }
 
 .card-title {
@@ -27,26 +28,47 @@
 }
 
 .card-body {
-  padding: 15px;
+  // padding: 15px;
   height: 230px;
   overflow-y: scroll;
 }
 
 .challenge-txt {
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border: 1px solid rgb(218, 233, 213);
+  border-bottom-color: rgb(197, 216, 191);
   list-style: none;
   color: #222;
   cursor: text;
-    .far {
-      color: $btnColor;
-      margin-right: 5px;
-      &:hover {
-        color: $btnHoverColor;
-      }
+
+  span {
+      padding: 12px 0;
+      flex: auto;
+      font-size: 15px;
+  }
+
+  .far,
+  .fas {
+    color: $btnColor;
+    margin: 0 10px;
+    font-size: 22px;
+    cursor: pointer;
+    &:hover {
+      color: $btnHoverColor!important;
     }
-    .fa-check-square {
-      color: rgba(131, 131, 131, 0.728);
-    }
+  }
+
+  .fa-times:hover {
+    color: darkred!important;
+    opacity: .7;
+  }
+  .fa-check-square {
+    color: rgba(131, 131, 131, 0.728);
+  }
 }
 
 .delete-btn {
@@ -59,16 +81,26 @@
   color: $btnColor;
 
   &:hover {
+    color: darkred!important;
+    opacity: .7;
+  }
+}
+
+.complete-ul {
+  span,
+  .far,
+  .fas  {
+    color: rgba(131, 131, 131, 0.728)!important;
+  }
+
+  .fa-times:hover {
     color: darkred;
     opacity: .7;
   }
 }
 
-.complete-ul span {
-  color: rgba(131, 131, 131, 0.728)!important;
-}
-
 .show-completed {
+  margin-left: 10px;
   position: absolute;
   bottom: 15px;
   font-size: 14px;
@@ -85,6 +117,7 @@
 }
 
 .divider {
-  opacity: .5;
-  margin: 10px;
+  opacity: .6;
+  margin: 10px 0 5px 3px;
+  font-weight: 500;
 }

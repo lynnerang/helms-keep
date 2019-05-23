@@ -19,18 +19,22 @@ export class Quest extends Component {
   handleUpdate = (e) => {
     const localNote = { ...this.props.data};
     const targetChallenge = localNote.challenges.find(chal => chal.id === e.target.id);
-    if (e.target.classList[1] === 'fa-square') {
+    if (e.target.classList[1] === "fa-square") {
       targetChallenge.isCompleted = true;
     } else if (e.target.className === "card-title" && e.key === "Enter") {
       e.preventDefault();
       localNote.title = e.target.innerText;
       e.target.blur();
-    } else if (e.target.classList[1] === 'fa-check-square') {
+    } else if (e.target.classList[1] === "fa-check-square") {
       targetChallenge.isCompleted = false;
     } else if (e.key === "Enter") {
       e.preventDefault();
       targetChallenge.message = e.target.innerText;
       e.target.blur();
+    } else if (e.target.className === "message" && e.type === "blur") {
+      targetChallenge.message = e.target.innerText;
+    } else if (e.target.className === "card-title" && e.type === "blur") {
+      localNote.title = e.target.innerText;
     }
     this.props.updateQuest(localNote);
     fetchEditNote(localNote);
@@ -53,8 +57,10 @@ export class Quest extends Component {
           <span
             contentEditable="true"
             id={id}
+            className='message'
             suppressContentEditableWarning={true}
             onKeyDown={this.handleUpdate}
+            onBlur={this.handleUpdate}
           >
             {message}
           </span>
@@ -73,6 +79,7 @@ export class Quest extends Component {
             contentEditable="true"
             suppressContentEditableWarning={true}
             onKeyDown={this.handleUpdate}
+            onBlur={this.handleUpdate}
           >
             {title}
           </h2>

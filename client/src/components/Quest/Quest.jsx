@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { fetchEditNote } from '../../api/fetch/fetchEditNote';
 import { connect } from "react-redux";
 import { editQuest } from '../../actions';
+import Dialog from '../Dialog/Dialog';
 
 
 export class Quest extends Component {

@@ -1,28 +1,34 @@
 .progress-bar {
-    width: 200px;
-    height: 10px;
+  width: 200px;
+  height: 10px;
 }
 .rc-progress-line-trail {
-    stroke-width:5;
+  stroke-width: 5;
 }
 
 .progress-text {
-    color: white;
-    font-size: 10px;
-
+  color: #ebebeb;
+  font-family: "Share Tech Mono", monospace;
+  margin-left: 5px;
+  font-weight: bold;
 }
 .rc-progress-line-path {
-    stroke-linecap: square;
+  stroke-linecap: square;
+  margin-right: 5px;
 }
 
 .rc-progress-line {
-height: 12px;
-border-radius: 5px;
-border: black solid 1.2px;
+  height: 12px;
+  border-radius: 5px;
+  border: black solid 1.2px;
 }
 .bar-container {
-    @include flex(flex-start, null, null, column);
- & div {
-     width: 100%;
- }
+  @include flex(flex-start, null, null, column);
+  & div {
+    width: 100%;
+  }
+}
+
+.progress-img {
+  margin-right: 10px;
 }

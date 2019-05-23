@@ -5,12 +5,13 @@
   & h1 {
     margin-left: 15px;
     font-size: 30px;
-    @include flex(null, null, center, null);
+    @include flex(null, null, baseline, null);
     color: rgb(235, 235, 235);
     font-family: "Share Tech Mono", monospace;
     & img {
-      width: 40px;
-      height: 40px;
+      height: 35px;
+      width: 20px;
+      margin-right: 10px;
     }
   }
 }

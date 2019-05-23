@@ -9,7 +9,12 @@ export class ProgressBarIndicator extends Component {
     return (
       <div className="bar-container" style={{ margin: 10, width: 200 }}>
         <div>
-          <img src={Star} style={{ width: 40 }} />
+          <img
+            alt="experience"
+            src={Star}
+            style={{ width: 40 }}
+            className="progress-img"
+          />
           <Line
             className="progress-bar"
             strokeColor="#FEEC26"
@@ -19,15 +24,19 @@ export class ProgressBarIndicator extends Component {
           <span className="progress-text">50/100</span>
         </div>
         <div>
-          <img src={Life} style={{ width: 40 }} />
-
+          <img
+            alt="life"
+            src={Life}
+            style={{ width: 40 }}
+            className="progress-img"
+          />
           <Line
             className="progress-bar"
-            strokeColor="#FF77A8"
+            strokeColor="#FF6696"
             strokeWidth="4"
-            percent={25}
+            percent={78}
           />
-          <span className="progress-text">25/100</span>
+          <span className="progress-text">78/100</span>
         </div>
       </div>
     );

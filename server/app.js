@@ -79,12 +79,13 @@ app.post("/api/quests", (request, response) => {
   }
 });
 
-app.put("/quests/:id", (request, response) => {
+app.put("/api/quests/:id", (request, response) => {
   const { quests } = app.locals;
   const { id } = request.params;
   const targetQuestId = quests.findIndex(quest => quest.id === +id);
   const editedQuest = { ...request.body };
   const editedQuestKeys = Object.keys(editedQuest);
+
   if (
     targetQuestId >= 0 &&
     editedQuestKeys.includes("id" && "title" && "challenges")

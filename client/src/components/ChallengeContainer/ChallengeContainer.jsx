@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import shortid from 'shortid';
+import React, { Component } from "react";
+import shortid from "short-id";
 
 export class ChallengeContainer extends Component {
   state = {
-    challenge: ''
-  }
+    challenge: ""
+  };
 
-  handleChange = e => this.setState({ challenge: e.target.value })
+  handleChange = e => this.setState({ challenge: e.target.value });
 
   handleSubmit = e => {
     this.props.addChallenge({
@@ -14,28 +14,41 @@ export class ChallengeContainer extends Component {
       message: this.state.challenge,
       isCompleted: false
     });
-    this.setState({ challenge: '' })
-  }
-  
+    this.setState({ challenge: "" });
+  };
 
   render() {
     //consider allowing editing existing chals in form
     const challenges = this.props.challenges.map(chal => {
-      return <li className="challenge-txt" key={chal.id}>{chal.message}</li>
-    })
+      return (
+        <li className="challenge-txt" key={chal.id}>
+          {chal.message}
+        </li>
+      );
+    });
 
     return (
       <article className="ChallengeContainer">
-        <ul>
-          {challenges}
-        </ul>
+        <ul>{challenges}</ul>
         <div className="form-row">
-          <input className="new-challenge-input" placeholder="Add new challenge..." name="challenge" onChange={this.handleChange} value={this.state.challenge} />
-          <button className="add-challenge-btn" type="button" onClick={this.handleSubmit}>+</button>
+          <input
+            className="new-challenge-input"
+            placeholder="Add new challenge..."
+            name="challenge"
+            onChange={this.handleChange}
+            value={this.state.challenge}
+          />
+          <button
+            className="add-challenge-btn"
+            type="button"
+            onClick={this.handleSubmit}
+          >
+            +
+          </button>
         </div>
       </article>
-    )
-	}
+    );
+  }
 }
 
 export default ChallengeContainer;

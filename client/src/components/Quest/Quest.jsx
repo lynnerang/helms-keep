@@ -30,8 +30,10 @@ export class Quest extends Component {
     const uncompletedTaskItems = [];
     
     challenges.forEach(({ id, message, isCompleted }) => {
+      let boxClass = isCompleted ? "fa-check-square" : "fa-square";
       let card = (
         <li className="challenge-txt" key={id} contentEditable="true" suppressContentEditableWarning={true}>
+          <i class={`far ${boxClass}`} id={id} onClick={this.markComplete}/>
           {message}
         </li>);
       isCompleted

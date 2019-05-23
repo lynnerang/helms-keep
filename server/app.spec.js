@@ -1,6 +1,7 @@
 import request from "supertest";
 import "@babel/polyfill";
 import app from "./app";
+import { notDeepEqual } from "assert";
 
 describe("API", () => {
   let mockQuests;
@@ -116,7 +117,7 @@ describe("API", () => {
       expect(response.statusCode).toBe(200);
     });
     it("Should have a Status code of 404 on unsuccessful GET", async () => {
-      const response = await request(app).get("/api/wrongAPI");
+      const response = await request(app).get("/api/invalid");
       expect(response.statusCode).toBe(404);
     });
     it("Should return an array of Quests", async () => {
@@ -141,19 +142,19 @@ describe("API", () => {
           }
         ]
       };
-      const response = await request(app).get("/quests/1");
+      const response = await request(app).get("/api/quests/1");
       expect(response.body).toEqual(mockQuest);
     });
     it("Should have a Status Code of 200 on successful retrieval of a Quest", async () => {
-      const response = await request(app).get("/quests/1");
+      const response = await request(app).get("/api/quests/1");
       expect(response.statusCode).toBe(200);
     });
     it("Should have a Status Code of 404 on unsuccessful retrieval of a Quest", async () => {
-      const response = await request(app).get("/quests/5");
+      const response = await request(app).get("/api/quests/5");
       expect(response.statusCode).toBe(404);
     });
     it("Should have a response with an error of 'No quest found with an id of 5' on unsuccessful retrieval of a Quest", async () => {
-      const response = await request(app).get("/quests/5");
+      const response = await request(app).get("/api/quests/5");
       expect(response.body.error).toEqual("No quest found with an id of 5.");
     });
   });
@@ -197,25 +198,25 @@ describe("API", () => {
   });
   describe("DELETE/api/quests", () => {
     it("Should have a Status Code of 200 on successful deletion of a Quest", async () => {
-      const response = await request(app).delete("/quests/1");
+      const response = await request(app).delete("/api/quests/1");
       expect(response.statusCode).toBe(200);
     });
     it("Should have a Status Code of 404 on unsuccessful deletion of a Quest", async () => {
-      const response = await request(app).delete("/quests/5");
+      const response = await request(app).delete("/api/quests/5");
       expect(response.statusCode).toBe(404);
     });
     it("Should have a an error on unsuccessful deletion of a Quest", async () => {
-      const response = await request(app).delete("/quests/5");
+      const response = await request(app).delete("/api/quests/5");
       expect(response.body.error).toEqual(`No quest found with an id of 5.`);
     });
     it("Should delete a specific Quest based on the ID", async () => {
       expect(app.locals.quests).toHaveLength(3);
-      const response = await request(app).delete("/quests/1");
+      const response = await request(app).delete("/api/quests/1");
       expect(response.statusCode).toBe(200);
       expect(app.locals.quests).toHaveLength(2);
     });
     it("Should have a message on successful deletion of a Quest", async () => {
-      const response = await request(app).delete("/quests/1");
+      const response = await request(app).delete("/api/quests/1");
       expect(response.text).toEqual("Quest successfully deleted");
     });
   });
@@ -227,7 +228,7 @@ describe("API", () => {
         {
           id: 1,
           isCompleted: true,
-          message: "Clean the kitchen"
+          message: "Dance in the moonlight"
         },
         {
           id: 2,
@@ -241,6 +242,24 @@ describe("API", () => {
         .put("/api/quests/1")
         .send({ ...mockQuest });
       expect(response.statusCode).toBe(200);
+    });
+    it("Should edit quests", async () => {
+      const response = await request(app)
+        .put("/api/quests/1")
+        .send({ ...mockQuest });
+      expect(response.body.shift()).toEqual(mockQuest);
+    });
+    it("Should have an Status Code of 422 on unsuccessful edit of a Quest'", async () => {
+      const response = await request(app)
+        .put("/api/quests/5")
+        .send({ ...mockQuest });
+      expect(response.statusCode).toBe(422);
+    });
+    it("Should have an error response of 'No quest found with an id of 5.'", async () => {
+      const response = await request(app)
+        .put("/api/quests/5")
+        .send({ ...mockQuest });
+      expect(response.body.error).toEqual("No quest found with an id of 5.");
     });
   });
 });

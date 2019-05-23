@@ -79,28 +79,18 @@ app.post("/api/quests", (request, response) => {
 app.put("/api/quests/:id", (request, response) => {
   const { quests } = app.locals;
   const { id } = request.params;
-  const targetQuestId = quests.findIndex(quest => quest.id === +id);
-  const editedQuest = { ...request.body };
-  const editedQuestKeys = Object.keys(editedQuest);
-  if (
-    targetQuestId >= 0 &&
-    editedQuestKeys.includes("id" && "title" && "challenges")
-  ) {
-    quests.splice(targetQuestId, 1, editedQuest);
-    return response.status(200).json(editedQuest);
-  } else if (targetQuestId === -1) {
-    return response
-      .status(404)
-      .json({ error: `No quest found with an id of ${id}.` });
-  } else if (!editedQuestKeys.includes("id" && "title" && "challenges")) {
-    return response.status(422).json({
-      error: "Please ensure your quest has a title and at least one challenge."
-    });
-  } else {
-    return response.status(400).json({
-      error: "Unkown error, please try again."
-    });
-  }
+  let found = false;
+  const mappedQuests = quests.map(quest => {
+    if (quest.id === +id) {
+      found = true;
+      quest = { ...request.body };
+    } else {
+      return quest;
+    }
+    return found
+      ? response.status(200).json(mappedQuests)
+      : response.status(422).json("That quest was not found");
+  });
 });
 
 app.get("/api/quests/:id", (request, response) => {

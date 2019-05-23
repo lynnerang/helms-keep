@@ -242,5 +242,12 @@ describe("API", () => {
         .send({ ...mockQuest });
       expect(response.statusCode).toBe(200);
     });
+     it("Should have an error response of No quest found with an id of 5!", async () => {
+      const response = await request(app)
+        .put("/api/quests/5")
+        .send({ ...mockQuest });
+         expect(response.body.error).toEqual("Should have an error response of No quest found with an id of 5!");
+    });
+     
   });
 });

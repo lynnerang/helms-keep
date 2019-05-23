@@ -219,4 +219,10 @@ describe("API", () => {
       expect(response.text).toEqual("Quest successfully deleted");
     });
   });
+  describe("PUT/api/quests", () => {
+    it("Should have a Status Code of 200 on successful edit of a Quest", async () => {
+      const response = await request(app).put("/quests/1");
+      expect(response.statusCode).toBe(200);
+    });
+  });
 });

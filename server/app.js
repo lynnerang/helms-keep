@@ -6,25 +6,59 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const mockQuest = {
-  id: 1,
-  title: "My First Quest",
-  challenges: [
-    {
-      id: 1,
-      isCompleted: false,
-      message: "Clean the kitchen"
-    },
-    {
-      id: 2,
-      isCompleted: false,
-      message: "Cook dinner"
-    }
-  ]
-};
+const mockQuests = [
+  {
+    id: 1,
+    title: "My First Quest",
+    challenges: [
+      {
+        id: 1,
+        isCompleted: true,
+        message: "Clean the kitchen"
+      },
+      {
+        id: 2,
+        isCompleted: false,
+        message: "Cook dinner"
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: "My Second Quest",
+    challenges: [
+      {
+        id: 1,
+        isCompleted: false,
+        message: "Learn SASS"
+      },
+      {
+        id: 2,
+        isCompleted: true,
+        message: "Become a NODE wizard"
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: "My Third Quest",
+    challenges: [
+      {
+        id: 1,
+        isCompleted: true,
+        message: "Charge phone"
+      },
+      {
+        id: 2,
+        isCompleted: false,
+        message: "Dance until the sun comes up"
+      }
+    ]
+  }
+];
 
 app.locals.title = "HelmsKeep";
-app.locals.quests = [mockQuest];
+app.locals.quests = mockQuests;
 
 app.get("/api/quests", (request, response) => {
   response.status(200).json(app.locals.quests);
@@ -89,13 +123,13 @@ app.get("/quests/:id", (request, response) => {
 app.delete("/quests/:id", (request, response) => {
   const { quests } = app.locals;
   const { id } = request.params;
-  const targetQuestId = quests.findIndex(quest => quest.id === +id)
+  const targetQuestId = quests.findIndex(quest => quest.id === +id);
   if (targetQuestId === -1) {
     return response
       .status(404)
       .json({ error: `No quest found with an id of ${id}.` });
   } else {
-    const filteredQuests = quests.filter(quest => quest.id !== +id)
+    const filteredQuests = quests.filter(quest => quest.id !== +id);
     app.locals.quests = filteredQuests;
 
     return response.status(200).send("Quest successfully deleted");

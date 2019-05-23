@@ -1,4 +1,4 @@
-//! RUN NODE SERVER WITH **** node -r esm server.js ****
+//! RUN NODE SERVER WITH **** nodemon -r esm server.js ****
 
 import express from 'express';
 import cors from 'cors';
@@ -44,10 +44,10 @@ app.post('/api/quests', (request, response) => {
     }
   });
   
-  app.put('/quests/:id', (request, response) => {
+  app.put('/api/quests/:id', (request, response) => {
     const { quests } = app.locals;
     const { id } = request.params;
-    const targetQuestId = quests.indexOf(quest => quest.id === id);
+    const targetQuestId = quests.findIndex(quest => quest.id === +id);
     const editedQuest = {...request.body}
     const editedQuestKeys = Object.keys(editedQuest);
   

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ProgressBarIndicator from "../../containers/ExperienceBar/ExperienceBar";
+import Rogue from "../../assets/Rogue.png";
 
 export class Banner extends Component {
   render() {
@@ -7,7 +8,7 @@ export class Banner extends Component {
       <section className="Banner">
         <div className="info-cntr">
           <section>
-            <figure />
+            <img src={Rogue} style={{ width: 45 }} />
           </section>
 
           <ProgressBarIndicator />

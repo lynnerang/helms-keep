@@ -65,10 +65,7 @@ button:hover {
   background: linear-gradient(to bottom, #578060 55%, #45674c 35%);
 }
 
-.Banner div section figure {
-  background-image: url("https://i.imgur.com/MzzH8Wn.png");
-  height: 55px;
-  width: 55px;
+.Banner div section img {
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -225,16 +222,17 @@ button:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   color: #ebebeb;
   font-family: "Share Tech Mono", monospace;
 }
 
 .Nav h1 img {
-  width: 40px;
-  height: 40px;
+  height: 35px;
+  width: 20px;
+  margin-right: 10px;
 }
 
 .Quest {
@@ -309,10 +307,50 @@ button:hover {
 
 .progress-bar {
   width: 200px;
+  height: 10px;
 }
 
 .rc-progress-line-trail {
-  stroke-width: 4;
+  stroke-width: 5;
+}
+
+.progress-text {
+  color: #ebebeb;
+  font-family: "Share Tech Mono", monospace;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.rc-progress-line-path {
+  stroke-linecap: square;
+  margin-right: 5px;
+}
+
+.rc-progress-line {
+  height: 12px;
+  border-radius: 5px;
+  border: black solid 1.2px;
+}
+
+.bar-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.bar-container div {
+  width: 100%;
+}
+
+.progress-img {
+  margin-right: 10px;
 }
 
 .QuestForm {

@@ -1,27 +1,43 @@
 import { Line } from "rc-progress";
 
 import React, { Component } from "react";
+import Star from "../../assets/Star.png";
+import Life from "../../assets/Life.png";
 
 export class ProgressBarIndicator extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      percent: 10
-    };
-  }
-  handleClick = () => {
-      this.setState({percent: this.state.percent+10})
-  }
   render() {
     return (
-      <div style={{ margin: 10, width: 200 }}>
-        <Line
-          className="progress-bar"
-          strokeWidth="4"
-          percent={this.state.percent}
-        />
-        <button onClick={this.handleClick}>CLICK ME!</button>
+      <div className="bar-container" style={{ margin: 10, width: 200 }}>
+        <div>
+          <img
+            alt="experience"
+            src={Star}
+            style={{ width: 40 }}
+            className="progress-img"
+          />
+          <Line
+            className="progress-bar"
+            strokeColor="#FEEC26"
+            strokeWidth="4"
+            percent={50}
+          />
+          <span className="progress-text">50/100</span>
+        </div>
+        <div>
+          <img
+            alt="life"
+            src={Life}
+            style={{ width: 40 }}
+            className="progress-img"
+          />
+          <Line
+            className="progress-bar"
+            strokeColor="#FF6696"
+            strokeWidth="4"
+            percent={78}
+          />
+          <span className="progress-text">78/100</span>
+        </div>
       </div>
     );
   }

@@ -18,7 +18,8 @@ export class Quest extends Component {
 
   handleUpdate = (e) => {
     const localNote = { ...this.props.data};
-    const targetChallenge = localNote.challenges.find(chal => chal.id === +e.target.id);
+    const targetChallenge = localNote.challenges.find(chal => chal.id === e.target.id);
+    console.log(targetChallenge);
     if (e.target.classList[1] === 'fa-square') {
       targetChallenge.isCompleted = true;
     } else if (e.target.className === "card-title" && e.key === "Enter") {

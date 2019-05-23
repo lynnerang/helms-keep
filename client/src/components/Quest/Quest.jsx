@@ -15,11 +15,23 @@ export class Quest extends Component {
 	toggleShowCompleted = () => {
 		this.setState({ showCompleted: !this.state.showCompleted });
   };
-  
-  markComplete = (e) => {
+
+  handleUpdate = (e) => {
     const localNote = { ...this.props.data};
     const targetChallenge = localNote.challenges.find(chal => chal.id === +e.target.id);
-    targetChallenge.isCompleted = true;
+    if (e.target.classList[1] === 'fa-square') {
+      targetChallenge.isCompleted = true;
+    } else if (e.target.className === "card-title" && e.key === "Enter") {
+      e.preventDefault();
+      localNote.title = e.target.innerText;
+      e.target.blur();
+    } else if (e.target.classList[1] === 'fa-check-square') {
+      targetChallenge.isCompleted = false;
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      targetChallenge.message = e.target.innerText;
+      e.target.blur();
+    }
     this.props.updateQuest(localNote);
     fetchEditNote(localNote);
   }
@@ -32,10 +44,22 @@ export class Quest extends Component {
     challenges.forEach(({ id, message, isCompleted }) => {
       let boxClass = isCompleted ? "fa-check-square" : "fa-square";
       let card = (
-        <li className="challenge-txt" key={id} contentEditable="true" suppressContentEditableWarning={true}>
-          <i class={`far ${boxClass}`} id={id} onClick={this.markComplete}/>
-          {message}
-        </li>);
+        <li className="challenge-txt" key={id}>
+          <i
+            className={`far ${boxClass}`}
+            id={id}
+            onClick={this.handleUpdate}
+          />
+          <span
+            contentEditable="true"
+            id={id}
+            suppressContentEditableWarning={true}
+            onKeyDown={this.handleUpdate}
+          >
+            {message}
+          </span>
+        </li>
+      );
       isCompleted
         ? completedTaskItems.push(card)
         : uncompletedTaskItems.push(card);
@@ -44,7 +68,14 @@ export class Quest extends Component {
 		return (
       <article className="Quest">
         <div className="card-header">
-          <h2 className="card-title" contentEditable="true" suppressContentEditableWarning={true}>{title}</h2>
+          <h2
+            className="card-title"
+            contentEditable="true"
+            suppressContentEditableWarning={true}
+            onKeyDown={this.handleUpdate}
+          >
+            {title}
+          </h2>
         </div>
         <div className="card-body">
           <ul>{uncompletedTaskItems}</ul>
@@ -53,11 +84,11 @@ export class Quest extends Component {
           </p>
           <ul>{this.state.showCompleted && completedTaskItems}</ul>
           <button className="delete-btn" type="button">
-            <i className="fas fa-trash"></i>
+            <i className="fas fa-trash" />
           </button>
         </div>
-			</article>
-		);
+      </article>
+    );
 	}
 }
 

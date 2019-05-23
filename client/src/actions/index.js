@@ -11,3 +11,12 @@ export const addQuest = quest => ({
     quest
   }
 })
+
+export const editQuest = quest => {
+  return {
+    type: "EDIT_QUEST",
+    payload: {
+      quest
+    }
+  };
+}

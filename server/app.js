@@ -1,5 +1,3 @@
-//! RUN NODE SERVER WITH **** node -r esm server.js  ****
-
 import express from "express";
 import cors from "cors";
 const app = express();

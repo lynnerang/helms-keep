@@ -1,47 +1,58 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addQuest } from '../../actions';
+import { ChallengeContainer } from '../ChallengeContainer/ChallengeContainer';
 
 //will build body out into multiple challenge entries
 
 class QuestForm extends Component {
 	state = {
 		title: '',
-		challenges: ''
+		challenges: []
 	};
 
 	handleChange = e => {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
+	addChallenge = challenge => {
+		this.setState({ challenges: [ ...this.state.challenges, challenge ] });
+	};
+
 	handleSubmit = e => {
+		const { title, challenges } = this.state;
 		fetch('http://localhost:5000/api/quests', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(this.state)
+			body: JSON.stringify({ title, challenges })
 		})
-			.then(response => response.json())
+      .then(response => response.json())
       .then(quest => this.props.addQuest(quest));
-    
-    this.props.closeForm();
+
+		this.props.closeForm();
 	};
 
-	render() {
+  render() {
+
 		return (
 			<div className="QuestForm">
 				<i className="fas fa-times close-btn" onClick={this.props.closeForm} />
 				<h2 className="dialog-title">Add a new quest</h2>
 				<form className="new-quest-form">
-					<label className="new-quest-label" htmlFor="new-quest-title">
-						Title:
-					</label>
-					<input className="new-quest-input" id="new-quest-title" name="title" onChange={this.handleChange} />
-					<label className="new-quest-label" htmlFor="new-quest-challenges">
-						Challenges:
-					</label>
-					<input className="new-quest-input" id="new-quest-challenges" name="challenges" onChange={this.handleChange} />
+					<div className="form-header">
+						<input
+							className="new-quest-input"
+							id="new-quest-title"
+							name="title"
+							placeholder="Add a title..."
+							onChange={this.handleChange}
+						/>
+					</div>
+					<div className="form-body">
+            <ChallengeContainer challenges={this.state.challenges} addChallenge={this.addChallenge} />
+					</div>
 					<button className="save-quest-btn" type="button" onClick={this.handleSubmit}>
 						Save
 					</button>

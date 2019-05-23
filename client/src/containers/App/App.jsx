@@ -3,12 +3,12 @@ import { Header } from '../../components/Header/Header';
 import Main from '../../components/Main/Main';
 import { connect } from 'react-redux';
 import { storeQuests } from '../../actions';
+import { fetchAllNotes } from '../../api/fetch/fetchAllNotes';
 
 export class App extends Component {
   componentDidMount() {
     !this.props.quests.length && 
-    fetch('http://localhost:5000/api/quests')
-      .then(response => response.json())
+    fetchAllNotes()
       .then(quests => this.props.storeQuests(quests))
   }
 

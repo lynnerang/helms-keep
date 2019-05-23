@@ -12,3 +12,10 @@
   position: fixed;
 }
 
+button {
+  background: $btnColor;
+
+  &:hover {
+    background: $btnHoverColor;
+  }
+}

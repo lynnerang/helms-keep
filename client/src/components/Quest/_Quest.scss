@@ -32,6 +32,13 @@
 .challenge-txt {
   margin-bottom: 10px;
   list-style: none;
+    .far {
+      color: #c0bfbf;
+      margin-right: 5px;
+      &:hover {
+        color: black;
+      }
+    }
 }
 
 .delete-btn {

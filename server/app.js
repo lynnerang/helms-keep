@@ -1,5 +1,3 @@
-//! RUN NODE SERVER WITH **** node -r esm server.js  ****
-
 import express from "express";
 import cors from "cors";
 const app = express();
@@ -107,6 +105,7 @@ app.put("/api/quests/:id", (request, response) => {
   }
 });
 
+
 app.get("/quests/:id", (request, response) => {
   const { quests } = app.locals;
   const { id } = request.params;
@@ -132,7 +131,6 @@ app.delete("/quests/:id", (request, response) => {
   } else {
     const filteredQuests = quests.filter(quest => quest.id !== +id);
     app.locals.quests = filteredQuests;
-
     return response.status(200).send("Quest successfully deleted");
   }
 });

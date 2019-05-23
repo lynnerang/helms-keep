@@ -29,10 +29,7 @@ class QuestForm extends Component {
 			body: JSON.stringify({ title, challenges })
 		})
       .then(response => response.json())
-      .then(quest => {
-        console.log(quest)
-        this.props.addQuest(quest)
-      });
+      .then(quest => this.props.addQuest(quest));
 
 		this.props.closeForm();
 	};

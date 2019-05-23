@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 export class QuestContainer extends Component {
   render() {
-    console.log(this.props.quests)
     const questCards = this.props.quests.map(quest => <Quest data={quest} key={quest.id} />);
     
 		return <section className="QuestContainer">{questCards}</section>;

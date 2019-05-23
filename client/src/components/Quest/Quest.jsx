@@ -83,7 +83,7 @@ export class Quest extends Component {
     const verb = !this.state.showCompleted ? '+ Show' : '- Hide';
     const divider = this.state.showCompleted && completedTaskItems.length ? <hr className="divider" /> : null;
     const link = completedTaskItems.length ?
-      <p role="button" className="show-completed" onClick={this.toggleShowCompleted}>{verb} completed ({completedTaskItems.length})</p>
+      <p role="button" className="show-completed" onClick={this.toggleShowCompleted}>{verb} {completedTaskItems.length} completed</p>
       : null;
 
 		return (
@@ -103,7 +103,7 @@ export class Quest extends Component {
           <ul>{uncompletedTaskItems}</ul>
           {divider}
           {link}
-          <ul>{this.state.showCompleted && completedTaskItems}</ul>
+          <ul className="complete-ul">{this.state.showCompleted && completedTaskItems}</ul>
         </div>
         <button className="delete-btn" type="button">
           <i className="fas fa-trash" onClick={this.handleTrashClick}/>

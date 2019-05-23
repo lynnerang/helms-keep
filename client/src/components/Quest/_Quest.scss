@@ -35,13 +35,17 @@
 .challenge-txt {
   margin-bottom: 10px;
   list-style: none;
+  color: #222;
   cursor: text;
     .far {
-      color: #c0bfbf;
+      color: $btnColor;
       margin-right: 5px;
       &:hover {
-        color: black;
+        color: $btnHoverColor;
       }
+    }
+    .fa-check-square {
+      color: rgba(131, 131, 131, 0.728);
     }
 }
 
@@ -52,7 +56,7 @@
   background: none!important;
   border: none;
   font-size: 18px;
-  opacity: .5;
+  color: $btnColor;
 
   &:hover {
     color: darkred;
@@ -60,14 +64,18 @@
   }
 }
 
+.complete-ul span {
+  color: rgba(131, 131, 131, 0.728)!important;
+}
+
 .show-completed {
   position: absolute;
   bottom: 15px;
   font-size: 14px;
-  color: #333;
+  color: $btnColor;
 
   &:hover {
-    color: $btnColor;
+    color: $btnHoverColor;
   }
 }
 

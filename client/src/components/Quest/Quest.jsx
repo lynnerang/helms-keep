@@ -28,8 +28,6 @@ export class Quest extends Component {
     const { title, challenges } = this.props.data;
 		const completedTaskItems = [];
     const uncompletedTaskItems = [];
-
-    console.log(this.props.data);
     
     challenges.forEach(({ id, message, isCompleted }) => {
       let boxClass = isCompleted ? "fa-check-square" : "fa-square";

@@ -1,7 +1,8 @@
-export const popupReducer = (state = false, action) => {
+export const popupReducer = (state = {}, action) => {
   switch (action.type) {
     case 'SHOW_POPUP':
-      return action.payload.bool;
-    default: return state;
+      return { ...action.payload };
+    default: 
+      return state;
   }
 }

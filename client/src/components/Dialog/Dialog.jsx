@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { showPopup } from '../../actions';
+import { showPopup, deleteQuest } from '../../actions';
 import { connect } from 'react-redux';
+import { fetchDeleteNote } from '../../api/fetch/fetchDeleteNote';
 
 export class Dialog extends Component {
 
   handleClick = e => {
-    if (!e.target.classList.contains('delete-quest-btn')) {
-      this.props.showPopup(false);
+    const { id } = this.props.popup;
+    this.props.showPopup(false);
+    if (e.target.classList.contains('delete-quest-btn')) {
+      fetchDeleteNote(id);
+      this.props.deleteQuest(id);
     }
   }
 
@@ -28,8 +32,13 @@ export class Dialog extends Component {
   }
 }
 
-export const mapDispatchToProps = dispatch => ({
-  showPopup: bool => dispatch(showPopup(bool))
+export const mapStateToProps = state => ({
+  popup: state.popup
 })
 
-export default connect(null, mapDispatchToProps)(Dialog);
+export const mapDispatchToProps = dispatch => ({
+  showPopup: bool => dispatch(showPopup(bool)),
+  deleteQuest: id => dispatch(deleteQuest(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dialog);

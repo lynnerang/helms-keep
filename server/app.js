@@ -85,11 +85,13 @@ app.put("/api/quests/:id", (request, response) => {
     if (quest.id === +id) {
       found = true;
       quest = { ...request.body };
+      console.log(quest);
       return quest;
     } else {
       return quest;
     }
   });
+  app.locals.quests = mappedQuests;
   return found
     ? response.status(200).json(mappedQuests)
     : response

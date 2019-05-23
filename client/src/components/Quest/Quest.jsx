@@ -15,14 +15,10 @@ export class Quest extends Component {
 		this.setState({ showCompleted: !this.state.showCompleted });
   };
 
-  // handleDelete = () => {
-  //   const { id } = this.props.data;
-  //   fetchDeleteNote(id);
-  //   this.props.deleteQuest(id);
-  // }
   
   handleQuestDelete = () => {
-    this.props.showPopup(true);
+    const { id } = this.props.data;
+    this.props.showPopup(true, id, 'delete');
   }
 
   // handleChallengeDelete = e => {
@@ -32,13 +28,13 @@ export class Quest extends Component {
   handleUpdate = (e) => {
     const localNote = {...this.props.data};
     const targetChallenge = localNote.challenges.find(chal => chal.id === e.target.id);
-    if (e.target.classList[1] === "fa-square") {
+    if (e.target.classList.contains("fa-square")) {
       targetChallenge.isCompleted = true;
     } else if (e.target.className === "card-title" && e.key === "Enter") {
       e.preventDefault();
       localNote.title = e.target.innerText;
       e.target.blur();
-    } else if (e.target.classList[1] === "fa-check-square") {
+    } else if (e.target.classList.contains("fa-check-square")) {
       targetChallenge.isCompleted = false;
     } else if (e.key === "Enter") {
       e.preventDefault();
@@ -122,7 +118,7 @@ export class Quest extends Component {
 
 export const mapDispatchToProps = dispatch => ({
   updateQuest: quest => dispatch(editQuest(quest)),
-  showPopup: bool => dispatch(showPopup(bool))
+  showPopup: (bool, id, type) => dispatch(showPopup(bool, id, type))
 })
 
 export default connect(null, mapDispatchToProps)(Quest);

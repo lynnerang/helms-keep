@@ -15,25 +15,21 @@ export class Quest extends Component {
 	toggleShowCompleted = () => {
 		this.setState({ showCompleted: !this.state.showCompleted });
   };
-  
-  markComplete = (e) => {
+
+  handleUpdate = (e) => {
     const localNote = { ...this.props.data};
     const targetChallenge = localNote.challenges.find(chal => chal.id === +e.target.id);
-    targetChallenge.isCompleted = true;
+    if (e.target.classList[1] === 'fa-square') {
+      targetChallenge.isCompleted = true;
+    } else if (e.target.classList[1] === 'fa-check-square') {
+      targetChallenge.isCompleted = false;
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      targetChallenge.message = e.target.innerText;
+      e.target.blur();
+    }
     this.props.updateQuest(localNote);
     fetchEditNote(localNote);
-  }
-
-  editChallenge= (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      const localNote = { ...this.props.data};
-      const targetChallenge = localNote.challenges.find(chal => chal.id === +e.target.id);
-      targetChallenge.message = e.target.innerText;
-      this.props.updateQuest(localNote);
-      e.target.blur();
-      fetchEditNote(localNote);
-    }
   }
 
   render() {
@@ -48,13 +44,13 @@ export class Quest extends Component {
           <i
             className={`far ${boxClass}`}
             id={id}
-            onClick={this.markComplete}
+            onClick={this.handleUpdate}
           />
           <span
             contentEditable="true"
             id={id}
             suppressContentEditableWarning={true}
-            onKeyDown={this.editChallenge}
+            onKeyDown={this.handleUpdate}
           >
             {message}
           </span>

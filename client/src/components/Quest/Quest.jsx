@@ -83,10 +83,10 @@ export class Quest extends Component {
             Show {completedTaskItems.length} completed challenges
           </p>
           <ul>{this.state.showCompleted && completedTaskItems}</ul>
-          <button className="delete-btn" type="button">
-            <i className="fas fa-trash" />
-          </button>
         </div>
+        <button className="delete-btn" type="button">
+          <i className="fas fa-trash" />
+        </button>
       </article>
     );
 	}

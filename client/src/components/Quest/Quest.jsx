@@ -21,9 +21,13 @@ export class Quest extends Component {
   //   this.props.deleteQuest(id);
   // }
   
-  handleTrashClick = () => {
+  handleQuestDelete = () => {
     this.props.showPopup(true);
   }
+
+  // handleChallengeDelete = e => {
+  //   const 
+  // }
 
   handleUpdate = (e) => {
     const localNote = {...this.props.data};
@@ -73,7 +77,7 @@ export class Quest extends Component {
           >
             {message}
           </span>
-          <p className="close-icon">x</p>
+          <p role="button" name={id} className="close-icon" onClick={this.handleChallengeDelete}>x</p>
         </li>
       );
       isCompleted
@@ -108,7 +112,7 @@ export class Quest extends Component {
         <div className="card-footer">
           <div>{link}</div>
           <button className="delete-btn" type="button">
-            <i className="fas fa-trash" onClick={this.handleTrashClick}/>
+            <i className="fas fa-trash" onClick={this.handleQuestDelete}/>
           </button>
         </div>
       </article>

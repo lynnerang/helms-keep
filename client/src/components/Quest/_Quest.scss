@@ -7,10 +7,6 @@
   width: 310px;
   position: relative;
   background: white;
-
-  &:hover {
-    box-shadow: 0 0 8px rgba(199, 255, 86, 0.509);
-  }
 }
 
 .card-header {
@@ -66,7 +62,7 @@
   .close-icon {
     font-family: 'Jura', sans-serif;
     font-size: 28px;
-    margin-right: 20px;
+    margin-right: 16px;
     margin-top: -8px;
 
     &:hover {

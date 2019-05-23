@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addQuest } from '../../actions';
-import { ChallengeContainer } from '../ChallengeContainer/ChallengeContainer'
+import { ChallengeContainer } from '../ChallengeContainer/ChallengeContainer';
 
 //will build body out into multiple challenge entries
 
 class QuestForm extends Component {
 	state = {
 		title: '',
-		challenge: '',
 		challenges: []
-  };
-  
+	};
+
 	handleChange = e => {
 		this.setState({ [e.target.name]: e.target.value });
-  };
-  
-  addChallenges = challenges => {
-    this.setState({ challenges });
-  }
+	};
+
+	addChallenge = challenge => {
+		this.setState({ challenges: [ ...this.state.challenges, challenge ] });
+	};
 
 	handleSubmit = e => {
 		const { title, challenges } = this.state;
@@ -36,6 +35,9 @@ class QuestForm extends Component {
 	};
 
   render() {
+
+    console.log(this.state)
+
 		return (
 			<div className="QuestForm">
 				<i className="fas fa-times close-btn" onClick={this.props.closeForm} />
@@ -51,7 +53,7 @@ class QuestForm extends Component {
 						/>
 					</div>
 					<div className="form-body">
-            <ChallengeContainer addChallenges={this.addChallenges}/>
+            <ChallengeContainer challenges={this.state.challenges} addChallenge={this.addChallenge} />
 					</div>
 					<button className="save-quest-btn" type="button" onClick={this.handleSubmit}>
 						Save

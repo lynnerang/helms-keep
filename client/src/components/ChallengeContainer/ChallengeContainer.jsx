@@ -3,30 +3,24 @@ import shortid from 'shortid';
 
 export class ChallengeContainer extends Component {
   state = {
-    challenge: '',
-    challenges: []
+    challenge: ''
   }
 
-  handleChange = e => {
-    this.setState({ challenge: e.target.value })
-  }
+  handleChange = e => this.setState({ challenge: e.target.value })
 
-  addChallenge = e => {
-    this.setState({
-      challenges: [
-        ...this.state.challenges,
-        {
-          id: shortid.generate(),
-          message: this.state.challenge,
-          isCompleted: false
-        }
-      ], challenge: ''
-    }, () => console.log(this.state))
+  handleSubmit = e => {
+    this.props.addChallenge({
+      id: shortid.generate(),
+      message: this.state.challenge,
+      isCompleted: false
+    });
+    this.setState({ challenge: '' })
   }
+  
 
   render() {
     //consider allowing editing existing chals in form
-    const challenges = this.state.challenges.map(chal => {
+    const challenges = this.props.challenges.map(chal => {
       return <li className="challenge-txt" key={chal.id}>{chal.message}</li>
     })
 
@@ -37,7 +31,7 @@ export class ChallengeContainer extends Component {
         </ul>
         <div className="form-row">
           <input className="new-challenge-input" placeholder="Add new challenge..." name="challenge" onChange={this.handleChange} value={this.state.challenge} />
-          <button className="add-challenge-btn" type="button" onClick={this.addChallenge}>+</button>
+          <button className="add-challenge-btn" type="button" onClick={this.handleSubmit}>+</button>
         </div>
       </article>
     )

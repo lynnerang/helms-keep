@@ -15,11 +15,11 @@ export class Quest extends Component {
 		this.setState({ showCompleted: !this.state.showCompleted });
   };
 
-  handleDelete = () => {
-    const { id } = this.props.data;
-    fetchDeleteNote(id);
-    this.props.deleteQuest(id);
-  }
+  // handleDelete = () => {
+  //   const { id } = this.props.data;
+  //   fetchDeleteNote(id);
+  //   this.props.deleteQuest(id);
+  // }
   
   handleTrashClick = () => {
     this.props.showPopup(true);
@@ -95,8 +95,8 @@ export class Quest extends Component {
         </div>
         <div className="card-body">
           <ul>{uncompletedTaskItems}</ul>
-          <p className="showCompleted" onClick={this.toggleShowCompleted}>
-            Show {completedTaskItems.length} completed challenges
+          <p className="show-completed" onClick={this.toggleShowCompleted}>
+            Show completed ({completedTaskItems.length})
           </p>
           <ul>{this.state.showCompleted && completedTaskItems}</ul>
         </div>

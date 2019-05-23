@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
 import { showPopup } from '../../actions';
 import { connect } from 'react-redux';
-// import { mapStateToProps } from '../Main/Main';
-// import { mapDispatchToProps } from '../QuestForm/QuestForm';
-
 
 export class Dialog extends Component {
-  constructor(props) {
-    super(props);
-
-  }
 
   handleClick = e => {
     if (!e.target.classList.contains('delete-quest-btn')) {

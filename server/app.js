@@ -10,12 +10,12 @@ const mockQuests = [
     title: "My First Quest",
     challenges: [
       {
-        id: 1,
+        id: 'ABC',
         isCompleted: true,
         message: "Clean the kitchen"
       },
       {
-        id: 2,
+        id: 'DEF',
         isCompleted: false,
         message: "Cook dinner"
       }
@@ -26,12 +26,12 @@ const mockQuests = [
     title: "My Second Quest",
     challenges: [
       {
-        id: 1,
+        id: 'GHI',
         isCompleted: false,
         message: "Learn SASS"
       },
       {
-        id: 2,
+        id: 'JKL',
         isCompleted: true,
         message: "Become a NODE wizard"
       }
@@ -42,12 +42,12 @@ const mockQuests = [
     title: "My Third Quest",
     challenges: [
       {
-        id: 1,
+        id: 'MNO',
         isCompleted: true,
         message: "Charge phone"
       },
       {
-        id: 2,
+        id: 'PQR',
         isCompleted: false,
         message: "Dance until the sun comes up"
       }

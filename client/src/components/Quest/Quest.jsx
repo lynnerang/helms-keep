@@ -12,12 +12,13 @@ export class Quest extends Component {
 		this.setState({ showCompleted: !this.state.showCompleted });
 	};
 
-	render() {
+  render() {
+    console.log(this.props.data)
     const { title, challenges } = this.props.data;
 		const completedTaskItems = [];
     const uncompletedTaskItems = [];
     
-    challenges.forEach(({ id, message, isCompleted }) => {
+    challenges.length && challenges.forEach(({ id, message, isCompleted }) => {
       let card = (
         <li className="challenge-txt" key={id} contentEditable="true" suppressContentEditableWarning={true}>
           {message}

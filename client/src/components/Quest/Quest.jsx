@@ -21,7 +21,6 @@ export class Quest extends Component {
     const targetChallenge = localNote.challenges.find(chal => chal.id === +e.target.id);
     targetChallenge.isCompleted = true;
     this.props.updateQuest(localNote);
-    this.forceUpdate();
     fetchEditNote(localNote);
   }
 

@@ -7,14 +7,16 @@ export const questsReducer = (state = [], action) => {
       return quests;
     case 'EDIT_QUEST': 
       const { id } = action.payload.quest;
-      const targetIndex = state.findIndex(quest => quest.id === id);
       const workingQuests = [...state];
-      const updatedQuests = workingQuests.splice(
+      const targetIndex = workingQuests.findIndex(quest => quest.id === id);
+      console.log('WORKING', workingQuests)
+      workingQuests.splice(
         targetIndex,
         1,
         action.payload.quest
       );
-      return updatedQuests;
+      console.log("UPDATED", workingQuests);
+      return workingQuests;
     default:
       return state;
   }

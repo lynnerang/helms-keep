@@ -4,6 +4,8 @@ import Main from '../../components/Main/Main';
 import { connect } from 'react-redux';
 import { storeQuests } from '../../actions';
 import { fetchAllNotes } from '../../api/fetch/fetchAllNotes';
+import QuestForm from '../../components/QuestForm/QuestForm';
+import { Route } from 'react-router-dom';
 
 export class App extends Component {
   componentDidMount() {
@@ -18,6 +20,8 @@ export class App extends Component {
         <div className="background">
           <Header/>
           <Main />
+          <Route path='/' component={Main} />
+          <Route exact path='/new-note' component={QuestForm} />
         </div>
 			</div>
 		);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addQuest } from '../../actions';
 import { ChallengeContainer } from '../ChallengeContainer/ChallengeContainer';
+import { NavLink } from 'react-router-dom';
 
 //will build body out into multiple challenge entries
 
@@ -28,17 +29,16 @@ class QuestForm extends Component {
 			},
 			body: JSON.stringify({ title, challenges })
 		})
-      .then(response => response.json())
-      .then(quest => this.props.addQuest(quest));
-
-		this.props.closeForm();
+			.then(response => response.json())
+			.then(quest => this.props.addQuest(quest));
 	};
 
-  render() {
-
+	render() {
 		return (
 			<div className="QuestForm">
-				<i className="fas fa-times close-btn" onClick={this.props.closeForm} />
+				<NavLink exact to="/">
+					<i className="fas fa-times close-btn" />
+				</NavLink>
 				<h2 className="dialog-title">Add a new quest</h2>
 				<form className="new-quest-form">
 					<div className="form-header">
@@ -51,11 +51,13 @@ class QuestForm extends Component {
 						/>
 					</div>
 					<div className="form-body">
-            <ChallengeContainer challenges={this.state.challenges} addChallenge={this.addChallenge} />
+						<ChallengeContainer challenges={this.state.challenges} addChallenge={this.addChallenge} />
 					</div>
-					<button className="save-quest-btn" type="button" onClick={this.handleSubmit}>
-						Save
-					</button>
+					<NavLink exact to="/">
+						<button className="save-quest-btn" type="button" onClick={this.handleSubmit}>
+							Save
+						</button>
+					</NavLink>
 				</form>
 			</div>
 		);

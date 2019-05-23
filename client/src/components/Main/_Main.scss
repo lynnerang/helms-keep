@@ -62,6 +62,10 @@
 
 .add-quest-btn {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   bottom: 30px;
   right: 30px;
   height: 60px;

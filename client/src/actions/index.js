@@ -20,3 +20,12 @@ export const editQuest = quest => {
     }
   };
 }
+
+export const showPopup = bool => {
+  return {
+    type: "SHOW_POPUP",
+    payload: {
+      bool
+    }
+  }
+}

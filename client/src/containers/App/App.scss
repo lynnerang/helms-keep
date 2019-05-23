@@ -19,3 +19,17 @@ button {
     background: $btnHoverColor;
   }
 }
+
+.dialog-overlay {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+}

@@ -1,0 +1,33 @@
+.popup {
+  background: white;
+  padding: 40px 40px 30px 40px;
+  border-radius: 15px;
+  font-size: 20px;
+  width: 300px;
+}
+
+.dialog-btns {
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+}
+
+.dialog-btn {
+  margin-top: 40px;
+  margin-left: 20px;
+  height: 32px;
+  width: 74px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  padding-bottom: 3px;
+}
+
+.delete-quest-btn {
+  background: darkred;
+
+  &:hover {
+    background: red;
+  }
+}

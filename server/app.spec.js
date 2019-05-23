@@ -242,11 +242,19 @@ describe("API", () => {
         .send({ ...mockQuest });
       expect(response.statusCode).toBe(200);
     });
-     it("Should have an error response of No quest found with an id of 5!", async () => {
+     it("Should have an Status Code of 422 on unsuccessful edit of a Quest'", async () => {
       const response = await request(app)
         .put("/api/quests/5")
         .send({ ...mockQuest });
-         expect(response.body.error).toEqual("Should have an error response of No quest found with an id of 5!");
+        expect(response.statusCode).toBe(422);
+
+    });
+     it("Should have an error response of 'No quest found with an id of 5.'", async () => {
+      const response = await request(app)
+        .put("/api/quests/5")
+        .send({ ...mockQuest });
+        expect(response.body.error).toEqual('No quest found with an id of 5.');
+
     });
      
   });

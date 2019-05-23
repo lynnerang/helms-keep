@@ -87,10 +87,11 @@ app.put("/api/quests/:id", (request, response) => {
     } else {
       return quest;
     }
+  
+  });
     return found
       ? response.status(200).json(mappedQuests)
-      : response.status(422).json("That quest was not found");
-  });
+      : response.status(422).json({error: `No quest found with an id of ${id}.`});
 });
 
 app.get("/api/quests/:id", (request, response) => {

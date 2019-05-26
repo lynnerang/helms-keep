@@ -21,10 +21,6 @@ export class Quest extends Component {
     this.props.showPopup(true, id, 'delete');
   }
 
-  // handleChallengeDelete = e => {
-  //   const 
-  // }
-
   handleUpdate = (e) => {
     const localNote = {...this.props.data};
     const targetChallenge = localNote.challenges.find(chal => chal.id === e.target.id);

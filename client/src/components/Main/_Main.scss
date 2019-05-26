@@ -77,3 +77,11 @@
   }
 }
 
+button:disabled {
+  background: lightgrey!important;
+
+  &:hover {
+    background: lightgrey!important;
+  }
+}
+

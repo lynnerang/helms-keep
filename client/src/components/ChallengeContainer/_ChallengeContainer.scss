@@ -26,6 +26,7 @@
   flex: auto;
   height: 40px;
   padding-left: 20px;
+  font-size: 14px;
 
   &::placeholder {
     color: rgb(184, 184, 184);
@@ -35,8 +36,7 @@
 .add-challenge-btn {
   height: 40px;
   border: none;
-  border-radius: 0 5px 5px 0;
-  padding: 0 10px;
+  padding: 0 15px;
   color: white;
-  font-size: 12px;
+  font-size: 26px;
 }

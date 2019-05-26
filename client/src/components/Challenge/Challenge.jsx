@@ -9,20 +9,35 @@ export class Challenge extends Component {
     const challenge = { ...this.props.data };
 
     if (this.props.type === 'form') {
-
+      this.updateFormData(e, challenge);
     } else {
-      if (e.target.classList.contains('checkbox')) {
-        challenge.isCompleted = !challenge.isCompleted;
-      } else if (e.target.classList.contains('message') && e.key === 'Enter') {
-        e.preventDefault();
-        challenge.message = e.target.innerText;
-        e.target.blur();
-      } else if (e.type === 'blur') {
-        challenge.message = e.target.innerText;
-      }
-      this.props.updateChallenge(challenge);
+      this.updateQuestData(e, challenge);
     }
-	};
+  };
+
+  updateFormData = (e, challenge) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      challenge.message = e.target.innerText;
+      e.target.blur();
+    } else if (e.type === 'blur') {
+      challenge.message = e.target.innerText;
+    }
+    this.props.editChallenge(challenge);
+  }
+  
+  updateQuestData = (e, challenge) => {
+    if (e.target.classList.contains('checkbox')) {
+      challenge.isCompleted = !challenge.isCompleted;
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      challenge.message = e.target.innerText;
+      e.target.blur();
+    } else if (e.type === 'blur') {
+      challenge.message = e.target.innerText;
+    }
+    this.props.updateChallenge(challenge);
+  }
 
 	render() {
 		let boxClass = this.props.data.isCompleted ? 'checkbox fa-check-square' : 'checkbox fa-square';

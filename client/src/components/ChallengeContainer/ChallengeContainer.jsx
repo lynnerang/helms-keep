@@ -57,7 +57,8 @@ export class ChallengeContainer extends Component {
 					type={this.props.type}
 					key={chal.id}
 					updateChallenge={this.props.updateChallenge}
-					deleteChallenge={this.props.deleteChallenge}
+          deleteChallenge={this.props.deleteChallenge}
+          editChallenge={this.props.editChallenge}
 				/>
 			);
 		});

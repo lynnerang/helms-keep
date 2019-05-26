@@ -12,7 +12,15 @@ class QuestForm extends Component {
 
 	saveTitle = e => {
 		this.setState({ title: e.target.value });
-	};
+  };
+  
+  editChallenge = challenge => {
+    const challenges = [...this.state.challenges];
+    const index = challenges.findIndex(chal => chal.id === challenge.id);
+
+    challenges[index] = challenge;
+    this.setState({ challenges });
+  }
 
 	saveChallenge = challenge => {
 		this.setState({ challenges: [ ...this.state.challenges, challenge ] });
@@ -43,7 +51,7 @@ class QuestForm extends Component {
 						<input className="new-quest-input" placeholder="Add a title..." onChange={this.saveTitle} />
 					</div>
 					<div className="form-body">
-						<ChallengeContainer type="form" challenges={this.state.challenges} saveChallenge={this.saveChallenge} />
+            <ChallengeContainer type="form" challenges={this.state.challenges} saveChallenge={this.saveChallenge} editChallenge={this.editChallenge} />
 					</div>
 					<NavLink exact to="/">
             <button className="save-quest-btn" type="button" onClick={this.handleSubmit} disabled={!this.state.title}>

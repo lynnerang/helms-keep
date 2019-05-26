@@ -3,6 +3,7 @@ import QuestContainer from '../QuestContainer/QuestContainer';
 import { NavLink } from 'react-router-dom';
 import Dialog from '../Dialog/Dialog';
 import { connect } from 'react-redux';
+import { addQuest } from '../../actions';
 
 const Main = props => {
   const popup = props.popup.bool ? <Dialog /> : null;
@@ -32,4 +33,8 @@ export const mapStateToProps = state => ({
   popup: state.popup
 })
 
-export default connect(mapStateToProps)(Main);
+export const mapDispatchToProps = dispatch => ({
+  addQuest: quest => dispatch(addQuest(quest))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

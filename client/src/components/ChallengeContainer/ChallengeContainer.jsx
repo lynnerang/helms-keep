@@ -1,65 +1,81 @@
-import React, { Component } from "react";
-import shortid from "shortid";
+import React, { Component } from 'react';
+import Challenge from '../Challenge/Challenge';
+import shortid from 'shortid';
 
 export class ChallengeContainer extends Component {
-  state = {
-    challenge: ""
-  };
+	state = {
+		chalInput: ''
+	};
 
-  componentDidUpdate() {
-    this.scrollToBottom();
-  }
+	componentDidUpdate() {
+		this.scrollToBottom();
+	}
 
-  scrollToBottom() {
-    this.el.scrollIntoView({ behavior: 'smooth' });
-  }
+	scrollToBottom() {
+		this.el.scrollIntoView({ behavior: 'smooth' });
+	}
 
-  handleChange = e => this.setState({ challenge: e.target.value });
+	handleChange = e => {
+		this.setState({ [e.target.name]: e.target.value });
+	};
 
-  handleSubmit = e => {
-    this.props.addChallenge({
-      id: shortid.generate(),
-      message: this.state.challenge,
-      isCompleted: false
-    });
-    this.setState({ challenge: "" });
-  };
+	handleSubmit = e => {
+		e.preventDefault();
+		const challenge = { id: shortid.generate(), message: this.state.chalInput, isCompleted: false };
 
-  render() {
-    //consider allowing editing existing chals in form
-    const challenges = this.props.challenges.map(chal => {
-      return (
-        <li className="challenge-txt" key={chal.id}>
-          {chal.message}
-        </li>
-      );
-    });
+		if (this.props.type === 'incomplete') {
+			this.props.addChallenge(challenge);
+		} else {
+			this.props.saveChallenge(challenge);
+		}
+		this.setState({ chalInput: '' });
+	};
 
-    return (
-      <article className="ChallengeContainer">
-        <ul>
-          {challenges}
-          <div ref={el => { this.el = el; }}/>
-        </ul>
-        <div className="form-row">
-          <input
-            className="new-challenge-input"
-            placeholder="Add new challenge..."
-            name="challenge"
-            onChange={this.handleChange}
-            value={this.state.challenge}
-          />
-          <button
-            className="add-challenge-btn"
-            type="button"
-            onClick={this.handleSubmit}
-          >
-            +
-          </button>
-        </div>
-      </article>
-    );
-  }
+	render() {
+		const ulClass = this.props.type === 'complete' ? 'complete-ul' : 'incomplete-ul';
+
+		const newChallengeInput =
+			this.props.type !== 'complete' ? (
+				<form className="form-row">
+					<input
+						className="new-challenge-input"
+						placeholder="+ Add new challenge..."
+						name="chalInput"
+						onChange={this.handleChange}
+						value={this.state.chalInput}
+					/>
+					<button type="button" className="add-challenge-btn" onClick={this.handleSubmit} disabled={!this.state.chalInput}>
+						+
+					</button>
+				</form>
+			) : null;
+
+		const challenges = this.props.challenges.map(chal => {
+			return (
+				<Challenge
+					data={chal}
+					type={this.props.type}
+					key={chal.id}
+					updateChallenge={this.props.updateChallenge}
+					deleteChallenge={this.props.deleteChallenge}
+				/>
+			);
+		});
+
+		return (
+			<article className="ChallengeContainer">
+				<ul className={ulClass}>
+					{challenges}
+					<div
+						ref={el => {
+							this.el = el;
+						}}
+					/>
+				</ul>
+				{newChallengeInput}
+			</article>
+		);
+	}
 }
 
 export default ChallengeContainer;

@@ -29,57 +29,6 @@
   border-top: 1px solid #688f6f9c;
 }
 
-.challenge-txt {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: white;
-  border: 1px solid rgba(218, 233, 213, 0.351);
-  border-bottom-color: rgba(197, 216, 191, 0.351);
-  list-style: none;
-  color: #222;
-  cursor: text;
-
-  span {
-      padding: 12px 0;
-      flex: auto;
-      font-size: 15px;
-  }
-
-  .far,
-  .close-icon {
-    color: $btnColor;
-    margin: 0 10px;
-    font-size: 22px;
-    cursor: pointer;
-    opacity: .8;
-  }
-
-  .far:hover {
-    color: $btnHoverColor;
-  }
-
-  .close-icon {
-    font-family: 'Jura', sans-serif;
-    font-size: 28px;
-    margin-right: 16px;
-    margin-top: -8px;
-
-    &:hover {
-      color: rgb(215, 89, 89);
-    }
-  }
-
-  .fa-times {
-    color: $btnColor;
-    margin-right: 10px;
-
-    &:hover {
-      color: rgb(198, 59, 59);
-    }
-  }
-}
-
 .delete-btn {
   background: none!important;
   border: none;
@@ -88,23 +37,6 @@
 
   &:hover {
     color: darkred!important;
-    opacity: .7;
-  }
-}
-
-// .uncompleted-ul {
-//   background: white;
-// }
-
-.complete-ul {
-  span,
-  .far,
-  .fas  {
-    color: rgba(131, 131, 131, 0.728)!important;
-  }
-
-  .fa-times:hover {
-    color: darkred;
     opacity: .7;
   }
 }

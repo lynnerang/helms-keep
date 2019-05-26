@@ -4,19 +4,25 @@ import { addQuest } from '../../actions';
 import { ChallengeContainer } from '../ChallengeContainer/ChallengeContainer';
 import { NavLink } from 'react-router-dom';
 
-//will build body out into multiple challenge entries
-
 class QuestForm extends Component {
 	state = {
 		title: '',
 		challenges: []
 	};
 
-	handleChange = e => {
-		this.setState({ [e.target.name]: e.target.value });
-	};
+	saveTitle = e => {
+		this.setState({ title: e.target.value });
+  };
+  
+  editChallenge = challenge => {
+    const challenges = [...this.state.challenges];
+    const index = challenges.findIndex(chal => chal.id === challenge.id);
 
-	addChallenge = challenge => {
+    challenges[index] = challenge;
+    this.setState({ challenges });
+  }
+
+	saveChallenge = challenge => {
 		this.setState({ challenges: [ ...this.state.challenges, challenge ] });
 	};
 
@@ -42,19 +48,13 @@ class QuestForm extends Component {
 				<h2 className="dialog-title">Add a new quest</h2>
 				<form className="new-quest-form">
 					<div className="form-header">
-						<input
-							className="new-quest-input"
-							id="new-quest-title"
-							name="title"
-							placeholder="Add a title..."
-							onChange={this.handleChange}
-						/>
+						<input className="new-quest-input" placeholder="Add a title..." onChange={this.saveTitle} />
 					</div>
 					<div className="form-body">
-						<ChallengeContainer challenges={this.state.challenges} addChallenge={this.addChallenge} />
+            <ChallengeContainer type="form" challenges={this.state.challenges} saveChallenge={this.saveChallenge} editChallenge={this.editChallenge} />
 					</div>
 					<NavLink exact to="/">
-						<button className="save-quest-btn" type="button" onClick={this.handleSubmit}>
+            <button className="save-quest-btn" type="button" onClick={this.handleSubmit} disabled={!this.state.title}>
 							Save
 						</button>
 					</NavLink>

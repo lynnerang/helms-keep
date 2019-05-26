@@ -96,3 +96,12 @@
     cursor: pointer;
   }
 }
+
+button:disabled {
+  background: lightgrey!important;
+
+  &:hover {
+    background: lightgrey!important;
+  }
+}
+

@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import Dialog from '../Dialog/Dialog';
 import { connect } from 'react-redux';
 import { searchQuests } from '../../helper';
+import { addQuest } from '../../actions';
+
 
 class Main extends Component {
   constructor(props) {
@@ -80,4 +82,8 @@ export const mapStateToProps = state => ({
   quests: state.quests
 })
 
-export default connect(mapStateToProps)(Main);
+export const mapDispatchToProps = dispatch => ({
+  addQuest: quest => dispatch(addQuest(quest))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -1,9 +1,20 @@
 .ChallengeContainer {
-  padding: 20px 25px 0 25px;
   overflow-y: scroll;
-  height: 280px;
+  // height: 280px;
 } 
 
+.complete-ul {
+  span,
+  .far,
+  .fas  {
+    color: rgba(131, 131, 131, 0.728)!important;
+  }
+
+  .fa-times:hover {
+    color: darkred;
+    opacity: .7;
+  }
+}
 .form-row {
   display: flex;
   align-items: center;
@@ -11,15 +22,21 @@
 }
 
 .new-challenge-input {
-  border-radius: 5px 0 0 5px!important;
   margin: 0;
+  flex: auto;
+  height: 40px;
+  padding-left: 20px;
+  font-size: 14px;
+
+  &::placeholder {
+    color: rgb(184, 184, 184);
+  }
 }
 
 .add-challenge-btn {
-  height: 35px;
+  height: 40px;
   border: none;
-  border-radius: 0 5px 5px 0;
-  padding: 0 10px;
+  padding: 0 15px;
   color: white;
-  font-size: 12px;
+  font-size: 26px;
 }

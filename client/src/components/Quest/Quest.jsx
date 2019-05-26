@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ChallengeContainer from '../ChallengeContainer/ChallengeContainer';
 import { fetchEditNote } from '../../api/fetch/fetchEditNote';
 import { connect } from "react-redux";
 import { editQuest, showPopup } from '../../actions';
@@ -15,74 +16,64 @@ export class Quest extends Component {
 		this.setState({ showCompleted: !this.state.showCompleted });
   };
 
+  addChallenge = challenge => {
+    const quest = { ...this.props.data };
+    
+    quest.challenges.push(challenge);
+    this.updateQuest(quest)
+  };
+
+  updateChallenge = challenge => {
+    const quest = { ...this.props.data };
+    const chalIndex = quest.challenges.findIndex(chal => chal.id === challenge.id);
+
+    quest.challenges[chalIndex] = challenge;
+    this.updateQuest(quest);
+  }
   
-  handleQuestDelete = () => {
+  showDeleteWarning = () => {
     const { id } = this.props.data;
     this.props.showPopup(true, id, 'delete');
   }
 
-  handleUpdate = (e) => {
-    const localNote = {...this.props.data};
-    const targetChallenge = localNote.challenges.find(chal => chal.id === e.target.id);
-    if (e.target.classList.contains("fa-square")) {
-      targetChallenge.isCompleted = true;
-    } else if (e.target.className === "card-title" && e.key === "Enter") {
+  updateQuest = quest => {
+    this.props.updateQuest(quest);
+    fetchEditNote(quest);
+  }
+
+  updateTitle = e => {
+    const quest = {...this.props.data};
+    
+    if (e.key === "Enter" || e.type === 'blur') {
       e.preventDefault();
-      localNote.title = e.target.innerText;
+      quest.title = e.target.innerText;
       e.target.blur();
-    } else if (e.target.classList.contains("fa-check-square")) {
-      targetChallenge.isCompleted = false;
-    } else if (e.key === "Enter") {
-      e.preventDefault();
-      targetChallenge.message = e.target.innerText;
-      e.target.blur();
-    } else if (e.target.className === "message" && e.type === "blur") {
-      targetChallenge.message = e.target.innerText;
-    } else if (e.target.className === "card-title" && e.type === "blur") {
-      localNote.title = e.target.innerText;
     }
-    this.props.updateQuest(localNote);
-    fetchEditNote(localNote);
+    this.updateQuest(quest);
   }
 
   render() {
-    const { title, challenges } = this.props.data;
-		const completedTaskItems = [];
-    const uncompletedTaskItems = [];
-    
-    challenges.forEach(({ id, message, isCompleted }) => {
-      let boxClass = isCompleted ? "fa-check-square" : "fa-square";
-      let card = (
-        <li className="challenge-txt" key={id}>
-          <i
-            className={`far ${boxClass}`}
-            id={id}
-            onClick={this.handleUpdate}
-          />
-          <span
-            contentEditable="true"
-            id={id}
-            className='message'
-            suppressContentEditableWarning={true}
-            onKeyDown={this.handleUpdate}
-            onBlur={this.handleUpdate}
-          >
-            {message}
-          </span>
-          <p role="button" name={id} className="close-icon" onClick={this.handleChallengeDelete}>x</p>
-        </li>
-      );
-      isCompleted
-        ? completedTaskItems.push(card)
-        : uncompletedTaskItems.push(card);
-    })
-
+    const { title, challenges, id } = this.props.data;
+    const completedChallenges = challenges.filter(chal => chal.isCompleted);
+    const incompleteChallenges = challenges.filter(chal => !chal.isCompleted);
     const verb = !this.state.showCompleted ? '+ Show' : '- Hide';
-    const divider = this.state.showCompleted && completedTaskItems.length ? <h4 className="divider">Completed</h4> : null;
-    const link = completedTaskItems.length ?
-      <p role="button" className="show-completed" onClick={this.toggleShowCompleted}>{verb} {completedTaskItems.length} completed</p>
+
+    const completed = this.state.showCompleted && completedChallenges.length ?    <>
+        <h4 className="divider">Completed</h4>
+        <ChallengeContainer
+          type="complete"
+          challenges={completedChallenges}
+          addChallenge={this.addChallenge}
+          updateChallenge={this.updateChallenge}
+          deleteChallenge={this.deleteChallenge}
+        />
+      </>
       : null;
 
+    const link = completedChallenges.length ?
+      <p role="button" className="show-completed" onClick={this.toggleShowCompleted}>{verb} {completedChallenges.length} completed</p>
+      : null;
+    
 		return (
       <article className="Quest">
         <div className="card-header">
@@ -90,21 +81,26 @@ export class Quest extends Component {
             className="card-title"
             contentEditable="true"
             suppressContentEditableWarning={true}
-            onKeyDown={this.handleUpdate}
-            onBlur={this.handleUpdate}
+            onKeyDown={this.updateTitle}
+            onBlur={this.updateTitle}
           >
             {title}
           </h2>
         </div>
         <div className="card-body">
-          <ul className="uncompleted-ul">{uncompletedTaskItems}</ul>
-          {divider}
-          <ul className="complete-ul">{this.state.showCompleted && completedTaskItems}</ul>
+          <ChallengeContainer
+            type="incomplete"
+            challenges={incompleteChallenges}
+            addChallenge={this.addChallenge}
+            updateChallenge={this.updateChallenge}
+            deleteChallenge={this.deleteChallenge}
+          />
+          {completed}
         </div>
         <div className="card-footer">
           <div>{link}</div>
           <button className="delete-btn" type="button">
-            <i className="fas fa-trash" onClick={this.handleQuestDelete}/>
+            <i className="fas fa-trash" onClick={this.showDeleteWarning}/>
           </button>
         </div>
       </article>

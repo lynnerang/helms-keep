@@ -9,13 +9,13 @@ export class Challenge extends Component {
     const challenge = { ...this.props.data };
 
     if (this.props.type === 'form') {
-      this.updateFormData(e, challenge);
+      this.updateChallengeForm(e, challenge);
     } else {
-      this.updateQuestData(e, challenge);
+      this.updateChallengeData(e, challenge);
     }
   };
 
-  updateFormData = (e, challenge) => {
+  updateChallengeForm = (e, challenge) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       challenge.message = e.target.innerText;
@@ -26,7 +26,7 @@ export class Challenge extends Component {
     this.props.editChallenge(challenge);
   }
   
-  updateQuestData = (e, challenge) => {
+  updateChallengeData = (e, challenge) => {
     if (e.target.classList.contains('checkbox')) {
       challenge.isCompleted = !challenge.isCompleted;
     } else if (e.key === 'Enter') {
@@ -37,6 +37,16 @@ export class Challenge extends Component {
       challenge.message = e.target.innerText;
     }
     this.props.updateChallenge(challenge);
+  }
+
+  handleDelete = () => {
+    const { id } = this.props.data;
+
+    if (this.props.type === 'form') {
+      this.props.removeChallenge(id);
+    } else {
+      this.props.deleteChallenge(id);
+    }
   }
 
 	render() {

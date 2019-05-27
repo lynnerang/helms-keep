@@ -36,7 +36,7 @@ export class ChallengeContainer extends Component {
 
 		const newChallengeInput =
 			this.props.type !== 'complete' ? (
-				<form className="form-row">
+        <form className="form-row" onSubmit={this.handleSubmit}>
 					<input
 						className="new-challenge-input"
 						placeholder="+ Add new challenge..."
@@ -44,7 +44,7 @@ export class ChallengeContainer extends Component {
 						onChange={this.handleChange}
 						value={this.state.chalInput}
 					/>
-					<button type="button" className="add-challenge-btn" onClick={this.handleSubmit} disabled={!this.state.chalInput}>
+					<button type="submit" className="add-challenge-btn" disabled={!this.state.chalInput}>
 						+
 					</button>
 				</form>
@@ -59,6 +59,7 @@ export class ChallengeContainer extends Component {
 					updateChallenge={this.props.updateChallenge}
           deleteChallenge={this.props.deleteChallenge}
           editChallenge={this.props.editChallenge}
+          removeChallenge={this.props.removeChallenge}
 				/>
 			);
 		});

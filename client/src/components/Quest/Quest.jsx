@@ -18,10 +18,17 @@ export class Quest extends Component {
 
   addChallenge = challenge => {
     const quest = { ...this.props.data };
-    
+
     quest.challenges.push(challenge);
     this.updateQuest(quest)
   };
+
+  deleteChallenge = id => {
+    const quest = { ...this.props.data };
+
+    quest.challenges.splice(quest.challenges.findIndex(chal => chal.id === id), 1);
+    this.updateQuest(quest);
+  }
 
   updateChallenge = challenge => {
     const quest = { ...this.props.data };

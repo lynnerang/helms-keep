@@ -7,13 +7,10 @@ import { searchQuests } from '../../helper';
 import { addQuest } from '../../actions';
 
 
-class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: '',
-      results: null,
-    };
+export class Main extends Component {
+  state = {
+    query: '',
+    results: null,
   }
 
   handleChange = e => {

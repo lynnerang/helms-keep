@@ -53,7 +53,7 @@ class QuestForm extends Component {
 				<h2 className="dialog-title">Add a new quest</h2>
 				<form className="new-quest-form">
 					<div className="form-header">
-						<input className="new-quest-input" placeholder="Add a title..." onChange={this.saveTitle} />
+						<input className="new-title-input" placeholder="Add a title..." onChange={this.saveTitle} />
 					</div>
 					<div className="form-body">
             <ChallengeContainer type="form" challenges={this.state.challenges} saveChallenge={this.saveChallenge} editChallenge={this.editChallenge} removeChallenge={this.removeChallenge}/>

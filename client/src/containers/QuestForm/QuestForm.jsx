@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addQuest } from '../../actions';
-import { ChallengeContainer } from '../ChallengeContainer/ChallengeContainer';
+import { ChallengeContainer } from '../../components/ChallengeContainer/ChallengeContainer';
 import { NavLink } from 'react-router-dom';
 
 class QuestForm extends Component {

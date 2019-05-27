@@ -1,6 +1,6 @@
-import React from './node_modules/react';
-import { shallow } from './node_modules/ enzyme';
-import Quest from './Quest';
+import React from 'react';
+import { shallow } from 'enzyme';
+import { Quest } from './Quest';
 import { mockNote } from '../../api/utilities';
 
 describe('Quest', () => {

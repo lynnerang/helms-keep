@@ -3,16 +3,16 @@
 @import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap');
 @import "../containers/App/App.scss";
 @import "../components/Banner/Banner";
-@import "../components/Challenge/Challenge";
+@import "../containers/Challenge/Challenge";
 @import "../components/ChallengeContainer/ChallengeContainer";
 @import "../components/Header/Header";
-@import "../components/Main/Main";
+@import "../containers/Main/Main";
 @import "../components/Nav/Nav";
-@import "../components/Quest/Quest";
+@import "../containers/Quest/Quest";
 @import "../containers/ExperienceBar/ExperienceBar";
-@import "../components/QuestForm/QuestForm";
-@import "../components/QuestContainer/QuestContainer";
-@import "../components/Dialog/Dialog";
+@import "../containers/QuestForm/QuestForm";
+@import "../containers/QuestContainer/QuestContainer";
+@import "../containers/Dialog/Dialog";
 
 * {
 	box-sizing: border-box;

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Header } from '../../components/Header/Header';
-import Main from '../../components/Main/Main';
+import Main from '../../containers/Main/Main';
 import { connect } from 'react-redux';
 import { storeQuests } from '../../actions';
 import { fetchAllNotes } from '../../api/fetch/fetchAllNotes';
-import QuestForm from '../../components/QuestForm/QuestForm';
+import QuestForm from '../../containers/QuestForm/QuestForm';
 import { Route } from 'react-router-dom';
 
 export class App extends Component {

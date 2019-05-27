@@ -1,6 +1,6 @@
-import React from './node_modules/react';
-import { shallow } from './node_modules/ enzyme';
-import QuestContainer from './QuestContainer';
+import React from 'react';
+import { shallow } from 'enzyme';
+import { QuestContainer } from './QuestContainer';
 
 describe('QuestContainer', () => {
 	let wrapper;

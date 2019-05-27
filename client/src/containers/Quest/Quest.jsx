@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import ChallengeContainer from '../ChallengeContainer/ChallengeContainer';
 import { fetchEditNote } from '../../api/fetch/fetchEditNote';
 import { connect } from "react-redux";
 import { editQuest, showPopup } from '../../actions';
+import ChallengeContainer from '../../components/ChallengeContainer/ChallengeContainer';
 
 export class Quest extends Component {
 	constructor(props) {

@@ -1,8 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Quest } from './Quest';
+import { Quest, mapDispatchToProps } from './Quest';
 import { mockTask, mockCompletedTask, mockNote } from '../../api/utilities';
 import { fetchEditNote } from '../../api/fetch/fetchEditNote';
+import { editQuest, showPopup } from '../../actions';
 
 jest.mock('../../api/fetch/fetchEditNote');
 
@@ -177,6 +178,26 @@ describe('Quest', () => {
 			jest.spyOn(instance, 'updateQuest');
 			instance.updateTitle({});
 			expect(instance.updateQuest).not.toHaveBeenCalledWith();
+		});
+	});
+
+	describe('MDTP', () => {
+		let mappedProps, mockDispatch;
+		beforeEach(() => {
+			mockDispatch = jest.fn();
+			mappedProps = mapDispatchToProps(mockDispatch);
+		});
+
+		it('should call dispatch when updateQuest is called', () => {
+			const actionToDispatch = editQuest(mockNote);
+			mappedProps.updateQuest(mockNote);
+			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+		});
+
+		it('should call dispatch when showPopup is called', () => {
+			const actionToDispatch = showPopup(true, 1, 'delete');
+			mappedProps.showPopup(true, 1, 'delete');
+			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
 		});
 	});
 });

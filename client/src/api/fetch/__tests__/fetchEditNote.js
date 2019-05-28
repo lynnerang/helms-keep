@@ -10,9 +10,9 @@ describe('fetchEditNote', () => {
   });
 
   it('should call fetch with the correct params', () => {
-    const url = `${host}/notes/${mockNote.id}`;
+    const url = `${host}quests/${mockNote.id}`;
     const options = {
-      method: 'POST',
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(mockNote)
     }

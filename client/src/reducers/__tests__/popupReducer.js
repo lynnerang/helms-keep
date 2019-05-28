@@ -12,5 +12,5 @@ describe('popupReducer', () => {
     const expected = { bool: true, id: 1, type: "delete" };
     const result = popupReducer(undefined, showPopup(true, 1, 'delete'));
     expect(result).toEqual(expected);
-  })
+  });
 });

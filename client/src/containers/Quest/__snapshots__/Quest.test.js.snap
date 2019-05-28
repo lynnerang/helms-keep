@@ -1,3 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Quest should match snapshot 1`] = `undefined`;
+exports[`Quest should match snapshot 1`] = `
+<article
+  className="Quest"
+>
+  <div
+    className="card-header"
+  >
+    <h2
+      className="card-title"
+      contentEditable="true"
+      onBlur={[Function]}
+      onKeyDown={[Function]}
+      suppressContentEditableWarning={true}
+    >
+      My First Quest
+    </h2>
+  </div>
+  <div
+    className="card-body"
+  >
+    <ChallengeContainer
+      addChallenge={[Function]}
+      challenges={
+        Array [
+          Object {
+            "id": 1234,
+            "isCompleted": false,
+            "message": "Clean the kitchen",
+          },
+        ]
+      }
+      deleteChallenge={[Function]}
+      type="incomplete"
+      updateChallenge={[Function]}
+    />
+  </div>
+  <div
+    className="card-footer"
+  >
+    <div>
+      <p
+        className="show-completed"
+        onClick={[Function]}
+        role="button"
+      >
+        + Show
+         
+        1
+         completed
+      </p>
+    </div>
+    <button
+      className="delete-btn"
+      type="button"
+    >
+      <i
+        className="fas fa-trash"
+        onClick={[Function]}
+      />
+    </button>
+  </div>
+</article>
+`;

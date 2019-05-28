@@ -54,9 +54,9 @@ export class Quest extends Component {
     if (e.key === "Enter" || e.type === 'blur') {
       e.preventDefault();
       quest.title = e.target.innerText;
+      this.updateQuest(quest);
       e.target.blur();
     }
-    this.updateQuest(quest);
   }
 
   render() {
@@ -78,7 +78,13 @@ export class Quest extends Component {
       : null;
 
     const link = completedChallenges.length ?
-      <p role="button" className="show-completed" onClick={this.toggleShowCompleted}>{verb} {completedChallenges.length} completed</p>
+      <p 
+        role="button" 
+        className="show-completed" 
+        onClick={this.toggleShowCompleted}
+      >
+        {verb} {completedChallenges.length} completed
+      </p>
       : null;
     
 		return (

@@ -9,20 +9,20 @@ import { fetchEditQuest } from '../../api/fetch/fetchEditQuest';
 class QuestForm extends Component {
 	state = {
 		title: '',
-		challenges: []
+    challenges: [],
 	};
 
-	componentDidMount() {
-		if (this.props.viewType === 'edit') {
+  componentDidMount() {
+		if (this.props.viewType === 'edit' && this.props.quests.length) {
 			this.getQuestDetails();
-		}
+    } 
 	}
 
-	getQuestDetails = () => {
-		const { id } = this.props;
-		const details = this.props.quests.find(quest => quest.id === id);
+  getQuestDetails = () => {
+    const { id } = this.props;
+    const details = this.props.quests.find(quest => quest.id === id);
 
-		this.setState({ title: details.title, challenges: details.challenges });
+    this.setState({ title: details.title, challenges: details.challenges });
 	};
 
 	saveTitle = e => {

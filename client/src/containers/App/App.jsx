@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Header } from '../../components/Header/Header';
 import Main from '../../components/Main/Main';
 import QuestForm from '../../components/QuestForm/QuestForm';
-import QuestDetails from '../../components/QuestDetails/QuestDetails';
 import { connect } from 'react-redux';
 import { storeQuests } from '../../actions';
 import { fetchAllQuests } from '../../api/fetch/fetchAllQuests';
 import { Route } from 'react-router-dom';
 
 export class App extends Component {
-	componentDidMount() {
+
+  componentDidMount() {
 		!this.props.quests.length && fetchAllQuests().then(quests => this.props.storeQuests(quests));
 	}
 

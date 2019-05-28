@@ -10,7 +10,7 @@ describe("fetchDeleteNote", () => {
   });
 
   it("should call fetch with the correct params", () => {
-  const url = `${host}/notes/1234`;
+  const url = `${host}quests/1234`;
     const options = {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -20,8 +20,9 @@ describe("fetchDeleteNote", () => {
     expect(fetch).toHaveBeenCalledWith(url, options);
   });
 
-  it("should return the updated note", async () => {
-    const result = await fetchDeleteNote(1234);
+  it("should return a success message", async () => {
+    const response = await fetchDeleteNote(1234);
+    const result = await response.json();
     expect(result).toEqual('Note succesfully deleted');
   });
 

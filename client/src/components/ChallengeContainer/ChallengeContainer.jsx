@@ -24,10 +24,10 @@ export class ChallengeContainer extends Component {
     const challenge = { id: shortid.generate(), message: this.state.chalInput, isCompleted: false };
     const { viewType } = this.props;
 
-		if (viewType === 'new' || viewType === 'edit') {
-			this.props.saveChallenge(challenge);
-		} else {
+		if (viewType === 'list') {
 			this.props.addChallenge(challenge);
+		} else {
+			this.props.saveChallenge(challenge);
 		}
 		this.setState({ chalInput: '' });
 	};

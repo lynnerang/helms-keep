@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addQuest } from '../../actions';
+import { addQuest, editQuest } from '../../actions';
 import { ChallengeContainer } from '../ChallengeContainer/ChallengeContainer';
 import { NavLink } from 'react-router-dom';
 import { fetchAddQuest } from '../../api/fetch/fetchAddQuest';
@@ -49,10 +49,12 @@ class QuestForm extends Component {
 	handleSubmit = e => {
 		const { title, challenges } = this.state;
 
-		if (this.props.viewType === 'new') {
-			fetchAddQuest(title, challenges);
+    if (this.props.viewType === 'new') {
+      fetchAddQuest(title, challenges)
+        .then(res => this.props.addQuest(res));
 		} else {
-			fetchEditQuest({ id: this.props.id, title, challenges });
+      fetchEditQuest({ id: this.props.id, title, challenges });
+      this.props.editQuest({ id: this.props.id, title, challenges });
 		}
   };
   
@@ -142,7 +144,8 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-	addQuest: quest => dispatch(addQuest(quest))
+  addQuest: quest => dispatch(addQuest(quest)),
+  editQuest: quest => dispatch(editQuest(quest))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestForm);

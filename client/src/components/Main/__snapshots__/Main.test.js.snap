@@ -44,7 +44,7 @@ exports[`Main should match the snapshot when the store prop popup is false 1`] =
   />
   <NavLink
     className="add-quest-btn"
-    to="/new-note"
+    to="/new-quest"
     type="button"
   >
     <i
@@ -98,7 +98,7 @@ exports[`Main should match the snapshot when the store prop popup is true 1`] = 
   />
   <NavLink
     className="add-quest-btn"
-    to="/new-note"
+    to="/new-quest"
     type="button"
   >
     <i

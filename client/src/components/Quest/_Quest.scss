@@ -13,6 +13,20 @@
   background: rgb(119, 148, 109);
   padding: 12px 15px;
   border-radius: 4px 4px 0 0;
+  display: flex;
+  justify-content: space-between;
+
+  .expand-btn {
+    background: none!important;
+    border: none;
+    font-size: 20px;
+    color: white;
+    opacity: .7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 .card-title {

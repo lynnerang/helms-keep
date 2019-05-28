@@ -2,7 +2,7 @@ import { host } from '../utilities';
 
 export const fetchAddNote = (title, tasks) => {
   const url = `${host}/notes`;
-  const body = { id: new Date(), title, tasks }
+  const body = { id: Date.now(), title, tasks }
   const options = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

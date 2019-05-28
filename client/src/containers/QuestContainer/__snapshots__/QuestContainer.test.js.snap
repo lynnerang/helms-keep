@@ -1,3 +1,78 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`QuestContainer should match snapshot 1`] = `undefined`;
+exports[`QuestContainer should match snapshot 1`] = `
+<section
+  className="QuestContainer"
+>
+  <ConnectFunction
+    data={
+      Object {
+        "challenges": Array [
+          Object {
+            "id": 1234,
+            "isCompleted": false,
+            "message": "Clean the kitchen",
+          },
+          Object {
+            "id": 5678,
+            "isCompleted": true,
+            "message": "Make a mock completed task",
+          },
+        ],
+        "id": 1234,
+        "title": "My First Quest",
+      }
+    }
+    key="1234"
+  />
+  <ConnectFunction
+    data={
+      Object {
+        "challenges": Array [
+          Object {
+            "id": 1234,
+            "isCompleted": false,
+            "message": "Clean the kitchen",
+          },
+          Object {
+            "id": 5678,
+            "isCompleted": true,
+            "message": "Make a mock completed task",
+          },
+        ],
+        "id": 1234,
+        "title": "My First Quest",
+      }
+    }
+    key="1234"
+  />
+</section>
+`;
+
+exports[`QuestContainer should match snapshot with results 1`] = `
+<section
+  className="QuestContainer"
+>
+  <ConnectFunction
+    data={
+      Object {
+        "challenges": Array [
+          Object {
+            "id": 1234,
+            "isCompleted": false,
+            "message": "Clean the kitchen",
+          },
+          Object {
+            "id": 5678,
+            "isCompleted": true,
+            "message": "Make a mock completed task",
+          },
+        ],
+        "id": 1234,
+        "title": "My First Quest",
+      }
+    }
+    key="1234"
+  />
+</section>
+`;

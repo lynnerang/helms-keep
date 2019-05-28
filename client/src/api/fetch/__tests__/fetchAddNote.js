@@ -2,6 +2,7 @@ import { host, mockNote, mockTask } from "../../utilities";
 import { fetchAddNote } from "../fetchAddNote";
 
 describe("fetchAddNote", () => {
+  global.Date.now = jest.fn().mockImplementation(() => 1)
   window.fetch = jest.fn().mockImplementation(() => {
     return Promise.resolve({
       ok: true,
@@ -11,7 +12,7 @@ describe("fetchAddNote", () => {
 
   it("should call fetch with the correct params", () => {
     const url = `${host}/notes`;
-    const body = { id: new Date(), title: 'My First Quest', tasks: [mockTask, mockTask] };
+    const body = { id: Date.now(), title: 'My First Quest', tasks: [mockTask, mockTask] };
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },

@@ -10,7 +10,7 @@ describe("fetchAllNotes", () => {
   });
 
   it("should call fetch with the correct params", () => {
-    const url = `${host}/notes`;
+    const url = `${host}quests`;
 
     fetchAllNotes();
     expect(fetch).toHaveBeenCalledWith(url);
@@ -29,7 +29,7 @@ describe("fetchAllNotes", () => {
     try {
       await fetchAllNotes();
     } catch (error) {
-      expect(error.message).toEqual("Failed to get notes");
+      expect(error.message).toEqual("Failed to get quests");
     }
   });
 });

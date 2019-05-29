@@ -2,11 +2,21 @@
 
 exports[`Quest should match snapshot 1`] = `
 <article
-  className="Quest"
+  className="Quest green-quest"
 >
   <div
-    className="card-header"
+    className="card-header green-header"
   >
+    <button
+      className="color-picker"
+      onClick={[Function]}
+      type="button"
+    >
+      <img
+        className="coin title-coin"
+        src="greencoin.png"
+      />
+    </button>
     <h2
       className="card-title"
       contentEditable="true"
@@ -47,7 +57,7 @@ exports[`Quest should match snapshot 1`] = `
     />
   </div>
   <div
-    className="card-footer"
+    className="card-footer green-footer"
   >
     <div>
       <p

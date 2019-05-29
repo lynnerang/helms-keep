@@ -15,7 +15,7 @@ describe('fetchAddQuest', () => {
 
 	it('should call fetch with the correct params', () => {
 		const url = `${host}quests`;
-		const body = { id: 1, title: 'My First Quest', challenges: [ mockTask, mockTask ] };
+		const body = { id: 1, color: 'green', title: 'My First Quest', challenges: [ mockTask, mockTask ] };
 		const options = {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },

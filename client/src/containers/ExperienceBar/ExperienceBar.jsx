@@ -3,6 +3,7 @@ import { Line } from "rc-progress";
 import React, { Component } from "react";
 import Star from "../../assets/Star.png";
 import Life from "../../assets/Life.png";
+import PropTypes from 'prop-types';
 
 export class ProgressBarIndicator extends Component {
   render() {
@@ -41,6 +42,10 @@ export class ProgressBarIndicator extends Component {
       </div>
     );
   }
+}
+
+ProgressBarIndicator.propTypes = {
+
 }
 
 export default ProgressBarIndicator;

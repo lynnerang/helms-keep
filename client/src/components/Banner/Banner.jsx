@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ProgressBarIndicator from "../../containers/ExperienceBar/ExperienceBar";
 import Rogue from "../../assets/Rogue.png";
-
+import PropTypes from 'prop-types';
 export class Banner extends Component {
   render() {
     return (
@@ -17,5 +17,7 @@ export class Banner extends Component {
     );
   }
 }
-
+Banner.propTypes = {
+  
+}
 export default Banner;

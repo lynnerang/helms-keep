@@ -5,6 +5,7 @@ import Dialog from '../Dialog/Dialog';
 import { connect } from 'react-redux';
 import { searchQuests } from '../../helper';
 import { addQuest } from '../../actions';
+import PropTypes from 'prop-types';
 
 
 export class Main extends Component {
@@ -32,6 +33,7 @@ export class Main extends Component {
   }
   
   render() {
+
     const { quests } = this.props;
     const { results } = this.state;
     const popup = this.props.popup.bool ? <Dialog /> : null;
@@ -82,5 +84,11 @@ export const mapStateToProps = state => ({
 export const mapDispatchToProps = dispatch => ({
   addQuest: quest => dispatch(addQuest(quest))
 })
+
+Main.propTypes = {
+  addQuest: PropTypes.func,
+  popup: PropTypes.object,
+  quests: PropTypes.arrayOf(PropTypes.object)
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

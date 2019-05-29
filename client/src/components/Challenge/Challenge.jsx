@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchEditNote } from '../../api/fetch/fetchEditNote';
 import { editQuest } from '../../actions';
+import PropTypes from 'prop-types';
 
 export class Challenge extends Component {
 
@@ -83,4 +84,14 @@ export const mapDispatchToProps = dispatch => ({
 	updateQuest: quest => dispatch(editQuest(quest))
 });
 
+
+
+Challenge.propTypes = {
+  data: PropTypes.object,
+  deleteChallenge: PropTypes.func,
+  quests: PropTypes.arrayOf(PropTypes.object),
+  type: PropTypes.string,
+  updateChallenge: PropTypes.func,
+  updateQuest: PropTypes.func,
+}
 export default connect(mapStateToProps, mapDispatchToProps)(Challenge);

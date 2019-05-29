@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { showPopup, deleteQuest } from '../../actions';
 import { connect } from 'react-redux';
 import { fetchDeleteNote } from '../../api/fetch/fetchDeleteNote';
+import PropTypes from 'prop-types';
 
 export class Dialog extends Component {
 
@@ -41,4 +42,10 @@ export const mapDispatchToProps = dispatch => ({
   deleteQuest: id => dispatch(deleteQuest(id))
 })
 
+Dialog.propTypes = {
+  deleteQuest: PropTypes.func,
+  popup: PropTypes.object,
+  showPopup: PropTypes.func
+  
+}
 export default connect(mapStateToProps, mapDispatchToProps)(Dialog);

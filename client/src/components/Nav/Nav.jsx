@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import knight from "../../assets/knight_idle.png";
+import PropTypes from 'prop-types';
 
 export class Nav extends Component {
 	render() {
@@ -12,6 +13,10 @@ export class Nav extends Component {
 			</nav>
 		);
 	}
+}
+
+Nav.propTypes = {
+
 }
 
 export default Nav;

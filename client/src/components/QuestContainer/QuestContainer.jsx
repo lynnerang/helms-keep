@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Quest from '../Quest/Quest';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 export class QuestContainer extends Component {
   
   render() {
+
     const { quests, results } = this.props;
     let questsToRender = results 
       ? results.map(result => quests.find(quest => quest.id === +result))
@@ -20,4 +22,9 @@ export const mapStateToProps = state => ({
   quests: state.quests
 })
 
+
+QuestContainer.propTypes = {
+  dispatch: PropTypes.func,
+  quests: PropTypes.arrayOf(PropTypes.object)
+}
 export default connect(mapStateToProps)(QuestContainer);

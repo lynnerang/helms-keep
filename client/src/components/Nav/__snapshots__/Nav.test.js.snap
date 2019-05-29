@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav should match snapshot 1`] = `
+<nav
+  className="Nav"
+>
+  <h1>
+    <img
+      alt="User Sprite Logo"
+      src="weapon_red_gem_sword.png"
+    />
+    HELMSKEEP
+  </h1>
+</nav>
+`;

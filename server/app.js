@@ -6,23 +6,23 @@ app.use(express.json());
 
 const mockQuests = [
   {
-    id: 1,
+    id: '5ffsd44',
     title: "My First Quest",
     challenges: [
       {
-        id: "ABC",
+        id: "AB577C",
         isCompleted: true,
         message: "Clean the kitchen"
       },
       {
-        id: "DEF",
+        id: "DE575F",
         isCompleted: false,
         message: "Cook dinner"
       }
     ]
   },
   {
-    id: 2,
+    id: 'drt6',
     title: "My Second Quest",
     challenges: [
       {
@@ -38,7 +38,7 @@ const mockQuests = [
     ]
   },
   {
-    id: 3,
+    id: 'et44trdt5',
     title: "My Third Quest",
     challenges: [
       {
@@ -82,14 +82,11 @@ app.put("/api/quests/:id", (request, response) => {
   const { id } = request.params;
   let found = false;
   const mappedQuests = quests.map(quest => {
-    if (quest.id === +id) {
+    if (quest.id === id) {
       found = true;
       quest = { ...request.body };
-      console.log(quest);
-      return quest;
-    } else {
-      return quest;
-    }
+    } 
+    return quest;
   });
   app.locals.quests = mappedQuests;
   return found
@@ -102,7 +99,7 @@ app.put("/api/quests/:id", (request, response) => {
 app.get("/api/quests/:id", (request, response) => {
   const { quests } = app.locals;
   const { id } = request.params;
-  const targetQuest = quests.find(quest => quest.id == id);
+  const targetQuest = quests.find(quest => quest.id === id);
   if (!targetQuest) {
     return response
       .status(404)
@@ -115,7 +112,7 @@ app.get("/api/quests/:id", (request, response) => {
 app.delete("/api/quests/:id", (request, response) => {
   const { quests } = app.locals;
   const { id } = request.params;
-  const filteredQuests = quests.filter(quest => quest.id !== +id);
+  const filteredQuests = quests.filter(quest => quest.id !== id);
   if (filteredQuests.length === quests.length) {
     return response
       .status(404)

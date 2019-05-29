@@ -23,7 +23,7 @@ describe('Main', () => {
 	helper.searchQuests = jest.fn().mockImplementation(() => mockQuests);
 
 	beforeEach(() => {
-		wrapper = shallow(<Main popup={false} quests={mockQuests} addQuest={mockAddQuest} />);
+		wrapper = shallow(<Main popup={{}} quests={mockQuests} addQuest={mockAddQuest} />);
 	});
 
 	it('should match the snapshot when the store prop popup is false', () => {
@@ -31,7 +31,7 @@ describe('Main', () => {
 	});
 
 	it('should match the snapshot when the store prop popup is true', () => {
-		wrapper = shallow(<Main popup={true} />);
+		wrapper = shallow(<Main popup={{}} />);
 		expect(wrapper).toMatchSnapshot();
 	});
 

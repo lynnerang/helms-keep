@@ -10,9 +10,9 @@ describe('fetchEditQuest', () => {
 	});
 
 	it('should call fetch with the correct params', () => {
-		const url = `${host}/quests/${mockQuest.id}`;
+		const url = `${host}quests/${mockQuest.id}`;
 		const options = {
-			method: 'POST',
+			method: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(mockQuest)
 		};

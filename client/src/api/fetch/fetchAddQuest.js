@@ -4,7 +4,6 @@ import shortid from 'shortid';
 export const fetchAddQuest = (title, challenges) => {
 	const url = `${host}quests`;
 	const body = { id: shortid.generate(), title, challenges };
-	console.log(body);
 	const options = {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },

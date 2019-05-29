@@ -100,20 +100,17 @@ describe('Main', () => {
 
 	describe('Main event listeners', () => {
 		it('should call handleChange when the input value changes', () => {
-			jest.spyOn(wrapper.instance(), 'handleChange');
+      expect(wrapper.state('query')).toEqual('');
 
-			wrapper.find('.search-input').simulate('change', mockEvent);
+      wrapper.find('.search-input').simulate('change', mockEvent);
 
-			expect(wrapper.instance().handleChange).toHaveBeenCalled();
+      expect(wrapper.state('query')).toEqual('beef');
     });
     
     it('should call handleSubmit when the input value changes', () => {
-      // jest.spyOn(wrapper.instance(), 'handleSubmit');
-      wrapper.instance().handleSubmit = jest.fn();
+      wrapper.find('.search-bar').simulate('submit', mockEvent);
 
-      wrapper.find('.search-bar').simulate('onSubmit', mockEvent);
-
-      expect(wrapper.instance().handleSubmit).toHaveBeenCalled();
+      expect(mockEvent.preventDefault).toHaveBeenCalled();
     });
   });
   

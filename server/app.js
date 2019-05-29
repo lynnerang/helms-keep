@@ -7,6 +7,7 @@ app.use(express.json());
 const mockQuests = [
   {
     id: '5ffsd44',
+    color: 'green',
     title: "My First Quest",
     challenges: [
       {
@@ -23,6 +24,7 @@ const mockQuests = [
   },
   {
     id: 'drt6',
+    color: 'green',
     title: "My Second Quest",
     challenges: [
       {
@@ -39,6 +41,7 @@ const mockQuests = [
   },
   {
     id: 'et44trdt5',
+    color: 'green',
     title: "My Third Quest",
     challenges: [
       {

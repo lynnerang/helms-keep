@@ -54,7 +54,7 @@ export class Main extends Component {
 								<i className="fas fa-search" role="button" />
 							</button>
 						</form>
-						<select className="quest-filter" />
+						{/* <select className="quest-filter" /> */}
 					</div>
 				</div>
 				<QuestContainer results={this.state.results} />

@@ -32,7 +32,7 @@ Website is tested with Jest and Enzyme
 Run `npm run test` to see test suite
 
 ## Learning Goals
-* Interact with a provided back-end through the Fetch API, utilizing common account features 
+* Construct a local server using Node.js and Express 
 * Utilize Redux and Router to provide a seamless user experience 
 * Collaborate and create (and iterate) user stories
 * Demonstrate good GitHub collaboration and workflow within a large group

@@ -29,7 +29,6 @@ export class Challenge extends Component {
   handleDelete = () => {
     const { id } = this.props.data;
     const { viewType } = this.props;
-
     if (viewType === "new" || viewType === "edit") {
       this.props.removeChallenge(id);
     } else {

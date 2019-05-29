@@ -1,30 +1,114 @@
 .Quest {
   margin: 0 35px 35px 0;
-  border: 1px solid #8CAC81;
+  border: 1px solid #999999;
   border-radius: 6px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.639);
-  height: 375px;
+  height: 380px;
   width: 310px;
   position: relative;
   background: white;
+
+  &.green-quest {
+    border-color: #8CAC81;
+  }
+
+  &.red-quest {
+    border-color: rgb(172, 129, 129);
+  }
+
+  &.yellow-quest {
+    border-color: rgb(172, 171, 129);
+  }
+
+  &.blue-quest {
+    border-color: rgb(129, 141, 172);
+  }
 }
 
 .card-header {
-  background: rgb(119, 148, 109);
+  background: grey;
   padding: 12px 15px;
   border-radius: 4px 4px 0 0;
   display: flex;
   justify-content: space-between;
+  position: relative;
 
-  .expand-btn {
+  &.green-header {
+    background: rgb(119, 148, 109);
+  }
+
+  &.red-header {
+    background: rgb(162, 108, 108);
+  }
+
+  &.yellow-header {
+    background: rgb(186, 178, 93);
+  }
+
+  &.blue-header {
+    background: rgb(108, 114, 162);
+  }
+
+  button {
     background: none!important;
     border: none;
+  }
+
+  .color-options {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 45px;
+    left: -10px;
+    width: 50px;
+    height: 205px;
+    z-index: 3;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    background: white;
+    box-shadow: 0 0 6px #999999;
+    padding-top: 20px;
+
+    .close-colors {
+      position: absolute;
+      right: 5px;
+      top: 0px;
+      font-size: 18px;
+      color: rgb(181, 52, 52);
+      cursor: pointer;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
+
+  .expand-btn {
     font-size: 20px;
     color: white;
     opacity: .7;
 
     &:hover {
       opacity: 1;
+    }
+  }
+
+  .coin {
+    box-sizing: unset;
+    height: 22px;
+    cursor: pointer;
+    padding: 10px 12px;
+
+    &:hover {
+      background: #dfdfdf;
+    }
+  }
+
+  .title-coin {
+    padding: 0;
+
+    &:hover {
+      background: none;
     }
   }
 }
@@ -34,6 +118,8 @@
   font-weight: 600;
   color: white;
   cursor: text;
+  flex: auto;
+  padding-left: 12px;
 }
 
 .card-body {
@@ -56,13 +142,29 @@
 }
 
 .card-footer {
-  background: #E1EBDE;
-  height: 40px;
-  border-radius: 5px;
+  background: lightgray;
+  height: 42px;
+  border-radius: 0 0 5px 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 3px;
+
+  &.green-footer {
+    background: #E1EBDE;
+  }
+
+  &.red-footer {
+    background: rgb(244, 233, 233);
+  }
+
+  &.yellow-footer {
+    background: rgb(244, 243, 233);
+  }
+
+  &.blue-footer {
+    background: rgb(233, 234, 244);
+  }
 }
 
 .show-completed {

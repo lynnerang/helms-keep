@@ -16,24 +16,34 @@ exports[`Quest should match snapshot 1`] = `
     >
       My First Quest
     </h2>
+    <NavLink
+      className="expand-btn"
+      key="1234"
+      to="/quests/1234"
+    >
+      <i
+        className="fas fa-expand"
+      />
+    </NavLink>
   </div>
   <div
     className="card-body"
   >
     <ChallengeContainer
       addChallenge={[Function]}
+      challengeType="incomplete"
       challenges={
         Array [
           Object {
-            "id": 1234,
+            "id": "1234",
             "isCompleted": false,
             "message": "Clean the kitchen",
           },
         ]
       }
       deleteChallenge={[Function]}
-      type="incomplete"
       updateChallenge={[Function]}
+      viewType="list"
     />
   </div>
   <div

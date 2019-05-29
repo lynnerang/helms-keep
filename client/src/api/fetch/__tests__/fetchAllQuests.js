@@ -10,7 +10,7 @@ describe('fetchAllQuests', () => {
 	});
 
 	it('should call fetch with the correct params', () => {
-		const url = `${host}/quests`;
+		const url = `${host}quests`;
 
 		fetchAllQuests();
 		expect(fetch).toHaveBeenCalledWith(url);

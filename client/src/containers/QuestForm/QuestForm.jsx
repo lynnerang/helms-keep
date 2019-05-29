@@ -8,7 +8,8 @@ import { fetchEditQuest } from '../../api/fetch/fetchEditQuest';
 
 class QuestForm extends Component {
 	state = {
-		title: '',
+    title: '',
+    color: '',
     challenges: [],
 	};
 
@@ -21,8 +22,9 @@ class QuestForm extends Component {
   getQuestDetails = () => {
     const { id } = this.props;
     const details = this.props.quests.find(quest => quest.id === id);
+    console.log(details)
 
-    this.setState({ title: details.title, challenges: details.challenges });
+    this.setState({ title: details.title, challenges: details.challenges, color: details.color });
 	};
 
 	saveTitle = e => {
@@ -115,7 +117,7 @@ class QuestForm extends Component {
 				</NavLink>
         <h2 className="dialog-title">{title}</h2>
 				<div className="new-quest-form">
-					<div className="form-header">
+          <div className={`form-header ${this.state.color}-header`}>
 						<input
 							className="new-title-input"
 							value={this.state.title}

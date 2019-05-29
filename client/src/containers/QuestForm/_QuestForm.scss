@@ -32,6 +32,22 @@
     background: #8CAC81;
     padding: 10px 20px;
     border-radius: 10px 10px 0 0;
+
+  &.green-header {
+    background: rgb(119, 148, 109);
+  }
+
+  &.red-header {
+    background: rgb(162, 108, 108);
+  }
+
+  &.yellow-header {
+    background: rgb(186, 178, 93);
+  }
+
+  &.blue-header {
+    background: rgb(108, 114, 162);
+  }
   }
 
   .form-body {

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the snapshot 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="background"
+  >
+    <Header />
+    <ConnectFunction />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(Main)",
+          "type": [Function],
+        }
+      }
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/new-quest"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/quests/:id"
+    />
+  </div>
+</div>
+`;

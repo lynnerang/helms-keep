@@ -10,7 +10,11 @@ import { Route } from 'react-router-dom';
 export class App extends Component {
 
   componentDidMount() {
-		!this.props.quests.length && fetchAllQuests().then(quests => this.props.storeQuests(quests));
+		if (!this.props.quests.length) {
+			return fetchAllQuests()
+				.then(quests => this.props.storeQuests(quests));
+		}
+		 
 	}
 
 	render() {

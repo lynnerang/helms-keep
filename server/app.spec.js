@@ -8,48 +8,50 @@ describe("API", () => {
   beforeEach(() => {
     mockQuests = [
       {
-        id: 1,
+        id: "5ffsd44",
+        color: "green",
+
         title: "My First Quest",
         challenges: [
           {
-            id: 1,
+            id: "AB577C",
             isCompleted: true,
             message: "Clean the kitchen"
           },
           {
-            id: 2,
+            id: "DE575F",
             isCompleted: false,
             message: "Cook dinner"
           }
         ]
       },
       {
-        id: 2,
+        id: "et44trdt5",
         title: "My Second Quest",
         challenges: [
           {
-            id: 1,
+            id: "MNO",
             isCompleted: false,
             message: "Learn SASS"
           },
           {
-            id: 2,
+            id: "PQR",
             isCompleted: true,
             message: "Become a NODE wizard"
           }
         ]
       },
       {
-        id: 3,
+        id: "et44trdt6",
         title: "My Third Quest",
         challenges: [
           {
-            id: 1,
+            id: "PQV",
             isCompleted: true,
             message: "Charge phone"
           },
           {
-            id: 2,
+            id: "PQX",
             isCompleted: false,
             message: "Dance until the sun comes up"
           }
@@ -61,48 +63,50 @@ describe("API", () => {
   afterEach(() => {
     mockQuests = [
       {
-        id: 1,
+        id: "5ffsd44",
+        color: "green",
+
         title: "My First Quest",
         challenges: [
           {
-            id: 1,
+            id: "AB577C",
             isCompleted: true,
             message: "Clean the kitchen"
           },
           {
-            id: 2,
+            id: "DE575F",
             isCompleted: false,
             message: "Cook dinner"
           }
         ]
       },
       {
-        id: 2,
+        id: "et44trdt5",
         title: "My Second Quest",
         challenges: [
           {
-            id: 1,
+            id: "MNO",
             isCompleted: false,
             message: "Learn SASS"
           },
           {
-            id: 2,
+            id: "PQR",
             isCompleted: true,
             message: "Become a NODE wizard"
           }
         ]
       },
       {
-        id: 3,
+        id: "et44trdt6",
         title: "My Third Quest",
         challenges: [
           {
-            id: 1,
+            id: "PQV",
             isCompleted: true,
             message: "Charge phone"
           },
           {
-            id: 2,
+            id: "PQX",
             isCompleted: false,
             message: "Dance until the sun comes up"
           }
@@ -127,26 +131,28 @@ describe("API", () => {
 
     it("Should return a specific quest based on an ID argument", async () => {
       const mockQuest = {
-        id: 1,
+        id: "5ffsd44",
+        color: "green",
+
         title: "My First Quest",
         challenges: [
           {
-            id: 1,
+            id: "AB577C",
             isCompleted: true,
             message: "Clean the kitchen"
           },
           {
-            id: 2,
+            id: "DE575F",
             isCompleted: false,
             message: "Cook dinner"
           }
         ]
       };
-      const response = await request(app).get("/api/quests/1");
+      const response = await request(app).get("/api/quests/5ffsd44");
       expect(response.body).toEqual(mockQuest);
     });
     it("Should have a Status Code of 200 on successful retrieval of a Quest", async () => {
-      const response = await request(app).get("/api/quests/1");
+      const response = await request(app).get("/api/quests/5ffsd44");
       expect(response.statusCode).toBe(200);
     });
     it("Should have a Status Code of 404 on unsuccessful retrieval of a Quest", async () => {
@@ -198,7 +204,7 @@ describe("API", () => {
   });
   describe("DELETE/api/quests", () => {
     it("Should have a Status Code of 200 on successful deletion of a Quest", async () => {
-      const response = await request(app).delete("/api/quests/1");
+      const response = await request(app).delete("/api/quests/5ffsd44");
       expect(response.statusCode).toBe(200);
     });
     it("Should have a Status Code of 404 on unsuccessful deletion of a Quest", async () => {
@@ -211,27 +217,29 @@ describe("API", () => {
     });
     it("Should delete a specific Quest based on the ID", async () => {
       expect(app.locals.quests).toHaveLength(3);
-      const response = await request(app).delete("/api/quests/1");
+      const response = await request(app).delete("/api/quests/5ffsd44");
       expect(response.statusCode).toBe(200);
       expect(app.locals.quests).toHaveLength(2);
     });
     it("Should have a message on successful deletion of a Quest", async () => {
-      const response = await request(app).delete("/api/quests/1");
+      const response = await request(app).delete("/api/quests/5ffsd44");
       expect(response.text).toEqual("Quest successfully deleted");
     });
   });
   describe("PUT/api/quests", () => {
     const mockQuest = {
-      id: 1,
+      id: "5ffsd44",
+      color: "green",
+
       title: "My First Quest",
       challenges: [
         {
-          id: 1,
+          id: "AB577C",
           isCompleted: true,
-          message: "Dance in the moonlight"
+          message: "Clean the kitchen"
         },
         {
-          id: 2,
+          id: "DE575F",
           isCompleted: false,
           message: "Cook dinner"
         }
@@ -239,13 +247,13 @@ describe("API", () => {
     };
     it("Should have a Status Code of 200 on successful edit of a Quest", async () => {
       const response = await request(app)
-        .put("/api/quests/1")
+        .put("/api/quests/5ffsd44")
         .send({ ...mockQuest });
       expect(response.statusCode).toBe(200);
     });
     it("Should edit quests", async () => {
       const response = await request(app)
-        .put("/api/quests/1")
+        .put("/api/quests/5ffsd44")
         .send({ ...mockQuest });
       expect(response.body.shift()).toEqual(mockQuest);
     });

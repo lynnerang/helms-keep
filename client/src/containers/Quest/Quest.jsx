@@ -10,7 +10,8 @@ export class Quest extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showCompleted: false
+      showCompleted: false,
+      showColors: false
 		};
 	}
 
@@ -61,6 +62,14 @@ export class Quest extends Component {
     }
   }
 
+  pickColor = color => {
+    const quest = { ...this.props.data };
+
+    quest.color = color;
+    this.updateQuest(quest);
+    this.setState({ showColors: false });
+  }
+
   render() {
     const { title, challenges, id } = this.props.data;
     const completedChallenges = challenges.filter(chal => chal.isCompleted);
@@ -91,11 +100,21 @@ export class Quest extends Component {
       : null;
     
     const color = this.props.data.color;
+    const colorPicker = this.state.showColors ? (
+      <div className="color-options">
+        <button className="color-picker"><img className="coin" src={require(`../../assets/greencoin.png`)} type="button" onClick={() => this.pickColor('green')}/></button>
+        <button className="color-picker"><img className="coin" src={require(`../../assets/yellowcoin.png`)} type="button" onClick={() => this.pickColor('yellow')}/></button>
+        <button className="color-picker"><img className="coin" src={require(`../../assets/redcoin.png`)} type="button" onClick={() => this.pickColor('red')}/></button>
+        <button className="color-picker"><img className="coin" src={require(`../../assets/bluecoin.png`)} type="button" onClick={() => this.pickColor('blue')}/></button>
+        <button className="close-colors" type="button"onClick={() => this.setState({showColors: false})}><i className="fas fa-times"></i></button>
+      </div>
+    ) : null;
     
 		return (
       <article className={`Quest ${color}-quest`}>
         <div className={`card-header ${color}-header`}>
-          <button className="color-picker"><img className="coin" /></button>
+          <button className="color-picker" type="button" onClick={() => this.setState({ showColors: true })}><img className="coin title-coin" src={require(`../../assets/${color}coin.png`)}/></button>
+          {colorPicker}
           <h2
             className="card-title"
             contentEditable="true"
@@ -118,7 +137,7 @@ export class Quest extends Component {
           />
           {completed}
         </div>
-        <div className={`card-header ${color}-footer`}>
+        <div className={`card-footer ${color}-footer`}>
           <div>{link}</div>
           <button className="delete-btn" type="button">
             <i className="fas fa-trash" onClick={this.showDeleteWarning}/>

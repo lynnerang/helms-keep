@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import knight from "../../assets/knight_idle.png";
+import sword from "../../assets/weapon_red_gem_sword.png";
 
 export class Nav extends Component {
 	render() {
 		return (
 			<nav className="Nav">
 				<h1>
-					<img src={knight} alt="User Sprite Logo"/>
+					<img src={sword} alt="User Sprite Logo"/>
 					HELMSKEEP
 				</h1>
 			</nav>

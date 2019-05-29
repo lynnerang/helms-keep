@@ -22,7 +22,6 @@ class QuestForm extends Component {
   getQuestDetails = () => {
     const { id } = this.props;
     const details = this.props.quests.find(quest => quest.id === id);
-    console.log(details)
 
     this.setState({ title: details.title, challenges: details.challenges, color: details.color });
 	};
@@ -49,14 +48,14 @@ class QuestForm extends Component {
 	};
 
 	handleSubmit = e => {
-		const { title, challenges } = this.state;
+		const { title, challenges, color } = this.state;
 
     if (this.props.viewType === 'new') {
       fetchAddQuest(title, challenges)
         .then(res => this.props.addQuest(res));
 		} else {
-      fetchEditQuest({ id: this.props.id, title, challenges });
-      this.props.editQuest({ id: this.props.id, title, challenges });
+      fetchEditQuest({ id: this.props.id, title, challenges, color });
+      this.props.editQuest({ id: this.props.id, title, challenges, color });
 		}
   };
   
@@ -105,7 +104,8 @@ class QuestForm extends Component {
     return challenges;
   }
 
-	render() {
+  render() {
+    console.log(this.state)
     const challenges = this.getChallenges();
     const title = this.props.viewType === 'new' ? 'Add a new quest'
       : 'Edit your quest';

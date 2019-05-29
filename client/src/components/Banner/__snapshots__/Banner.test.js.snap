@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Banner should match snapshot 1`] = `
+<section
+  className="Banner"
+>
+  <div
+    className="info-cntr"
+  >
+    <section>
+      <span>
+        1
+      </span>
+      <img
+        src="elf_f_hit_anim_f0.png"
+        style={
+          Object {
+            "width": 25,
+          }
+        }
+      />
+      <span>
+        Jacob
+      </span>
+    </section>
+    <ExperienceBar
+      user={
+        Object {
+          "exp": 0,
+          "lvl": 1,
+          "name": "Jacob",
+          "nextLvl": 100,
+        }
+      }
+    />
+  </div>
+</section>
+`;

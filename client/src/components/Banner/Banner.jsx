@@ -10,12 +10,11 @@ import { connect } from "react-redux";
 export class Banner extends Component {
 
   selectAvatar = () => {
-
+    const { lvl } = this.props.user
     switch (true) {
-
-      case (this.props.user.lvl > 4 && this.props.user.lvl < 10 ):
+      case (lvl > 4 && lvl < 10):
         return Knight;
-      case (this.props.user.lvl > 10 && this.props.user.lvl < 15):
+      case (lvl > 10 && lvl < 15):
         return CentaurLady;
       default:
         return Elf;

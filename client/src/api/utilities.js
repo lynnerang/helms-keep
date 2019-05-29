@@ -18,3 +18,5 @@ export const mockQuest = {
   color: "green",
 	challenges: [ mockTask, mockCompletedTask ]
 };
+
+export const mockUser = { exp: 0, lvl: 1, nextLvl: 100, name: 'Jacob' };

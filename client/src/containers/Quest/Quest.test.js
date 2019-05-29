@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Quest, mapDispatchToProps } from './Quest';
-import { mockQuest, mockCompletedTask, mockNote } from '../../api/utilities';
-import { fetchEditNote } from '../../api/fetch/fetchEditNote';
+import { mockQuest, mockCompletedTask, mockTask } from '../../api/utilities';
+import { fetchEditQuest } from '../../api/fetch/fetchEditQuest';
 import { editQuest, showPopup } from '../../actions';
 
-jest.mock('../../api/fetch/fetchEditNote');
+jest.mock('../../api/fetch/fetchEditQuest');
 
 describe('Quest', () => {
 	let wrapper, instance;
@@ -30,14 +30,15 @@ describe('Quest', () => {
 	}
 
 	beforeEach(() => {
-		const mockNote = {
-			id: 1234,
+		const mockQuest = {
+			id: '1234',
 			title: 'My First Quest',
+			color: "green",
 			challenges: [mockTask, mockCompletedTask]
 		}
 		wrapper = shallow(
 		<Quest 
-			data={mockNote} 
+			data={mockQuest} 
 			showPopup={mockShowPopUp}
 			updateQuest={mockUpdateQuest}
 		/>);
@@ -49,7 +50,10 @@ describe('Quest', () => {
 	});
 
 	it('should have a default state', () => {
-		const defaultState = { showCompleted: false };
+		const defaultState = {
+			showCompleted: false,
+			showColors: false
+		};
 		expect(wrapper.state()).toEqual(defaultState);
 	});
 
@@ -74,7 +78,7 @@ describe('Quest', () => {
 
 		it('should invoke showDeleteWarning when the delete button is clicked', () => {
 			wrapper.find('.fa-trash').simulate('click');
-			expect(mockShowPopUp).toHaveBeenCalledWith(true, 1234, 'delete')
+			expect(mockShowPopUp).toHaveBeenCalledWith(true, '1234', 'delete')
 		});
 	});
 
@@ -122,7 +126,7 @@ describe('Quest', () => {
 
 	describe('updateChallenge', () => {
 		let localChallenge = {
-			id: 1234,
+			id: '1234',
 			isCompleted: false,
 			message: 'update todo list'
 		}
@@ -143,24 +147,24 @@ describe('Quest', () => {
 	describe('showDeleteWarning', () => {
 		it('should invoke showPopup with the correct params', () => {
 			instance.showDeleteWarning();
-			expect(mockShowPopUp).toHaveBeenCalledWith(true, 1234, 'delete');
+			expect(mockShowPopUp).toHaveBeenCalledWith(true, '1234', 'delete');
 		});
 	});
 
 	describe('updateQuest', () => {
 		it('should invoke the updateQuest dispatch with the correct params', () => {
-			instance.updateQuest(mockNote);
-			expect(mockUpdateQuest).toHaveBeenCalledWith(mockNote);
+			instance.updateQuest(mockQuest);
+			expect(mockUpdateQuest).toHaveBeenCalledWith(mockQuest);
 		});
 
-		it('should invoke the fetchEditNote dispatch with the correct params', () => {
-			instance.updateQuest(mockNote);
-			expect(fetchEditNote).toHaveBeenCalledWith(mockNote);
+		it('should invoke the fetchEditQuest dispatch with the correct params', () => {
+			instance.updateQuest(mockQuest);
+			expect(fetchEditQuest).toHaveBeenCalledWith(mockQuest);
 		});
 	});
 
 	describe('updateTitle', () => {
-		let updatedNote = { ...mockNote, title: 'New title'};
+		let updatedNote = { ...mockQuest, title: 'New title'};
 
 		it('should invoke updateQuest if the user presses enter', () => {
 			jest.spyOn(instance, 'updateQuest');
@@ -189,8 +193,8 @@ describe('Quest', () => {
 		});
 
 		it('should call dispatch when updateQuest is called', () => {
-			const actionToDispatch = editQuest(mockNote);
-			mappedProps.updateQuest(mockNote);
+			const actionToDispatch = editQuest(mockQuest);
+			mappedProps.updateQuest(mockQuest);
 			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
 		});
 

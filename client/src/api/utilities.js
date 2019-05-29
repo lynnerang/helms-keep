@@ -14,6 +14,7 @@ export const mockCompletedTask = {
 
 export const mockQuest = {
 	id: '1234',
-	title: 'My First Quest',
+  title: 'My First Quest',
+  color: "green",
 	challenges: [ mockTask, mockCompletedTask ]
 };

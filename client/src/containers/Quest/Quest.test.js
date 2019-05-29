@@ -5,6 +5,8 @@ import { mockTask, mockCompletedTask, mockNote } from '../../api/utilities';
 import { fetchEditNote } from '../../api/fetch/fetchEditNote';
 import { editQuest, showPopup } from '../../actions';
 
+// test
+
 jest.mock('../../api/fetch/fetchEditNote');
 
 describe('Quest', () => {

@@ -10,7 +10,6 @@ import { connect } from "react-redux";
 export class Banner extends Component {
 
   selectAvatar = () => {
-    console.log(this.props.user.lvl)
 
     switch (true) {
 

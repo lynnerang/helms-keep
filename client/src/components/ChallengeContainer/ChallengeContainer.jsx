@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Challenge from '../../containers/Challenge/Challenge';
 import shortid from 'shortid';
-
+import PropTypes from 'prop-types';
 export class ChallengeContainer extends Component {
 	state = {
 		chalInput: ''
@@ -80,5 +80,12 @@ export class ChallengeContainer extends Component {
 		);
 	}
 }
+ChallengeContainer.propTypes = {
+	addChallenge: PropTypes.func,
+	challenges: PropTypes.arrayOf(PropTypes.object),
+	deleteChallenge: PropTypes.func,
+	type: PropTypes.string,
+	updateChallenge: PropTypes.func
+  };
 
 export default ChallengeContainer;

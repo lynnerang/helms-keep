@@ -4,7 +4,7 @@ import { fetchEditQuest } from '../../api/fetch/fetchEditQuest';
 import { connect } from "react-redux";
 import { editQuest, showPopup, addLvl, addExp } from '../../actions';
 import { NavLink } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 
 export class Quest extends Component {
 	constructor(props) {
@@ -69,7 +69,6 @@ export class Quest extends Component {
   }
 
   render() {
-    console.log(this.props.data)
     const { title, challenges } = this.props.data;
     const color = this.props.data.color || 'green';
     const completedChallenges = challenges.filter(chal => chal.isCompleted);
@@ -147,6 +146,11 @@ export class Quest extends Component {
 	}
 }
 
+Quest.propTypes = {
+  data: PropTypes.object,
+  showPopup: PropTypes.func,
+  updateQuest: PropTypes.func
+};
 export const mapDispatchToProps = dispatch => ({
   updateQuest: quest => dispatch(editQuest(quest)),
   showPopup: (bool, id, type) => dispatch(showPopup(bool, id, type)),

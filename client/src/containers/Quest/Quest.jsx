@@ -90,9 +90,12 @@ export class Quest extends Component {
       </p>
       : null;
     
+    const color = this.props.data.color;
+    
 		return (
-      <article className="Quest">
-        <div className="card-header">
+      <article className={`Quest ${color}-quest`}>
+        <div className={`card-header ${color}-header`}>
+          <button className="color-picker"><img className="coin" /></button>
           <h2
             className="card-title"
             contentEditable="true"
@@ -115,7 +118,7 @@ export class Quest extends Component {
           />
           {completed}
         </div>
-        <div className="card-footer">
+        <div className={`card-header ${color}-footer`}>
           <div>{link}</div>
           <button className="delete-btn" type="button">
             <i className="fas fa-trash" onClick={this.showDeleteWarning}/>

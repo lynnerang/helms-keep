@@ -3,7 +3,7 @@ import shortid from 'shortid';
 
 export const fetchAddQuest = (title, challenges) => {
 	const url = `${host}quests`;
-	const body = { id: shortid.generate(), title, challenges };
+	const body = { id: shortid.generate(), color: 'green', title, challenges };
 	console.log(body);
 	const options = {
 		method: 'POST',

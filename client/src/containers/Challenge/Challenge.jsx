@@ -30,10 +30,10 @@ export class Challenge extends Component {
     const { id } = this.props.data;
     const { viewType } = this.props;
 
-		if (viewType === 'new' || viewType === 'edit') {
-			this.props.removeChallenge(id);
-		} else {
+		if (viewType === 'list') {
 			this.props.deleteChallenge(id);
+		} else {
+			this.props.removeChallenge(id);
 		}
 	};
 

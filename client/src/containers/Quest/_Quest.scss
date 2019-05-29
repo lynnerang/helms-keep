@@ -1,24 +1,35 @@
 .Quest {
   margin: 0 35px 35px 0;
-  border: 1px solid #8CAC81;
+  border: 1px solid #999999;
   border-radius: 6px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.639);
   height: 375px;
   width: 310px;
   position: relative;
   background: white;
+
+  .green-quest {
+    border-color: #8CAC81;
+  }
 }
 
 .card-header {
-  background: rgb(119, 148, 109);
+  background: grey;
   padding: 12px 15px;
   border-radius: 4px 4px 0 0;
   display: flex;
   justify-content: space-between;
 
-  .expand-btn {
+  .green-header {
+    background: rgb(119, 148, 109);
+  }
+
+  button {
     background: none!important;
     border: none;
+  }
+
+  .expand-btn {
     font-size: 20px;
     color: white;
     opacity: .7;
@@ -27,6 +38,11 @@
       opacity: 1;
     }
   }
+
+  .coin {
+    height: 20px;
+    cursor: pointer;
+  }
 }
 
 .card-title {
@@ -34,6 +50,8 @@
   font-weight: 600;
   color: white;
   cursor: text;
+  flex: auto;
+  padding-left: 12px;
 }
 
 .card-body {
@@ -56,13 +74,17 @@
 }
 
 .card-footer {
-  background: #E1EBDE;
+  background: lightgray;
   height: 40px;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 3px;
+
+  .green-footer {
+    background: #E1EBDE;
+  }
 }
 
 .show-completed {

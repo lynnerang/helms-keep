@@ -7,7 +7,7 @@ export class QuestContainer extends Component {
   render() {
     const { quests, results } = this.props;
     let questsToRender = results 
-      ? results.map(result => quests.find(quest => quest.id === +result))
+      ? results.map(result => quests.find(quest => quest.id === result))
       : quests;
 
     const questCards = questsToRender.map(quest => (

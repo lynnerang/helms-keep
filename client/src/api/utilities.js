@@ -1,6 +1,7 @@
 export const host = 'http://localhost:5000/api/';
 
 export const mockTask = {
+<<<<<<< HEAD
   id: 1234,
   isCompleted: false, 
   message: 'Clean the kitchen'
@@ -17,3 +18,15 @@ export const mockNote = {
   title: 'My First Quest',
   challenges: [mockTask, mockCompletedTask]
 }
+=======
+	id: 1234,
+	isCompleted: false,
+	message: 'Clean the kitchen'
+};
+
+export const mockQuest = {
+	id: 1234,
+	title: 'My First Quest',
+	tasks: [ mockTask, mockTask ]
+};
+>>>>>>> master

@@ -1,14 +1,15 @@
-import { host, mockNote } from '../../utilities';
-import { fetchEditNote } from '../fetchEditNote'
+import { host, mockQuest } from '../../utilities';
+import { fetchEditQuest } from '../fetchEditQuest';
 
-describe('fetchEditNote', () => {
-  window.fetch = jest.fn().mockImplementation(() => {
-    return Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(mockNote)
-    })
-  });
+describe('fetchEditQuest', () => {
+	window.fetch = jest.fn().mockImplementation(() => {
+		return Promise.resolve({
+			ok: true,
+			json: () => Promise.resolve(mockQuest)
+		});
+	});
 
+<<<<<<< HEAD
   it('should call fetch with the correct params', () => {
     const url = `${host}quests/${mockNote.id}`;
     const options = {
@@ -16,26 +17,34 @@ describe('fetchEditNote', () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(mockNote)
     }
+=======
+	it('should call fetch with the correct params', () => {
+		const url = `${host}/quests/${mockQuest.id}`;
+		const options = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(mockQuest)
+		};
+>>>>>>> master
 
-    fetchEditNote(mockNote);
-    expect(fetch).toHaveBeenCalledWith(url, options);
-  });
+		fetchEditQuest(mockQuest);
+		expect(fetch).toHaveBeenCalledWith(url, options);
+	});
 
-  it('should return the updated note', async () => {
-    const result = await fetchEditNote(mockNote);
-    expect(result).toEqual(mockNote);
-  });
+	it('should return the updated quest', async () => {
+		const result = await fetchEditQuest(mockQuest);
+		expect(result).toEqual(mockQuest);
+	});
 
-  it('should throw an error if fetch fails', async () => {
-    window.fetch = jest.fn().mockImplementation(() => {
-      return Promise.resolve({ ok: false })
-    });
+	it('should throw an error if fetch fails', async () => {
+		window.fetch = jest.fn().mockImplementation(() => {
+			return Promise.resolve({ ok: false });
+		});
 
-    try {
-      await fetchEditNote(mockNote);
-    } catch(error) {
-      expect(error.message).toEqual('Failed to edit note')
-    }
-  });
+		try {
+			await fetchEditQuest(mockQuest);
+		} catch (error) {
+			expect(error.message).toEqual('Failed to edit quest');
+		}
+	});
 });
-

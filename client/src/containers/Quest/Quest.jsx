@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD:client/src/containers/Quest/Quest.jsx
 import { fetchEditNote } from '../../api/fetch/fetchEditNote';
 import { connect } from "react-redux";
 import { editQuest, showPopup } from '../../actions';
 import ChallengeContainer from '../../components/ChallengeContainer/ChallengeContainer';
+=======
+import ChallengeContainer from '../ChallengeContainer/ChallengeContainer';
+import { fetchEditQuest } from '../../api/fetch/fetchEditQuest';
+import { connect } from "react-redux";
+import { editQuest, showPopup } from '../../actions';
+import { NavLink } from 'react-router-dom';
+
+>>>>>>> master:client/src/components/Quest/Quest.jsx
 
 export class Quest extends Component {
 	constructor(props) {
@@ -45,7 +54,7 @@ export class Quest extends Component {
 
   updateQuest = quest => {
     this.props.updateQuest(quest);
-    fetchEditNote(quest);
+    fetchEditQuest(quest);
   }
 
   updateTitle = e => {
@@ -68,7 +77,8 @@ export class Quest extends Component {
     const completed = this.state.showCompleted && completedChallenges.length ?    <>
         <h4 className="divider">Completed</h4>
         <ChallengeContainer
-          type="complete"
+          viewType="list"
+          challengeType="complete"
           challenges={completedChallenges}
           addChallenge={this.addChallenge}
           updateChallenge={this.updateChallenge}
@@ -99,10 +109,12 @@ export class Quest extends Component {
           >
             {title}
           </h2>
+          <NavLink to={`/quests/${this.props.data.id}`} key={this.props.data.id} className="expand-btn"><i className="fas fa-expand"></i></NavLink>
         </div>
         <div className="card-body">
           <ChallengeContainer
-            type="incomplete"
+            viewType="list"
+            challengeType="incomplete"
             challenges={incompleteChallenges}
             addChallenge={this.addChallenge}
             updateChallenge={this.updateChallenge}

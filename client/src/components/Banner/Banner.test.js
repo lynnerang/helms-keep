@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Banner } from './Banner';
+import { Banner, mapStateToProps } from './Banner';
 import { mockUser } from '../../api/utilities';
 
 describe('Banner', () => {
@@ -41,5 +41,12 @@ describe('Banner', () => {
     });
   });
 
-
+  describe('mapStateToProps', () => {
+    it('should return a user object', () => {
+      const state = { user: mockUser, test: 'test' };
+      const expected = { user: mockUser }
+      const result = mapStateToProps(state);
+      expect(result).toEqual(expected);
+    });
+  });
 });

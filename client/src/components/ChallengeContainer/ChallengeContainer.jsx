@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Challenge from '../Challenge/Challenge';
+import Challenge from '../../containers/Challenge/Challenge';
 import shortid from 'shortid';
 
 export class ChallengeContainer extends Component {

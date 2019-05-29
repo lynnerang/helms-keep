@@ -6,6 +6,13 @@ import { connect } from 'react-redux';
 import { searchQuests } from '../../helper';
 import { addQuest } from '../../actions';
 
+<<<<<<< HEAD:client/src/containers/Main/Main.jsx
+ export class Main extends Component {
+  state = {
+    query: '',
+    results: null,
+  }
+=======
 export class Main extends Component {
 	state = {
 		query: '',
@@ -19,6 +26,7 @@ export class Main extends Component {
 		}
 		this.setState({ query });
 	};
+>>>>>>> master:client/src/components/Main/Main.jsx
 
 	clearResults = () => {
 		this.setState({ results: null });

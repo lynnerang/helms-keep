@@ -9,8 +9,13 @@ describe('fetchAllQuests', () => {
 		});
 	});
 
+<<<<<<< HEAD
+  it("should call fetch with the correct params", () => {
+    const url = `${host}quests`;
+=======
 	it('should call fetch with the correct params', () => {
 		const url = `${host}/quests`;
+>>>>>>> master
 
 		fetchAllQuests();
 		expect(fetch).toHaveBeenCalledWith(url);
@@ -26,10 +31,19 @@ describe('fetchAllQuests', () => {
 			return Promise.resolve({ ok: false });
 		});
 
+<<<<<<< HEAD
+    try {
+      await fetchAllNotes();
+    } catch (error) {
+      expect(error.message).toEqual("Failed to get quests");
+    }
+  });
+=======
 		try {
 			await fetchAllQuests();
 		} catch (error) {
 			expect(error.message).toEqual('Failed to get quests');
 		}
 	});
+>>>>>>> master
 });

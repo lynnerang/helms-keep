@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD:client/src/containers/Quest/Quest.jsx
+import { fetchEditNote } from '../../api/fetch/fetchEditNote';
+import { connect } from "react-redux";
+import { editQuest, showPopup } from '../../actions';
+import ChallengeContainer from '../../components/ChallengeContainer/ChallengeContainer';
+=======
 import ChallengeContainer from '../ChallengeContainer/ChallengeContainer';
 import { fetchEditQuest } from '../../api/fetch/fetchEditQuest';
 import { connect } from "react-redux";
 import { editQuest, showPopup } from '../../actions';
 import { NavLink } from 'react-router-dom';
 
+>>>>>>> master:client/src/components/Quest/Quest.jsx
 
 export class Quest extends Component {
 	constructor(props) {
@@ -56,9 +63,9 @@ export class Quest extends Component {
     if (e.key === "Enter" || e.type === 'blur') {
       e.preventDefault();
       quest.title = e.target.innerText;
+      this.updateQuest(quest);
       e.target.blur();
     }
-    this.updateQuest(quest);
   }
 
   render() {
@@ -81,7 +88,13 @@ export class Quest extends Component {
       : null;
 
     const link = completedChallenges.length ?
-      <p role="button" className="show-completed" onClick={this.toggleShowCompleted}>{verb} {completedChallenges.length} completed</p>
+      <p 
+        role="button" 
+        className="show-completed" 
+        onClick={this.toggleShowCompleted}
+      >
+        {verb} {completedChallenges.length} completed
+      </p>
       : null;
     
 		return (

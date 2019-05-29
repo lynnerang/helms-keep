@@ -1,65 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`QuestContainer should match snapshot 1`] = `
-<section>
-  <Quest
+<section
+  className="QuestContainer"
+>
+  <ConnectFunction
     data={
       Object {
-        "id": 1234,
-        "tasks": Array [
+        "challenges": Array [
           Object {
             "id": 1234,
             "isCompleted": false,
             "message": "Clean the kitchen",
           },
           Object {
-            "id": 1234,
-            "isCompleted": false,
-            "message": "Clean the kitchen",
+            "id": 5678,
+            "isCompleted": true,
+            "message": "Make a mock completed task",
           },
         ],
+        "id": 1234,
         "title": "My First Quest",
       }
     }
     key="1234"
   />
-  <Quest
+  <ConnectFunction
     data={
       Object {
-        "id": 1234,
-        "tasks": Array [
+        "challenges": Array [
           Object {
             "id": 1234,
             "isCompleted": false,
             "message": "Clean the kitchen",
           },
           Object {
-            "id": 1234,
-            "isCompleted": false,
-            "message": "Clean the kitchen",
+            "id": 5678,
+            "isCompleted": true,
+            "message": "Make a mock completed task",
           },
         ],
+        "id": 1234,
         "title": "My First Quest",
       }
     }
     key="1234"
   />
-  <Quest
+</section>
+`;
+
+exports[`QuestContainer should match snapshot with results 1`] = `
+<section
+  className="QuestContainer"
+>
+  <ConnectFunction
     data={
       Object {
-        "id": 1234,
-        "tasks": Array [
+        "challenges": Array [
           Object {
             "id": 1234,
             "isCompleted": false,
             "message": "Clean the kitchen",
           },
           Object {
-            "id": 1234,
-            "isCompleted": false,
-            "message": "Clean the kitchen",
+            "id": 5678,
+            "isCompleted": true,
+            "message": "Make a mock completed task",
           },
         ],
+        "id": 1234,
         "title": "My First Quest",
       }
     }

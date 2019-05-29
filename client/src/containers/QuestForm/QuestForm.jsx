@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+<<<<<<< HEAD:client/src/containers/QuestForm/QuestForm.jsx
+import { addQuest } from '../../actions';
+import { ChallengeContainer } from '../../components/ChallengeContainer/ChallengeContainer';
+=======
 import { addQuest, editQuest } from '../../actions';
 import { ChallengeContainer } from '../ChallengeContainer/ChallengeContainer';
+>>>>>>> master:client/src/components/QuestForm/QuestForm.jsx
 import { NavLink } from 'react-router-dom';
 import { fetchAddQuest } from '../../api/fetch/fetchAddQuest';
 import { fetchEditQuest } from '../../api/fetch/fetchEditQuest';

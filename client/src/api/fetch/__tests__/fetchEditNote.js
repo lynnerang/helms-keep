@@ -9,6 +9,15 @@ describe('fetchEditQuest', () => {
 		});
 	});
 
+<<<<<<< HEAD
+  it('should call fetch with the correct params', () => {
+    const url = `${host}quests/${mockNote.id}`;
+    const options = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(mockNote)
+    }
+=======
 	it('should call fetch with the correct params', () => {
 		const url = `${host}/quests/${mockQuest.id}`;
 		const options = {
@@ -16,6 +25,7 @@ describe('fetchEditQuest', () => {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(mockQuest)
 		};
+>>>>>>> master
 
 		fetchEditQuest(mockQuest);
 		expect(fetch).toHaveBeenCalledWith(url, options);

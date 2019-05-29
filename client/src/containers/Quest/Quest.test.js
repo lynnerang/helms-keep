@@ -1,7 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Quest } from './Quest';
-import { mockQuest } from '../../api/utilities';
+import { Quest, mapDispatchToProps } from './Quest';
+import { mockQuest, mockCompletedTask, mockNote } from '../../api/utilities';
+import { fetchEditNote } from '../../api/fetch/fetchEditNote';
+import { editQuest, showPopup } from '../../actions';
+
+jest.mock('../../api/fetch/fetchEditNote');
+
 
 describe('Quest', () => {
 	let wrapper, instance;

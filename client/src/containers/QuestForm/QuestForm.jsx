@@ -105,7 +105,6 @@ class QuestForm extends Component {
   }
 
   render() {
-    console.log(this.state)
     const challenges = this.getChallenges();
     const title = this.props.viewType === 'new' ? 'Add a new quest'
       : 'Edit your quest';

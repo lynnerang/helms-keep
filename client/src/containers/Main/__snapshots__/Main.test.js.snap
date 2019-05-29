@@ -34,9 +34,6 @@ exports[`Main should match the snapshot when the store prop popup is false 1`] =
           />
         </button>
       </form>
-      <select
-        className="quest-filter"
-      />
     </div>
   </div>
   <ConnectFunction
@@ -88,9 +85,6 @@ exports[`Main should match the snapshot when the store prop popup is true 1`] = 
           />
         </button>
       </form>
-      <select
-        className="quest-filter"
-      />
     </div>
   </div>
   <ConnectFunction

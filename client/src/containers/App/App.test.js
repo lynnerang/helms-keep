@@ -45,9 +45,9 @@ describe('App', () => {
     });
   });
 
-  describe('mapDispatchToProps', () => {
-    it('should call dispatch when storeQuests is called', () => {
-      const 
-    });
-  });
+  // describe('mapDispatchToProps', () => {
+  //   it('should call dispatch when storeQuests is called', () => {
+  //     const 
+  //   });
+  // });
 });

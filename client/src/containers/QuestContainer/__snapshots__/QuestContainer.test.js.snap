@@ -19,6 +19,7 @@ exports[`QuestContainer should match snapshot 1`] = `
             "message": "Make a mock completed task",
           },
         ],
+        "color": "green",
         "id": "1234",
         "title": "My First Quest",
       }
@@ -40,6 +41,7 @@ exports[`QuestContainer should match snapshot 1`] = `
             "message": "Make a mock completed task",
           },
         ],
+        "color": "green",
         "id": "1234",
         "title": "My First Quest",
       }
@@ -68,6 +70,7 @@ exports[`QuestContainer should match snapshot with results 1`] = `
             "message": "Make a mock completed task",
           },
         ],
+        "color": "green",
         "id": "1234",
         "title": "My First Quest",
       }

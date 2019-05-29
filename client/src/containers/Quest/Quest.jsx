@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD:client/src/containers/Quest/Quest.jsx
-import { fetchEditNote } from '../../api/fetch/fetchEditNote';
-import { connect } from "react-redux";
-import { editQuest, showPopup } from '../../actions';
 import ChallengeContainer from '../../components/ChallengeContainer/ChallengeContainer';
-=======
-import ChallengeContainer from '../ChallengeContainer/ChallengeContainer';
 import { fetchEditQuest } from '../../api/fetch/fetchEditQuest';
 import { connect } from "react-redux";
 import { editQuest, showPopup } from '../../actions';
 import { NavLink } from 'react-router-dom';
 
->>>>>>> master:client/src/components/Quest/Quest.jsx
 
 export class Quest extends Component {
 	constructor(props) {

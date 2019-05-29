@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Header } from '../../components/Header/Header';
-import Main from '../../components/Main/Main';
-import QuestForm from '../../components/QuestForm/QuestForm';
+import Main from '../../containers/Main/Main';
+import QuestForm from '../../containers/QuestForm/QuestForm';
 import { connect } from 'react-redux';
 import { storeQuests } from '../../actions';
 import { fetchAllQuests } from '../../api/fetch/fetchAllQuests';

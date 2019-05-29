@@ -10,7 +10,6 @@ export class Banner extends Component {
           <section>
             <img src={Rogue} style={{ width: 45 }} />
           </section>
-
           <ProgressBarIndicator />
         </div>
       </section>

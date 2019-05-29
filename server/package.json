@@ -18,10 +18,11 @@
   },
   "homepage": "https://github.com/jacobogart/TrapperKeeper#readme",
   "dependencies": {
-    "esm": "^3.2.25",
-    "jest": "^24.8.0",
     "cors": "^2.8.5",
+    "esm": "^3.2.25",
     "express": "^4.17.0",
+    "jest": "^24.8.0",
+    "prop-types": "^15.7.2",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

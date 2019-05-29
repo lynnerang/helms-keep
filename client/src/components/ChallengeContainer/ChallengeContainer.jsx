@@ -7,13 +7,13 @@ export class ChallengeContainer extends Component {
 		chalInput: ''
 	};
 
-	componentDidUpdate() {
-		this.scrollToBottom();
-	}
+	// componentDidUpdate() {
+	// 	this.scrollToBottom();
+	// }
 
-	scrollToBottom() {
-		this.el.scrollIntoView({ behavior: 'smooth' });
-	}
+	// scrollToBottom() {
+	// 	this.el.scrollIntoView({ behavior: 'smooth' });
+	// }
 
 	handleChange = e => {
 		this.setState({ [e.target.name]: e.target.value });
@@ -21,9 +21,10 @@ export class ChallengeContainer extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		const challenge = { id: shortid.generate(), message: this.state.chalInput, isCompleted: false };
+    const challenge = { id: shortid.generate(), message: this.state.chalInput, isCompleted: false };
+    const { viewType } = this.props;
 
-		if (this.props.type === 'incomplete') {
+		if (viewType === 'list') {
 			this.props.addChallenge(challenge);
 		} else {
 			this.props.saveChallenge(challenge);
@@ -31,11 +32,11 @@ export class ChallengeContainer extends Component {
 		this.setState({ chalInput: '' });
 	};
 
-	render() {
-		const ulClass = this.props.type === 'complete' ? 'complete-ul' : 'incomplete-ul';
+  render() {
+		const ulClass = this.props.challengeType === 'complete' ? 'complete-ul' : 'incomplete-ul';
 
 		const newChallengeInput =
-			this.props.type !== 'complete' ? (
+			this.props.challengeType !== 'complete' ? (
         <form className="form-row" onSubmit={this.handleSubmit}>
 					<input
 						className="new-challenge-input"
@@ -54,7 +55,7 @@ export class ChallengeContainer extends Component {
 			return (
 				<Challenge
 					data={chal}
-					type={this.props.type}
+					viewType={this.props.viewType}
 					key={chal.id}
 					updateChallenge={this.props.updateChallenge}
           deleteChallenge={this.props.deleteChallenge}

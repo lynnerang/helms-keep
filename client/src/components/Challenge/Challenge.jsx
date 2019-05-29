@@ -1,59 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchEditNote } from '../../api/fetch/fetchEditNote';
 import { editQuest } from '../../actions';
 
 export class Challenge extends Component {
 
-  handleUpdate = e => {
+	handleUpdate = e => {
     const challenge = { ...this.props.data };
 
-    if (this.props.type === 'form') {
-      this.updateChallengeForm(e, challenge);
-    } else {
-      this.updateChallengeData(e, challenge);
-    }
-  };
-
-  updateChallengeForm = (e, challenge) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      challenge.message = e.target.innerText;
-      e.target.blur();
-    } else if (e.type === 'blur') {
-      challenge.message = e.target.innerText;
-    }
-    this.props.editChallenge(challenge);
-  }
-  
-  updateChallengeData = (e, challenge) => {
     if (e.target.classList.contains('checkbox')) {
       challenge.isCompleted = !challenge.isCompleted;
+      this.sendChalUpdate(challenge);
     } else if (e.key === 'Enter') {
       e.preventDefault();
       challenge.message = e.target.innerText;
+      this.sendChalUpdate(challenge);
       e.target.blur();
     } else if (e.type === 'blur') {
       challenge.message = e.target.innerText;
+      this.sendChalUpdate(challenge);
     }
-    this.props.updateChallenge(challenge);
+  };
+  
+  sendChalUpdate = challenge => {
+    this.props.viewType !== 'list' ? this.props.editChallenge(challenge)
+      : this.props.updateChallenge(challenge);
   }
 
-  handleDelete = () => {
+	handleDelete = () => {
     const { id } = this.props.data;
+    const { viewType } = this.props;
 
-    if (this.props.type === 'form') {
-      this.props.removeChallenge(id);
-    } else {
-      this.props.deleteChallenge(id);
-    }
-  }
+		if (viewType === 'new' || viewType === 'edit') {
+			this.props.removeChallenge(id);
+		} else {
+			this.props.deleteChallenge(id);
+		}
+	};
 
-	render() {
+  render() {
 		let boxClass = this.props.data.isCompleted ? 'checkbox fa-check-square' : 'checkbox fa-square';
-		let box = this.props.type !== 'form' ? (
+    let box = this.props.viewType !== 'new'
+      ? (
 				<i className={`far ${boxClass}`} id={this.props.id} onClick={this.handleUpdate} />
-			) : null;
+      )
+      : null;
 
 		return (
 			<li className="challenge-txt" key={this.props.data.id}>

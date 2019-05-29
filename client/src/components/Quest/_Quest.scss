@@ -13,6 +13,20 @@
   background: rgb(119, 148, 109);
   padding: 12px 15px;
   border-radius: 4px 4px 0 0;
+  display: flex;
+  justify-content: space-between;
+
+  .expand-btn {
+    background: none!important;
+    border: none;
+    font-size: 20px;
+    color: white;
+    opacity: .7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 .card-title {
@@ -25,7 +39,7 @@
 .card-body {
   height: 290px;
   overflow-y: scroll;
-  border-bottom: 1px solid #a5bfaa;
+  border-bottom: 1px solid #c9dacc;
   border-top: 1px solid #688f6f9c;
 }
 
@@ -43,10 +57,12 @@
 
 .card-footer {
   background: #E1EBDE;
-  height: 38px;
+  height: 40px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 3px;
 }
 
 .show-completed {

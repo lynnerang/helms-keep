@@ -1,13 +1,13 @@
 import React from './node_modules/react';
 import { shallow } from './node_modules/ enzyme';
 import Quest from './Quest';
-import { mockNote } from '../../api/utilities';
+import { mockQuest } from '../../api/utilities';
 
 describe('Quest', () => {
 	let wrapper, instance;
 
 	beforeEach(() => {
-		wrapper = shallow(<Quest data={mockNote} />);
+		wrapper = shallow(<Quest data={mockQuest} />);
 		instance = wrapper.instance();
 	});
 

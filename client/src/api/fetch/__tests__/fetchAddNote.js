@@ -1,41 +1,41 @@
-import { host, mockNote, mockTask } from "../../utilities";
-import { fetchAddNote } from "../fetchAddNote";
+import { host, mockQuest, mockTask } from '../../utilities';
+import { fetchAddQuest } from '../fetchAddQuest';
 
-describe("fetchAddNote", () => {
-  window.fetch = jest.fn().mockImplementation(() => {
-    return Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(mockNote)
-    });
-  });
+describe('fetchAddQuest', () => {
+	window.fetch = jest.fn().mockImplementation(() => {
+		return Promise.resolve({
+			ok: true,
+			json: () => Promise.resolve(mockQuest)
+		});
+	});
 
-  it("should call fetch with the correct params", () => {
-    const url = `${host}/notes`;
-    const body = { id: new Date(), title: 'My First Quest', tasks: [mockTask, mockTask] };
-    const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    };
+	it('should call fetch with the correct params', () => {
+		const url = `${host}/quests`;
+		const body = { id: new Date(), title: 'My First Quest', tasks: [ mockTask, mockTask ] };
+		const options = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(body)
+		};
 
-    fetchAddNote('My First Quest', [mockTask, mockTask]);
-    expect(fetch).toHaveBeenCalledWith(url, options);
-  });
+		fetchAddQuest('My First Quest', [ mockTask, mockTask ]);
+		expect(fetch).toHaveBeenCalledWith(url, options);
+	});
 
-  it("should return the updated note", async () => {
-    const result = await fetchAddNote([mockTask, mockTask]);
-    expect(result).toEqual(mockNote);
-  });
+	it('should return the updated quest', async () => {
+		const result = await fetchAddQuest([ mockTask, mockTask ]);
+		expect(result).toEqual(mockQuest);
+	});
 
-  it("should throw an error if fetch fails", async () => {
-    window.fetch = jest.fn().mockImplementation(() => {
-      return Promise.resolve({ ok: false });
-    });
+	it('should throw an error if fetch fails', async () => {
+		window.fetch = jest.fn().mockImplementation(() => {
+			return Promise.resolve({ ok: false });
+		});
 
-    try {
-      await fetchAddNote(mockNote);
-    } catch (error) {
-      expect(error.message).toEqual("Failed to add note");
-    }
-  });
+		try {
+			await fetchAddQuest(mockQuest);
+		} catch (error) {
+			expect(error.message).toEqual('Failed to add quest');
+		}
+	});
 });

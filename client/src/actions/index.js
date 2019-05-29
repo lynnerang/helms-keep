@@ -41,3 +41,27 @@ export const showPopup = (bool, id, type) => {
   };
 }
 
+export const addExp = (exp) => {
+  return {
+    type: 'ADD_EXP',
+    payload: {
+      exp
+    }
+  }
+}
+export const addLvl = (lvl) => {
+  return {
+    type: 'ADD_LVL',
+    payload: {
+      lvl
+    }
+  }
+}
+export const addNextLvl = (lvl) => {
+  return {
+    type: 'ADD_NEXT_LVL',
+    payload: {
+      lvl
+    }
+  }
+}

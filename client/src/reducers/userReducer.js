@@ -1,9 +1,14 @@
-export const userReducer = (state = { exp: 0, level: 0 }, action) => {
+export const userReducer = (
+  state = { exp: 0, lvl: 0, nextLvl: 100 },
+  action
+) => {
   switch (action.type) {
     case "ADD_EXP":
-      return { ...action.user, exp: action.user };
+      return { ...state, exp: action.payload.exp };
     case "ADD_LVL":
-      return { ...action.user, level: action.user };
+      return { ...state, lvl: action.payload.lvl };
+    case "ADD_NEXT_LVL":
+      return { ...state, nextLvl: action.payload.lvl };
     default:
       return state;
   }

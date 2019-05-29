@@ -20,15 +20,16 @@
 .rc-progress-line {
   height: 12px;
   border-radius: 5px;
+  min-width: 180px;
   border: black solid 1.2px;
 }
 .bar-container {
   @include flex(flex-start, null, null, column);
   & div {
-    width: 100%;
   }
 }
 
 .progress-img {
   margin-right: 10px;
+
 }

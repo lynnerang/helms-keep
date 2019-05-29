@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ChallengeContainer from '../../components/ChallengeContainer/ChallengeContainer';
 import { fetchEditQuest } from '../../api/fetch/fetchEditQuest';
 import { connect } from "react-redux";
-import { editQuest, showPopup } from '../../actions';
+import { editQuest, showPopup, addLvl, addExp } from '../../actions';
 import { NavLink } from 'react-router-dom';
 
 
@@ -20,7 +20,6 @@ export class Quest extends Component {
 
   addChallenge = challenge => {
     const quest = { ...this.props.data };
-
     quest.challenges.push(challenge);
     this.updateQuest(quest)
   };
@@ -35,7 +34,6 @@ export class Quest extends Component {
   updateChallenge = challenge => {
     const quest = { ...this.props.data };
     const chalIndex = quest.challenges.findIndex(chal => chal.id === challenge.id);
-
     quest.challenges[chalIndex] = challenge;
     this.updateQuest(quest);
   }
@@ -60,6 +58,8 @@ export class Quest extends Component {
       e.target.blur();
     }
   }
+
+
 
   render() {
     const { title, challenges, id } = this.props.data;
@@ -128,7 +128,8 @@ export class Quest extends Component {
 
 export const mapDispatchToProps = dispatch => ({
   updateQuest: quest => dispatch(editQuest(quest)),
-  showPopup: (bool, id, type) => dispatch(showPopup(bool, id, type))
+  showPopup: (bool, id, type) => dispatch(showPopup(bool, id, type)),
+
 })
 
 export default connect(null, mapDispatchToProps)(Quest);

@@ -48,7 +48,7 @@ export class Challenge extends Component {
     if (this.props.user.nextLvl - 25 <= this.props.user.exp) {
       const lvl = this.props.user.lvl + 1;
       this.props.addLvl(lvl);
-      const nextLvl = this.props.user.nextLvl * 2;
+      const nextLvl = this.props.user.nextLvl + 50;
       this.props.addNextLvl(nextLvl);
 			this.props.addExp(0)
     }

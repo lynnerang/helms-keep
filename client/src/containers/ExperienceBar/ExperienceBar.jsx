@@ -8,12 +8,10 @@ import { userReducer } from "../../reducers/userReducer";
 export class ExperienceBar extends Component {
 
   convertExpToPercent = () => {
-    console.log(this.props.user.exp / this.props.user.nextLvl)
     return this.props.user.exp / this.props.user.nextLvl * 100
   }
   render() {
     const expPercent = this.convertExpToPercent();
-    console.log(expPercent)
     return (
       <div className="bar-container" style={{ margin: 10, width: 200 }}>
         <div>
@@ -29,7 +27,7 @@ export class ExperienceBar extends Component {
             strokeWidth="4"
             percent={expPercent}
           />
-          <span className="progress-text">{this.props.user.exp}/{this.props.user.nextLvl}</span>
+          <span className="progress-text">{this.props.user.exp}/{Math.floor(this.props.user.nextLvl)}</span>
         </div>
         <div>
           <img

@@ -1,5 +1,5 @@
 export const userReducer = (
-  state = { exp: 0, lvl: 0, nextLvl: 100 },
+  state = { exp: 0, lvl: 1, nextLvl: 100, name: 'Jacob' },
   action
 ) => {
   switch (action.type) {

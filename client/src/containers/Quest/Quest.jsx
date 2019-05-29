@@ -71,7 +71,9 @@ export class Quest extends Component {
   }
 
   render() {
-    const { title, challenges, id } = this.props.data;
+    console.log(this.props.data)
+    const { title, challenges } = this.props.data;
+    const color = this.props.data.color || 'green';
     const completedChallenges = challenges.filter(chal => chal.isCompleted);
     const incompleteChallenges = challenges.filter(chal => !chal.isCompleted);
     const verb = !this.state.showCompleted ? '+ Show' : '- Hide';
@@ -99,7 +101,6 @@ export class Quest extends Component {
       </p>
       : null;
     
-    const color = this.props.data.color;
     const colorPicker = this.state.showColors ? (
       <div className="color-options">
         <button className="color-picker"><img className="coin" src={require(`../../assets/greencoin.png`)} type="button" onClick={() => this.pickColor('green')}/></button>

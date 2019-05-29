@@ -4,7 +4,7 @@ A mideval, gamified version of the popular application Google Keep, utilizing Re
 
 ## Features
 
-![HelmsKeep Screenshot](https://ibb.co/kgv1bqX)
+![HelmsKeep Screenshot](https://i.ibb.co/kgv1bqX/Screen-Shot-2019-05-29-at-9-10-18-AM.png)
 
 ## Installation - Back-End
 Clone the repo - https://github.com/lynnerang/helms-keep.git

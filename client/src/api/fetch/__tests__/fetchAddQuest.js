@@ -1,7 +1,11 @@
 import { host, mockQuest, mockTask } from '../../utilities';
 import { fetchAddQuest } from '../fetchAddQuest';
+import shortid from "shortid";
+
+jest.mock("shortid");
 
 describe('fetchAddQuest', () => {
+	shortid.generate.mockImplementation(() => 1);
 	window.fetch = jest.fn().mockImplementation(() => {
 		return Promise.resolve({
 			ok: true,
@@ -10,8 +14,8 @@ describe('fetchAddQuest', () => {
 	});
 
 	it('should call fetch with the correct params', () => {
-		const url = `${host}/quests`;
-		const body = { id: new Date(), title: 'My First Quest', tasks: [ mockTask, mockTask ] };
+		const url = `${host}quests`;
+		const body = { id: 1, title: 'My First Quest', challenges: [ mockTask, mockTask ] };
 		const options = {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },

@@ -1,7 +1,12 @@
-import React from './node_modules/react';
-import { shallow } from './node_modules/ enzyme';
-import Quest from './Quest';
-import { mockQuest } from '../../api/utilities';
+import React from 'react';
+import { shallow } from 'enzyme';
+import { Quest, mapDispatchToProps } from './Quest';
+import { mockQuest, mockCompletedTask, mockNote } from '../../api/utilities';
+import { fetchEditNote } from '../../api/fetch/fetchEditNote';
+import { editQuest, showPopup } from '../../actions';
+
+jest.mock('../../api/fetch/fetchEditNote');
+
 
 describe('Quest', () => {
 	let wrapper, instance;
@@ -23,7 +28,7 @@ describe('Quest', () => {
 	describe('Event Handlers', () => {
 		it('should invoke toggleShowCompleted on click', () => {
 			expect(wrapper.state('showCompleted')).toEqual(false);
-			wrapper.find('.showCompleted').simulate('click');
+			wrapper.find('.show-completed').simulate('click');
 			expect(wrapper.state('showCompleted')).toEqual(true);
 		});
 	});

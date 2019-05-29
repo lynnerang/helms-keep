@@ -10,28 +10,28 @@ exports[`ChallengeContainer should match the snapshot 1`] = `
     <ConnectFunction
       data={
         Object {
-          "id": 1234,
+          "id": "1234",
           "isCompleted": false,
           "message": "Clean the kitchen",
         }
       }
       deleteChallenge={[MockFunction]}
       key="1234"
-      type="incomplete"
       updateChallenge={[MockFunction]}
+      viewType="list"
     />
     <ConnectFunction
       data={
         Object {
-          "id": 1234,
+          "id": "1234",
           "isCompleted": false,
           "message": "Clean the kitchen",
         }
       }
       deleteChallenge={[MockFunction]}
       key="1234"
-      type="incomplete"
       updateChallenge={[MockFunction]}
+      viewType="list"
     />
     <div />
   </ul>
@@ -62,32 +62,49 @@ exports[`ChallengeContainer should match the snapshot when type is complete 1`] 
   className="ChallengeContainer"
 >
   <ul
-    className="complete-ul"
+    className="incomplete-ul"
   >
     <ConnectFunction
       data={
         Object {
-          "id": 1234,
+          "id": "1234",
           "isCompleted": false,
           "message": "Clean the kitchen",
         }
       }
       key="1234"
-      type="complete"
     />
     <ConnectFunction
       data={
         Object {
-          "id": 1234,
+          "id": "1234",
           "isCompleted": false,
           "message": "Clean the kitchen",
         }
       }
       key="1234"
-      type="complete"
     />
     <div />
   </ul>
+  <form
+    className="form-row"
+    onSubmit={[Function]}
+  >
+    <input
+      className="new-challenge-input"
+      name="chalInput"
+      onChange={[Function]}
+      placeholder="+ Add new challenge..."
+      value=""
+    />
+    <button
+      className="add-challenge-btn"
+      disabled={true}
+      type="submit"
+    >
+      +
+    </button>
+  </form>
 </article>
 `;
 
@@ -101,24 +118,22 @@ exports[`ChallengeContainer should match the snapshot when type is form 1`] = `
     <ConnectFunction
       data={
         Object {
-          "id": 1234,
+          "id": "1234",
           "isCompleted": false,
           "message": "Clean the kitchen",
         }
       }
       key="1234"
-      type="form"
     />
     <ConnectFunction
       data={
         Object {
-          "id": 1234,
+          "id": "1234",
           "isCompleted": false,
           "message": "Clean the kitchen",
         }
       }
       key="1234"
-      type="form"
     />
     <div />
   </ul>

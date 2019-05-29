@@ -61,13 +61,13 @@
     top: 45px;
     left: -10px;
     width: 50px;
-    height: 210px;
+    height: 205px;
     z-index: 3;
     border: 1px solid lightgrey;
     border-radius: 3px;
     background: white;
     box-shadow: 0 0 6px #999999;
-    padding-top: 15px;
+    padding-top: 20px;
 
     .close-colors {
       position: absolute;
@@ -95,7 +95,7 @@
 
   .coin {
     box-sizing: unset;
-    height: 25px;
+    height: 22px;
     cursor: pointer;
     padding: 10px 12px;
 

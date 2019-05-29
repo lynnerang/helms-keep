@@ -113,7 +113,7 @@ export class Quest extends Component {
 		return (
       <article className={`Quest ${color}-quest`}>
         <div className={`card-header ${color}-header`}>
-          <button className="color-picker" type="button" onClick={() => this.setState({ showColors: true })}><img className="coin title-coin" src={require(`../../assets/${color}coin.png`)}/></button>
+          <button className="color-picker" type="button" onClick={() => this.setState({ showColors: !this.state.showColors })}><img className="coin title-coin" src={require(`../../assets/${color}coin.png`)}/></button>
           {colorPicker}
           <h2
             className="card-title"

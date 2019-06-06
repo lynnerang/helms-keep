@@ -10,9 +10,12 @@
   cursor: text;
 
   span {
-      padding: 12px 0;
-      flex: auto;
-      font-size: 15px;
+    padding: 12px 0;
+    font-size: 15px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 230px;
   }
 
   .far,
@@ -47,4 +50,8 @@
       color: rgb(198, 59, 59);
     }
   }
+}
+
+.left-padding {
+  width: 2px;
 }

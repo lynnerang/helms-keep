@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { editQuest, addLvl, addExp, addNextLvl } from "../../actions";
 import PropTypes from 'prop-types';
+
 export class Challenge extends Component {
+
   handleUpdate = e => {
     const challenge = { ...this.props.data };
     if (e.target.classList.contains("checkbox")) {
@@ -66,7 +68,7 @@ export class Challenge extends Component {
           id={this.props.id}
           onClick={this.handleUpdate}
         />
-      ) : null;
+      ) : <div className="left-padding"></div>;
 
     return (
       <li className="challenge-txt" key={this.props.data.id}>

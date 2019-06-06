@@ -90,6 +90,7 @@ class QuestForm extends Component {
       challenges = (
         <>
           <ChallengeContainer
+            viewType={this.props.viewType}
             challengeType="incomplete"
             challenges={incompleteChals}
             saveChallenge={this.saveChallenge}

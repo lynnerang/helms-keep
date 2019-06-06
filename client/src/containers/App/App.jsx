@@ -24,11 +24,11 @@ export class App extends Component {
 					<Header />
 					<Main />
 					<Route path="/" component={Main} />
-					<Route exact path="/new-quest" component={() => <QuestForm viewType="new" />} />
+					<Route exact path="/new-quest" render={() => <QuestForm viewType="new" />} />
 					<Route
 						exact
 						path="/quests/:id"
-						component={({ match }) => <QuestForm viewType="edit" id={match.params.id} key={match.params.id} />}
+						render={({ match }) => <QuestForm viewType="edit" id={match.params.id} key={match.params.id} />}
 					/>
 				</div>
 			</div>
